@@ -410,7 +410,7 @@ export const equipeData = [
   },
   {
     id: "eduardo-alves",
-    nome: "Eduardo ",
+    nome: "Eduardo Alves",
     descricao:
       "Entusiasta em Python, Ciência de Dados e desenvolvimento de jogos.",
     foto: imgEduardoAlves,
