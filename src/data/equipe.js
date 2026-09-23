@@ -46,6 +46,7 @@ import imgEduardoAlves from "@assets/equipe/eduardo-alves.jpeg";
 import imgThalis from "@assets/equipe/thalis-alexandre.jpeg";
 import imgLucasDelvico from "@assets/equipe/lucas-delvico.jpeg";
 import imgKauanVinicius from "@assets/equipe/kauan-vinicius.jpeg";
+import imgEmilyMendes from "@assets/equipe/emily-mendes.jpeg";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
@@ -123,7 +124,7 @@ export const equipeData = [
     id: "lucas-moura",
     nome: "Lucas Moura",
     descricao:
-      "Backend Developer | Inteligência Artificial | Entusiasta em Linux e Cibersegurança.",
+      "Back-end Developer | Inteligência Artificial | Entusiasta em Linux e Cibersegurança.",
     foto: imgLucasMoura,
     ativo: true,
     linkedin: "https://www.linkedin.com/in/lucas-salles-moura/",
@@ -133,7 +134,7 @@ export const equipeData = [
     id: "sciel-buitrago",
     nome: "Sciel Buitrago",
     descricao:
-      "Desenvolvedor Backend, entusiasta em Python, com conhecimentos em SQL e fundamentos de estrutura de dados.",
+      "Desenvolvedor Back-end, entusiasta em Python, com conhecimentos em SQL e fundamentos de estrutura de dados.",
     foto: imgScielBuitrago,
     ativo: true,
     linkedin: "https://www.linkedin.com/in/felipe-buitrago-3225b1364/",
@@ -355,7 +356,7 @@ export const equipeData = [
     id: "ivin-vaz",
     nome: "Ivin Vaz",
     descricao:
-      "Desenvolvedor Backend com interesse em Python, Java e implantação em geral.",
+      "Desenvolvedor Back-end com interesse em Python, Java e implantação em geral.",
     foto: imgIvinVaz,
     ativo: true,
     linkedin: "https://www.linkedin.com/in/vazivin/",
@@ -373,7 +374,7 @@ export const equipeData = [
   {
     id: "gabriel-cotts",
     nome: "Gabriel Cotts",
-    descricao: "Desenvolvedor Backend, aspirante a Full Stack | Java | MySQL",
+    descricao: "Desenvolvedor Back-end, aspirante a Full Stack | Java | MySQL",
     foto: imgGabrielCotts,
     ativo: true,
     linkedin: "https://www.linkedin.com/in/gabriel-cotts-dos-anjos-a167193b3/",
@@ -446,6 +447,16 @@ export const equipeData = [
     linkedin: "https://www.linkedin.com/in/kauan-silva-25009035a/",
     github: "https://github.com/iseiko",
   },
+  {
+    id: "emily-mendes",
+    nome: "Emily Mendes",
+    descricao:
+      "Entusiasta de Front-end, Banco de Dados e Inteligência Artificial.",
+    foto: imgEmilyMendes,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/emily-mendes-silva/",
+    github: "https://github.com/Emilyms-tech",
+  },
 
   // ==========================================
   // EX-MEMBROS
@@ -454,7 +465,7 @@ export const equipeData = [
     id: "angelo-keller",
     nome: "Ângelo Keller",
     descricao:
-      "Desenvolvedor Backend, entusiasta de Linux e especialista em tudo.",
+      "Desenvolvedor Back-end, entusiasta de Linux e especialista em tudo.",
     foto: imgAngelo,
     ativo: false,
     linkedin: "https://www.linkedin.com/in/angkeller/",
@@ -483,7 +494,7 @@ export const equipeData = [
     id: "gabriel-becker",
     nome: "Gabriel Becker",
     descricao:
-      "Junior Programmer | Backend | Python | Java | PyTorch | Spring Boot.",
+      "Junior Programmer | Back-end | Python | Java | PyTorch | Spring Boot.",
     foto: imgGabrielBecker,
     ativo: false,
     linkedin: "https://www.linkedin.com/in/gabriel-becker-cidral/",
@@ -493,7 +504,7 @@ export const equipeData = [
     id: "thais",
     nome: "Thaís Regina",
     descricao:
-      "Desenvolvedora Backend, Analista de Dados. Experiência com MySQL, Java, C e Python.",
+      "Desenvolvedora Back-end, Analista de Dados. Experiência com MySQL, Java, C e Python.",
     foto: imgThaisRegina,
     ativo: false,
     linkedin: "https://www.linkedin.com/in/tha%C3%ADs-regina-dias-da-mota/",
