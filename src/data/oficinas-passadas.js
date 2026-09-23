@@ -82,15 +82,26 @@ export const oficinasPassadasData = [
     alt: "Mago jogando dados",
   },
   {
-    id: "oficina-web",
-    titulo: "Oficina de Web (JavaScript)",
+    id: "fundamentos-comp",
+    titulo: "Fundamentos da Computação",
     descricao:
-      "Construa sites rápidos e modernos do zero, focando em layouts responsivos e código bem estruturado.",
-    turmas: ["Quarta e Sexta: 11h às 13h"],
+      "Entenda como computadores funcionam por debaixo dos panos, do hardware ao sistema operacional.",
+    turmas: [],
     formato: "Presencial",
-    linkInscricao: "/oficinas/oficina-de-web",
-    imagem: imgWeb,
-    alt: "Mago pensando em desenvolvimento web",
+    imagem: imgFundamentos,
+    alt: "Mago conversando com robô",
+    linkInscricao: "/oficinas/fundamentos-comp",
+  },
+  {
+    id: "oficina-de-hardware",
+    titulo: "Fundamentos de Hardware",
+    descricao:
+      "Aprenda na prática sobre montagem, funcionamento e manutenção dos principais componentes de um computador.",
+    turmas: [],
+    formato: "Presencial",
+    imagem: imgDados,
+    alt: "Mago manipulando componentes",
+    linkInscricao: "/oficinas/oficina-de-hardware",
   },
   {
     id: "oficina-blender",
@@ -103,19 +114,7 @@ export const oficinasPassadasData = [
     imagem: img3D,
     alt: "Mago ao lado ",
   },
-  {
-    id: "oficina-java",
-    titulo: "Oficina de Java",
-    descricao:
-      "Conheça as bases da programação Orientada a Objetos e crie aplicações no ecossistema Java.",
-    turmas: [
-      "Segunda, Terça e Quinta: 11h às 13h",
-      "Segunda, Quarta e Sexta: 17h às 19h",
-    ],
-    imagem: imgRedes,
-    alt: "Mago flutuando na matrix",
-    linkInscricao: "/oficinas/oficina-de-java",
-  },
+
   {
     id: "oficina-dados",
     titulo: "Ciência de Dados - Ferramentas e Frameworks",

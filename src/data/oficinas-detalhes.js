@@ -127,79 +127,101 @@ export const oficinasDetalhes = [
     slug: "oficina-de-java",
     titulo: "Oficina de Java",
     campus: "Campus Asa Norte",
-    horarios:
-      "Turma Manhã: Segundas, Terças e Sextas, das 11h às 13h | Turma Noite: Segundas, Quartas e Sextas, das 17h às 19h",
+    horarios: "Segunda, Quarta e Sexta, das 11h às 13h ou 17h às 19h",
     imagem: imgJava,
     alt: "Mago em ambiente digital matrix",
-    botoes: [],
+    botoes: [
+      {
+        texto: "Inscreva-se agora!",
+        link: "#",
+        tipo: "primary",
+      },
+    ],
     sobre: [
       {
         titulo: "",
         texto:
-          "A <strong>oficina de Java</strong> foi desenvolvida para transformar sua visão sobre o desenvolvimento de software. Se você deseja dominar uma das linguagens mais utilizadas no mundo e compreender como são construídos grandes sistemas, esta oficina é o ponto de partida ideal. Ao longo das aulas, partiremos dos fundamentos da lógica e de sintaxe da linguagem até chegar aos conceitos estruturais da <strong>programação orientada a objetos (POO)</strong>, permitindo que os participantes aprendam a projetar soluções mais organizadas, escaláveis e profissionais.<br/><br/>A oficina será realizada entre os dias <strong>18/03 e possivelmente 27/03</strong>, com encontros às <strong>segundas, terças e quintas-feiras</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho nos desafios práticos propostos ao longo das aulas.",
+          "A <strong>oficina de Java</strong> foi desenvolvida para ensinar os fundamentos da lógica de programação e introduzir a sintaxe dessa linguagem tão popular no mercado. O foco principal é desenvolver sua capacidade analítica para interpretar problemas, construir algoritmos eficientes e preparar uma base sólida para, no futuro, compreender a Programação Orientada a Objetos (POO).<br/><br/>Além disso, a oficina também atua como um espaço de nivelamento para alunos de semestres mais avançados tirarem dúvidas pontuais.<br/><br/>A oficina será realizada às <strong>segundas, quartas e sextas-feiras</strong>.",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>Lógica e sintaxe Java:</strong> Introdução à estrutura da linguagem, incluindo variáveis, tipos de dados, operadores e o ciclo de escrita de programas em Java.<br/><strong>Estruturas de controle:</strong> Uso de condicionais (<em>if/else, switch</em>) e laços de repetição (<em>for, while</em>) para controlar o fluxo de execução do programa.<br/><strong>O Salto para Objetos:</strong> Introdução à Programação Orientada a Objetos, aprendendo a representar conceitos do mundo real por meio de <strong>classes e objetos</strong>.<br/><strong>Atributos e Métodos:</strong> Como definir características e comportamentos dentro das classes para criar componentes de software organizados.<br/><strong>Os Pilares da POO:</strong> Aplicação prática de <strong>encapsulamento, herança e polimorfismo</strong> para deixar o código flexível, estruturado e de fácil manutenção.<br/><strong>Tratamento de Erros:</strong> Introdução ao tratamento de exceções em Java para tornar os programas mais seguros e resilientes.<br/><strong>Projeto Prático:</strong> Desenvolvimento de uma aplicação funcional para consolidar os conhecimentos adquiridos durante a oficina.",
+          "<strong>Lógica e Algoritmos:</strong> Compreenda a diferença entre algoritmo, código-fonte e programa em execução, e identifique perfeitamente a entrada, processamento e saída de dados de um problema.<br/><strong>Sintaxe Java Básica:</strong> Entenda o papel da classe, do método main e do compilador. Aprenda a declarar variáveis usando tipos fundamentais (int, double, boolean, char e String).<br/><strong>Fluxo de Execução:</strong> Uso da entrada de dados com a classe Scanner, leitura de informações e como controlar o fluxo com condicionais (if, else, else if).<br/><strong>Estruturas de Repetição:</strong> Por que e como utilizar estruturas de laço (while, for), controlando inicializações, condições, contadores e atualizações.<br/><strong>Resolução e Autonomia:</strong> Dicas e práticas sobre leitura de mensagens de erro, diferença entre erros de lógica e compilação, e como debugar o seu próprio código com autonomia.",
       },
       {
         titulo: "Para quem é esta oficina:",
         texto:
           "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
-          "<li>Estudantes que desejam aprender ou dominar uma das linguagens mais requisitadas pelo mercado de tecnologia;</li>" +
-          "<li>Alunos que querem evoluir da lógica de programação para o paradigma de orientação a objetos;</li>" +
-          "<li>Iniciantes em TI que desejam construir uma base sólida para desenvolvimento back-end;</li>" +
-          "<li>Interessados em aprender boas práticas de programação e padrões fundamentais utilizados em Java.</li>" +
+          "<li>Estudantes que precisam aprender ou reforçar os fundamentos de lógica de programação;</li>" +
+          "<li>Alunos que desejam construir uma base preparatória forte antes de mergulhar em Orientação a Objetos;</li>" +
+          "<li>Estudantes de semestres mais avançados precisando tirar dúvidas pontuais ou revisitar conceitos;</li>" +
+          "<li>Interessados em criar autonomia para desenvolver, testar e debugar soluções computacionais.</li>" +
           "</ul>" +
           "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
     monitores: [
-      getMonitor("kaynan", true, "Turma Manhã"),
-      getMonitor("felipe-barcelos", true, "Turma Manhã"),
-      getMonitor("lucas-moura", false, "Turma Manhã"),
-      getMonitor("lucas-villas", false, "Turma Noite"),
-      getMonitor("joao-gabriel", false, "Turma Noite"),
-      getMonitor("gabriel-becker", false, "Turma Noite"),
+      getMonitor("kauan-vinicius", true, "Turma Manhã"),
+      getMonitor("jess-forster", false, "Turma Manhã"),
+      getMonitor("daniel-godoi", false, "Turma Manhã"),
+      getMonitor("isabella-oliveira", false, "Turma Manhã"),
+      getMonitor("matheus-morais", false, "Turma Noite"),
+      getMonitor("gabriel-garcia", false, "Turma Noite"),
+      getMonitor("polverari", false, "Turma Noite"),
+      getMonitor("pedro-quartin", false, "Turma Noite"),
+      getMonitor("jess-forster", false, "Turma Noite"),
     ].filter(Boolean),
   },
 
   // --- OFICINA DE WEB ---
   {
-    slug: "oficina-de-web",
-    titulo: "Oficina de Web (JavaScript)",
+    slug: "oficina-web",
+    titulo: "Oficina de Web",
     campus: "Campus Asa Norte",
-    horarios: "Quarta e Sexta, das 11h às 13h",
+    horarios: "Segunda, Quarta e Sexta, das 11h às 13h ou 17h às 19h",
     imagem: imgWeb,
-    alt: "Mago pensando em desenvolvimento web cercado por tags HTML",
-    botoes: [],
+    alt: "Mago pensando em desenvolvimento web",
+    botoes: [
+      {
+        texto: "Inscreva-se agora!",
+        link: "#",
+        tipo: "primary",
+      },
+    ],
     sobre: [
       {
         titulo: "",
         texto:
-          "Durante esta oficina, você terá uma introdução prática aos principais conceitos do desenvolvimento web, explorando como aplicações modernas são estruturadas e funcionam. Serão abordados temas como interação com páginas, manipulação de dados, comunicação com serviços externos e noções básicas de integração entre diferentes camadas de uma aplicação.<br/><br/>Ao longo das aulas, você desenvolverá aplicações simples e progressivas, permitindo compreender na prática como cada parte contribui para o funcionamento do todo.<br/><br/>A oficina será realizada entre os dias <strong>15/04 e 08/05</strong>, com encontros às <strong>quartas e sextas</strong>. As aulas serão ministradas <strong>presencialmente</strong>.",
+          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts modernos, organização de conteúdo, estilização de elementos e desenvolvimento de páginas responsivas.<br/><br/>A oficina será realizada entre os dias <strong>28/09 e 09/10</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>17h às 19h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência das aulas e no desempenho das atividades práticas propostas durante o período.",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>Estrutura de páginas com HTML:</strong> Introdução às principais tags utilizadas para estruturar conteúdos em páginas web.<br/><strong>Interação com páginas:</strong> Como utilizar JavaScript para tornar páginas dinâmicas e responsivas ao usuário.<br/><strong>Manipulação de dados:</strong> Conceitos de como trabalhar com dados localmente e exibir informações de forma dinâmica.<br/><strong>Comunicação com serviços externos:</strong> Introdução a requisições HTTP e como consumir APIs para integrar dados externos nas suas aplicações.<br/><strong>Camadas de uma aplicação:</strong> Noções básicas de como o frontend, backend e banco de dados se integram para formar uma aplicação completa.<br/><strong>Construção progressiva:</strong> Desenvolvimento de aplicação simples e funcional que evolui a cada aula, consolidando o aprendizado na prática.",
+          "<strong>Introdução ao desenvolvimento web:</strong> Entenda como funcionam sites, páginas web, navegadores e a relação entre HTML, CSS e outras tecnologias utilizadas na internet.<br/><strong>Fundamentos do HTML:</strong> Aprenda a criar a estrutura de uma página utilizando títulos, parágrafos, listas, links, imagens e outros elementos fundamentais.<br/><strong>HTML semântico:</strong> Entenda como organizar corretamente o conteúdo utilizando elementos como header, main, section, article, nav e footer.<br/><strong>Introdução ao CSS:</strong> Aprenda como estilizar páginas utilizando cores, fontes, tamanhos, espaçamentos, bordas e outras propriedades visuais.<br/><strong>Classes, IDs e seletores:</strong> Entenda como selecionar e modificar diferentes elementos da página utilizando CSS.<br/><strong>Box Model:</strong> Compreenda como funcionam width, height, margin, padding e border, conceitos fundamentais para controlar o tamanho e o espaçamento dos elementos.<br/><strong>Flexbox:</strong> Aprenda a organizar elementos horizontal e verticalmente e desenvolver layouts de maneira mais simples e eficiente.<br/><strong>Layouts e responsividade:</strong> Aprenda os conceitos básicos para criar páginas que se adaptem a diferentes tamanhos de tela, como computadores, tablets e celulares.<br/><strong>Pseudo-classes e pseudo-elementos:</strong> Utilize recursos como :hover, :focus, ::before e ::after para criar páginas mais interativas e estilizadas.<br/><strong>Prática orientada:</strong> Desenvolvimento de páginas e pequenos projetos para aplicar os conceitos aprendidos durante a oficina.",
+      },
+      {
+        titulo: "Projeto final:",
+        texto: "Ao longo da oficina, os participantes desenvolverão uma <strong>página web completa utilizando HTML e CSS</strong>, aplicando os principais conceitos apresentados nas aulas."
       },
       {
         titulo: "Para quem é esta oficina:",
         texto:
           "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
-          "<li>Estudantes que desejam entender como aplicações web modernas funcionam;</li>" +
-          "<li>Iniciantes em programação que querem desenvolver suas primeiras aplicações;</li>" +
-          "<li>Alunos interessados em aprender desenvolvimento web com foco prático.</li>" +
+          "<li>Estudantes que desejam começar no desenvolvimento Front-end;</li>" +
+          "<li>Iniciantes que nunca tiveram contato com HTML e CSS;</li>" +
+          "<li>Alunos que desejam melhorar seus conhecimentos em desenvolvimento web;</li>" +
+          "<li>Pessoas interessadas em aprender a criar e estilizar páginas para a internet;</li>" +
+          "<li>Estudantes que desejam construir uma base no Desenvolvimento web</li>" +
           "</ul>" +
-          "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
+          "<strong>Não é necessário conhecimento prévio em programação.</strong><br/><br/>" +
+          "Preencha o formulário de inscrição para participar da oficina e garantir sua vaga. <strong>Vagas limitadas.</strong>",
       },
     ],
     monitores: [
-      getMonitor("lucas-paiva", true),
-      getMonitor("joao-gabriel"),
-      getMonitor("joao-soupa"),
+      getMonitor("lucas-paiva", true, "Turma Manhã"),
+      getMonitor("emily-mendes", false, "Turma Manhã"),
+      getMonitor("felipe-rios", false, "Turma Manhã"),
+      getMonitor("thalis-alexandre", true, "Turma Noite"),
     ].filter(Boolean),
   },
 
@@ -295,13 +317,7 @@ export const oficinasDetalhes = [
     horarios: "Segunda, Quarta e Quinta, das 11h às 13h",
     imagem: imgFundamentos,
     alt: "Mago conversando com robô de blocos",
-    botoes: [
-      {
-        texto: "Inscreva-se agora!",
-        link: "https://forms.gle/meHsJn7Xbn4UEYXWA",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -579,13 +595,7 @@ export const oficinasDetalhes = [
     horarios: "Terça e Sexta, das 11h às 13h",
     imagem: imgDados,
     alt: "Mago analisando hardware",
-    botoes: [
-      {
-        texto: "Inscreva-se agora!",
-        link: "https://forms.gle/DDLm5MWhZyrJTbKT9",
-        tipo: "primary",
-      },
-    ],
+    botoes: [],
     sobre: [
       {
         titulo: "",
@@ -614,4 +624,83 @@ export const oficinasDetalhes = [
       getMonitor("sciel-buitrago"),
     ].filter(Boolean),
   },
+  
+  // --- OFICINA DE INTELIGÊNCIA ARTIFICIAL ---
+  {
+    slug: "oficina-de-ia",
+    titulo: "Oficina de Inteligência Artificial",
+    campus: "Campus Asa Norte",
+    horarios: "Terças e quintas-feiras, das 17h às 19h",
+    imagem: imgDados,
+    alt: "Mago jogando dados",
+    botoes: [
+      {
+        texto: "Inscreva-se agora!",
+        link: "#",
+        tipo: "primary",
+      },
+    ],
+    sobre: [
+      {
+        titulo: "",
+        texto:
+          "Esta monitoria foi desenvolvida para apresentar os principais conceitos e práticas envolvidos na construção de aplicações modernas baseadas em Inteligência Artificial. Ao longo do programa, os participantes irão sair do uso de modelos de linguagem por interfaces prontas e aprender como integrá-los, fornecer contexto, conectar ferramentas externas e construir sistemas capazes de executar tarefas de forma estruturada.<br/><br/>A monitoria será realizada ao longo de <strong>três semanas, com encontros às terças e quintas-feiras, das 17h às 19h</strong>. O conteúdo será desenvolvido de forma prática e progressiva, com um único projeto evoluindo ao longo dos seis encontros.<br/><br/>Ao final da monitoria, os participantes deverão ser capazes de consumir modelos de linguagem por API, estruturar contextos, utilizar ferramentas externas, compreender a arquitetura de agentes, reconhecer o papel do MCP e dos SDKs e compreender os fundamentos de RAG.",
+      },
+      {
+        titulo: "O que você vai aprender:",
+        texto:
+          "<strong>LLM APIs:</strong> Como aplicações se comunicam com modelos de linguagem por meio de APIs, explorando requisições, mensagens, parâmetros, tokens, janela de contexto e structured outputs.<br/><strong>Context Engineering:</strong> Como selecionar, organizar e fornecer as informações certas para que um modelo consiga executar uma tarefa de forma mais eficiente, trabalhando com instruções, histórico, documentos e memória.<br/><strong>Tool Calling:</strong> Como conectar modelos de linguagem a funções e serviços externos, permitindo que uma aplicação execute cálculos, consulte APIs, bancos de dados e outras ferramentas.<br/><strong>MCP e SDKs:</strong> Como o Model Context Protocol (MCP) padroniza a comunicação entre aplicações de IA, ferramentas e fontes de contexto, além de compreender o papel dos SDKs no desenvolvimento de aplicações com modelos de linguagem.<br/><strong>Agents:</strong> Como combinar modelos, contexto e ferramentas em ciclos de execução, permitindo que o sistema escolha ferramentas, execute etapas e determine quando uma tarefa foi concluída.<br/><strong>RAG:</strong> Uma introdução ao Retrieval-Augmented Generation, explorando embeddings, indexação, recuperação de informações e como documentos externos podem ser utilizados para enriquecer o contexto de um modelo.<br/><strong>Prática orientada:</strong> Um único projeto será desenvolvido progressivamente durante a monitoria, começando com uma chamada simples de LLM e evoluindo até um sistema capaz de utilizar contexto, ferramentas, MCP, agentes e recuperação de documentos.",
+      },
+      {
+        titulo: "Para quem é esta monitoria:",
+        texto:
+          "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
+          "<li>Estudantes que desejam entender como aplicações de IA são construídas na prática;</li>" +
+          "<li>Desenvolvedores e estudantes de tecnologia interessados em trabalhar com LLMs e aplicações inteligentes;</li>" +
+          "<li>Pessoas que já tiveram contato com ferramentas de IA e querem entender o que existe por trás delas;</li>" +
+          "<li>Interessados em aprender sobre APIs de LLM, agentes, ferramentas, MCP, RAG e outras arquiteturas modernas de IA;</li>" +
+          "<li>Participantes que desejam transformar o uso de modelos de linguagem em aplicações de software reais.</li>" +
+          "</ul>" +
+          "A proposta é aprender construindo: ao longo dos seis encontros, o projeto evolui de uma simples chamada de LLM para uma aplicação completa.<br/><br/>Preencha o formulário de inscrição para participar da monitoria. <strong>Vagas limitadas.</strong>",
+      },
+    ],
+    monitores: [
+      getMonitor("erick-cardoso", true),
+      getMonitor("ivin-vaz", false),
+    ].filter(Boolean),
+  },
+
+  // --- OFICINA DE GIT ---
+  {
+    slug: "oficina-de-git",
+    titulo: "Oficina de Git",
+    campus: "Campus Asa Norte",
+    horarios: "Terça e Quinta, das 11h às 13h",
+    imagem: imgFundamentos,
+    alt: "Mago analisando código e repositórios",
+    botoes: [
+      {
+        texto: "Inscreva-se agora!",
+        link: "#",
+        tipo: "primary",
+      },
+    ],
+    sobre: [
+      {
+        titulo: "",
+        texto:
+          "Esta oficina aborda tudo o que você precisa saber sobre <strong>controle de versão com Git</strong>, uma ferramenta essencial para qualquer desenvolvedor de software moderno. Começando pelos problemas históricos e pela criação do Git, passaremos pelo uso local de repositórios, manipulação de branches e gerenciamento de conflitos, até o trabalho remoto e colaborativo no Github.<br/><br/>A oficina será realizada com encontros às <strong>terças e quintas-feiras</strong> de manhã, das <strong>11h às 13h</strong>.",
+      },
+      {
+        titulo: "O que você vai aprender:",
+        texto:
+          "<strong>Fundamentos do Git:</strong> Entenda o que é controle de versão, por que ele foi criado e como gerenciar seu primeiro repositório local.<br/><strong>Áreas e Commits:</strong> Aprenda a manipular arquivos nas diferentes áreas (working directory, staging e repository), gerar commits, entender hashes e gerenciar a referência HEAD.<br/><strong>Branches e Histórico:</strong> Como criar e alternar entre branches, fundir (merge) trabalhos e resolver conflitos de código com segurança.<br/><strong>Trabalho Remoto e Github:</strong> Conecte seu repositório local a servidores remotos, configure autenticação, envie suas alterações e contribua com projetos alheios através de forks e pull requests.<br/><strong>Tópicos Avançados:</strong> Revisão de código, como desfazer mudanças, recuperar arquivos perdidos, reescrever o histórico e entender o funcionamento interno (objetos, packfiles e hooks).",
+      },
+    ],
+    monitores: [
+      getMonitor("kauan-vinicius", true),
+      getMonitor("jess-forster", false),
+      getMonitor("pedro-calderon", false),
+    ].filter(Boolean),
+  }
 ];

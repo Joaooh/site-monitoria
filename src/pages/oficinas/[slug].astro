@@ -92,6 +92,14 @@ const { oficina } = Astro.props;
                 // Se o link começar com HTTP, joga pra uma nova aba.
                 const isExternal = btn.link.startsWith("http");
 
+                if (btn.link === "#" || !btn.link) {
+                  return (
+                    <button class="btn btn-secondary" style="opacity: 0.6; cursor: not-allowed;" disabled>
+                      Em breve
+                    </button>
+                  );
+                }
+
                 return (
                   <a
                     href={btn.link}
