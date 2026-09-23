@@ -24,15 +24,16 @@ export const dadosCalendario = {
     {
       id: "ciclo-1",
       nome: "Setembro",
-      dataInicio: "2027-01-01",
-      dataFim: "2027-01-01",
+      dataInicio: "2026-09-28",
+      dataFim: "2026-10-09",
       corBase: "#c8e6c9",
       corBorda: "#388e3c",
       // prettier-ignore
       oficinas: [
-        { nome: "A confirmar", dias: "", hora: "", formato: "" },
-        { nome: "A confirmar", dias: "", hora: "", formato: "" },
-        { nome: "A confirmar", dias: "", hora: "", formato: "" },
+        { nome: "Oficina de Git", dias: "Ter e Qui", hora: "11h às 13h", formato: "Presencial" },
+        { nome: "Oficina de Inteligência Artificial", dias: "Ter e Qui", hora: "17h às 19h", formato: "Presencial" },
+        { nome: "Oficina de Java", dias: "Seg, Qua e Sex", hora: "11h às 13h e 17h às 19h", formato: "Presencial" },
+        { nome: "Oficina de Web", dias: "Seg, Qua e Sex", hora: "11h às 13h e 17h às 19h", formato: "Presencial" },
       ],
     },
     {
