@@ -133,7 +133,7 @@ export const oficinasDetalhes = [
     botoes: [
       {
         texto: "Inscreva-se agora!",
-        link: "#",
+        link: "https://forms.gle/d44FBBiHprFUsy4h9",
         tipo: "primary",
       },
     ],
@@ -184,7 +184,7 @@ export const oficinasDetalhes = [
     botoes: [
       {
         texto: "Inscreva-se agora!",
-        link: "#",
+        link: "https://forms.gle/LRxSQgVtfJXCgHFj9",
         tipo: "primary",
       },
     ],
@@ -201,7 +201,8 @@ export const oficinasDetalhes = [
       },
       {
         titulo: "Projeto final:",
-        texto: "Ao longo da oficina, os participantes desenvolverão uma <strong>página web completa utilizando HTML e CSS</strong>, aplicando os principais conceitos apresentados nas aulas."
+        texto:
+          "Ao longo da oficina, os participantes desenvolverão uma <strong>página web completa utilizando HTML e CSS</strong>, aplicando os principais conceitos apresentados nas aulas.",
       },
       {
         titulo: "Para quem é esta oficina:",
@@ -624,7 +625,7 @@ export const oficinasDetalhes = [
       getMonitor("sciel-buitrago"),
     ].filter(Boolean),
   },
-  
+
   // --- OFICINA DE INTELIGÊNCIA ARTIFICIAL ---
   {
     slug: "oficina-de-ia",
@@ -636,7 +637,7 @@ export const oficinasDetalhes = [
     botoes: [
       {
         texto: "Inscreva-se agora!",
-        link: "#",
+        link: "https://forms.gle/wQpBpbkL3e74zEuYA",
         tipo: "primary",
       },
     ],
@@ -681,7 +682,7 @@ export const oficinasDetalhes = [
     botoes: [
       {
         texto: "Inscreva-se agora!",
-        link: "#",
+        link: "https://forms.gle/HwZinx3jXmNdN3Kb9",
         tipo: "primary",
       },
     ],
@@ -702,5 +703,5 @@ export const oficinasDetalhes = [
       getMonitor("jess-forster", false),
       getMonitor("pedro-calderon", false),
     ].filter(Boolean),
-  }
+  },
 ];
