@@ -10,7 +10,7 @@ export const dadosCalendario = {
   ciclos: [
     {
       id: "ciclo-0",
-      nome: "Agosto",
+      nome: "Ciclo 0",
       dataInicio: "2026-08-17",
       dataFim: "2026-08-28",
       corBase: "#b3e5fc",
@@ -23,7 +23,7 @@ export const dadosCalendario = {
     },
     {
       id: "ciclo-1",
-      nome: "Setembro",
+      nome: "Ciclo 1",
       dataInicio: "2026-09-28",
       dataFim: "2026-10-09",
       corBase: "#c8e6c9",
@@ -38,7 +38,7 @@ export const dadosCalendario = {
     },
     {
       id: "ciclo-2",
-      nome: "Outubro",
+      nome: "Ciclo 2",
       dataInicio: "2027-01-01",
       dataFim: "2027-01-01",
       corBase: "#ffe0b2",
@@ -52,7 +52,7 @@ export const dadosCalendario = {
     },
     {
       id: "ciclo-3",
-      nome: "Novembro",
+      nome: "Ciclo 3",
       dataInicio: "2027-01-01",
       dataFim: "2027-01-01",
       corBase: "#e1bee7",
