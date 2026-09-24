@@ -164,12 +164,10 @@ export const oficinasDetalhes = [
       getMonitor("kauan-vinicius", true, "Turma Manhã"),
       getMonitor("jess-forster", false, "Turma Manhã"),
       getMonitor("daniel-godoi", false, "Turma Manhã"),
-      getMonitor("isabella-oliveira", false, "Turma Manhã"),
       getMonitor("matheus-morais", false, "Turma Noite"),
-      getMonitor("gabriel-garcia", false, "Turma Noite"),
+      getMonitor("gabriel-cotts", false, "Turma Noite"),
       getMonitor("polverari", false, "Turma Noite"),
       getMonitor("pedro-quartin", false, "Turma Noite"),
-      getMonitor("jess-forster", false, "Turma Noite"),
     ].filter(Boolean),
   },
 
@@ -192,17 +190,22 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts modernos, organização de conteúdo, estilização de elementos e desenvolvimento de páginas responsivas.<br/><br/>A oficina será realizada entre os dias <strong>28/09 e 09/10</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>17h às 19h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência das aulas e no desempenho das atividades práticas propostas durante o período.",
+          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>. O programa é oferecido em duas turmas, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada entre os dias <strong>28/09 e 09/10</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, nos horários da Manhã e Noite.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
       },
       {
-        titulo: "O que você vai aprender:",
+        titulo: "Conteúdo da Turma Manhã (11h às 13h):",
         texto:
-          "<strong>Introdução ao desenvolvimento web:</strong> Entenda como funcionam sites, páginas web, navegadores e a relação entre HTML, CSS e outras tecnologias utilizadas na internet.<br/><strong>Fundamentos do HTML:</strong> Aprenda a criar a estrutura de uma página utilizando títulos, parágrafos, listas, links, imagens e outros elementos fundamentais.<br/><strong>HTML semântico:</strong> Entenda como organizar corretamente o conteúdo utilizando elementos como header, main, section, article, nav e footer.<br/><strong>Introdução ao CSS:</strong> Aprenda como estilizar páginas utilizando cores, fontes, tamanhos, espaçamentos, bordas e outras propriedades visuais.<br/><strong>Classes, IDs e seletores:</strong> Entenda como selecionar e modificar diferentes elementos da página utilizando CSS.<br/><strong>Box Model:</strong> Compreenda como funcionam width, height, margin, padding e border, conceitos fundamentais para controlar o tamanho e o espaçamento dos elementos.<br/><strong>Flexbox:</strong> Aprenda a organizar elementos horizontal e verticalmente e desenvolver layouts de maneira mais simples e eficiente.<br/><strong>Layouts e responsividade:</strong> Aprenda os conceitos básicos para criar páginas que se adaptem a diferentes tamanhos de tela, como computadores, tablets e celulares.<br/><strong>Pseudo-classes e pseudo-elementos:</strong> Utilize recursos como :hover, :focus, ::before e ::after para criar páginas mais interativas e estilizadas.<br/><strong>Prática orientada:</strong> Desenvolvimento de páginas e pequenos projetos para aplicar os conceitos aprendidos durante a oficina.",
+          "<strong>Fundamentos da Web:</strong> Como a Internet funciona, tipos de redes, protocolos e configuração do ambiente no VS Code.<br/><strong>Introdução ao HTML:</strong> Estrutura da página (header, body e footer), formulários, listas, formatação de textos, classes e IDs.<br/><strong>Estilização com CSS:</strong> Implementação do CSS, cores, backgrounds, controle de dimensões, Borders, Margins, Padding, Float e Overflow.<br/><strong>Layout e Interatividade:</strong> Posições, pseudo-classes, pseudo-elementos e o conceito e aplicação de Flexbox (justify-content, align-items, etc).<br/><strong>Publicação de Projetos:</strong> Criação de conta no Github, configuração de repositórios e publicação da aplicação usando o Github Pages.",
       },
       {
-        titulo: "Projeto final:",
+        titulo: "Conteúdo da Turma Noite (17h às 19h):",
         texto:
-          "Ao longo da oficina, os participantes desenvolverão uma <strong>página web completa utilizando HTML e CSS</strong>, aplicando os principais conceitos apresentados nas aulas.",
+          "<strong>Introdução ao desenvolvimento web:</strong> Entenda a relação entre HTML, CSS e outras tecnologias na internet.<br/><strong>HTML Semântico:</strong> Aprenda a estruturar o conteúdo de forma correta e acessível utilizando elementos fundamentais.<br/><strong>Classes e Seletores:</strong> Como selecionar e modificar diferentes elementos da página utilizando CSS de maneira inteligente.<br/><strong>Box Model e Flexbox:</strong> Compreenda como funcionam as dimensões, espaçamentos e a organizar elementos para criar layouts de maneira simples e eficiente.<br/><strong>Responsividade:</strong> Aprenda os conceitos básicos para criar páginas que se adaptem a diferentes tamanhos de tela (computadores, tablets e celulares).",
+      },
+      {
+        titulo: "Projeto Final e Metodologia:",
+        texto:
+          "Ambas as turmas adotam aprendizagem baseada em projetos. Ao longo dos encontros, vocês desenvolverão e evoluirão uma <strong>página web completa</strong>, aplicando diretamente os conceitos apresentados em aulas expositivas e resolução de problemas práticos.",
       },
       {
         titulo: "Para quem é esta oficina:",
@@ -210,9 +213,7 @@ export const oficinasDetalhes = [
           "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
           "<li>Estudantes que desejam começar no desenvolvimento Front-end;</li>" +
           "<li>Iniciantes que nunca tiveram contato com HTML e CSS;</li>" +
-          "<li>Alunos que desejam melhorar seus conhecimentos em desenvolvimento web;</li>" +
-          "<li>Pessoas interessadas em aprender a criar e estilizar páginas para a internet;</li>" +
-          "<li>Estudantes que desejam construir uma base no Desenvolvimento web</li>" +
+          "<li>Pessoas interessadas em aprender a publicar páginas na internet;</li>" +
           "</ul>" +
           "<strong>Não é necessário conhecimento prévio em programação.</strong><br/><br/>" +
           "Preencha o formulário de inscrição para participar da oficina e garantir sua vaga. <strong>Vagas limitadas.</strong>",
@@ -223,6 +224,7 @@ export const oficinasDetalhes = [
       getMonitor("emily-mendes", false, "Turma Manhã"),
       getMonitor("felipe-rios", false, "Turma Manhã"),
       getMonitor("thalis-alexandre", true, "Turma Noite"),
+      getMonitor("pedro-quartin", false, "Turma Noite"),
     ].filter(Boolean),
   },
 
@@ -701,7 +703,8 @@ export const oficinasDetalhes = [
     monitores: [
       getMonitor("kauan-vinicius", true),
       getMonitor("jess-forster", false),
-      getMonitor("pedro-calderon", false),
+      getMonitor("felipe-rios", false),
+      getMonitor("eduardo-alves", false),
     ].filter(Boolean),
   },
 ];
