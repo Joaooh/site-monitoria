@@ -41,7 +41,10 @@ export const oficinasAtivasData = [
     titulo: "Oficina de Git",
     descricao:
       "Domine o versionamento de código, desde os comandos básicos de terminal até a colaboração remota.",
-    turmas: ["Terça e Quinta: 11h às 13h"],
+    turmas: [
+      "Terça e Quinta: 11h às 13h",
+      "Terça e Quinta: 17h às 19h"
+    ],
     formato: "Presencial",
     imagem: imgFundamentos,
     alt: "Mago analisando código",

@@ -30,7 +30,7 @@ export const dadosCalendario = {
       corBorda: "#388e3c",
       // prettier-ignore
       oficinas: [
-        { nome: "Oficina de Git", dias: "Ter e Qui", hora: "11h às 13h", formato: "Presencial" },
+        { nome: "Oficina de Git", dias: "Ter e Qui", hora: "11h às 13h e 17h às 19h", formato: "Presencial" },
         { nome: "Oficina de Inteligência Artificial", dias: "Ter e Qui", hora: "17h às 19h", formato: "Presencial" },
         { nome: "Oficina de Java", dias: "Seg, Qua e Sex", hora: "11h às 13h e 17h às 19h", formato: "Presencial" },
         { nome: "Oficina de Web", dias: "Seg, Qua e Sex", hora: "11h às 13h e 17h às 19h", formato: "Presencial" },

@@ -678,7 +678,7 @@ export const oficinasDetalhes = [
     slug: "oficina-de-git",
     titulo: "Oficina de Git",
     campus: "Campus Asa Norte",
-    horarios: "Terça e Quinta, das 11h às 13h",
+    horarios: "Terça e Quinta, das 11h às 13h ou 17h às 19h",
     imagem: imgFundamentos,
     alt: "Mago analisando código e repositórios",
     botoes: [
@@ -692,7 +692,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina aborda tudo o que você precisa saber sobre <strong>controle de versão com Git</strong>, uma ferramenta essencial para qualquer desenvolvedor de software moderno. Começando pelos problemas históricos e pela criação do Git, passaremos pelo uso local de repositórios, manipulação de branches e gerenciamento de conflitos, até o trabalho remoto e colaborativo no Github.<br/><br/>A oficina será realizada com encontros às <strong>terças e quintas-feiras</strong> de manhã, das <strong>11h às 13h</strong>.",
+          "Esta oficina aborda tudo o que você precisa saber sobre <strong>controle de versão com Git</strong>, uma ferramenta essencial para qualquer desenvolvedor de software moderno. Começando pelos problemas históricos e pela criação do Git, passaremos pelo uso local de repositórios, manipulação de branches e gerenciamento de conflitos, até o trabalho remoto e colaborativo no Github.<br/><br/>A oficina será realizada com encontros às <strong>terças e quintas-feiras</strong> nos turnos da manhã (<strong>11h às 13h</strong>) e noite (<strong>17h às 19h</strong>).",
       },
       {
         titulo: "O que você vai aprender:",
