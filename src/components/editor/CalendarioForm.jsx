@@ -19,6 +19,17 @@ function buildDiasString(arr) {
   return sorted.join(", ") + " e " + last;
 }
 
+function parseHoraString(str) {
+  if (!str) return [];
+  return str.split(/ e /).map(s => s.trim()).filter(Boolean);
+}
+
+function buildHoraString(arr) {
+  if (!arr || arr.length === 0) return "";
+  const sorted = HORARIOS.filter(h => arr.includes(h));
+  return sorted.join(" e ");
+}
+
 export default function CalendarioForm({ data, onChange, setFocusedIndex, focusedIndex }) {
   // data = { mesesParaGerar, dadosCalendario }
   const ciclos = data.dadosCalendario.ciclos;
@@ -63,6 +74,20 @@ export default function CalendarioForm({ data, onChange, setFocusedIndex, focuse
     }
     
     handleOficinaChange(cicloIndex, oficinaIndex, "dias", buildDiasString(novosDias));
+  };
+
+  const handleHorasChange = (cicloIndex, oficinaIndex, hora, isChecked) => {
+    const oficina = ciclos[cicloIndex].oficinas[oficinaIndex];
+    const horasAtuais = parseHoraString(oficina.hora);
+    
+    let novasHoras;
+    if (isChecked) {
+      novasHoras = [...horasAtuais, hora];
+    } else {
+      novasHoras = horasAtuais.filter(h => h !== hora);
+    }
+    
+    handleOficinaChange(cicloIndex, oficinaIndex, "hora", buildHoraString(novasHoras));
   };
 
   const handleAddOficina = (cicloIndex) => {
@@ -190,17 +215,26 @@ export default function CalendarioForm({ data, onChange, setFocusedIndex, focuse
                       </div>
                     </fieldset>
 
-                    <div className="form-group" style={{ flex: 1 }}>
-                      <label htmlFor={`oficina-hora-${cIndex}-${oIndex}`}>Horário</label>
-                      <select 
-                        id={`oficina-hora-${cIndex}-${oIndex}`}
-                        value={oficina.hora || ""} 
-                        onChange={e => handleOficinaChange(cIndex, oIndex, 'hora', e.target.value)}
-                      >
-                        <option value="" disabled>Selecione</option>
-                        {HORARIOS.map(h => <option key={h} value={h}>{h}</option>)}
-                      </select>
-                    </div>
+                    <fieldset className="form-group" style={{ flex: 1, border: 'none', padding: 0, margin: 0 }}>
+                      <legend style={{ marginBottom: '0.5rem', color: '#a3a3a3', fontSize: '0.9rem' }}>Horários</legend>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '0.5rem' }}>
+                        {HORARIOS.map(h => {
+                           const horasAtivas = parseHoraString(oficina.hora);
+                           return (
+                             <label key={h} htmlFor={`oficina-hora-${cIndex}-${oIndex}-${h}`} style={{ display: 'flex', alignItems: 'center', gap: '5px', color: 'white', cursor: 'pointer', fontSize: '0.85rem' }}>
+                               <input 
+                                 id={`oficina-hora-${cIndex}-${oIndex}-${h}`}
+                                 type="checkbox" 
+                                 checked={horasAtivas.includes(h)} 
+                                 onChange={e => handleHorasChange(cIndex, oIndex, h, e.target.checked)} 
+                                 style={{ width: 'auto' }}
+                               />
+                               {h}
+                             </label>
+                           );
+                        })}
+                      </div>
+                    </fieldset>
 
                     <div className="form-group" style={{ flex: 1 }}>
                       <label htmlFor={`oficina-formato-${cIndex}-${oIndex}`}>Modalidade</label>
