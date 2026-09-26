@@ -21,14 +21,24 @@ const guessImportName = (filename) => {
   return "img" + name.charAt(0).toUpperCase() + name.slice(1);
 };
 
+const OPCOES_TURMAS = [
+  "Segunda, Quarta e Sexta: 11h às 13h",
+  "Segunda, Quarta e Sexta: 17h às 19h",
+  "Segunda, Quarta e Sexta: 17h30 às 19h",
+  "Terça e Quarta: 11h às 13h",
+  "Terça e Quinta: 11h às 13h",
+  "Terça e Quinta: 17h às 19h",
+  "Segunda, Terça e Quinta: 17h às 19h",
+  "Segunda a Sexta: 11h às 13h"
+];
+
 export default function OficinasAtivasForm({ data, onChange, setFocusedIndex, focusedIndex }) {
   const [toast, setToast] = useState(null);
 
   const handleItemChange = (index, field, value) => {
     const newData = [...data];
     if (field === 'turmas') {
-      // Split por linhas e remove vazias
-      newData[index][field] = value.split('\n').filter(t => t.trim() !== '');
+      newData[index][field] = Array.isArray(value) ? value : value.split('\n').filter(t => t.trim() !== '');
     } else {
       newData[index][field] = value;
     }
@@ -162,13 +172,30 @@ export default function OficinasAtivasForm({ data, onChange, setFocusedIndex, fo
             </div>
 
             <div className="form-group">
-              <label htmlFor={`oa-turmas-${index}`}>Turmas (Uma por linha)</label>
+              <label htmlFor={`oa-turmas-${index}`}>Turmas (Selecione os horários ou digite personalizados separados por linha)</label>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '0.8rem' }}>
+                {OPCOES_TURMAS.map(turma => (
+                  <label key={turma} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#e5e7eb', cursor: 'pointer', fontSize: '0.85rem', background: 'rgba(0,0,0,0.2)', padding: '6px 10px', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <input 
+                      type="checkbox" 
+                      checked={(item.turmas || []).includes(turma)} 
+                      onChange={e => {
+                         const current = item.turmas || [];
+                         const next = e.target.checked ? [...current, turma] : current.filter(t => t !== turma);
+                         handleItemChange(index, 'turmas', next);
+                      }} 
+                      style={{ width: 'auto', margin: 0 }}
+                    />
+                    {turma}
+                  </label>
+                ))}
+              </div>
               <textarea 
                 id={`oa-turmas-${index}`} 
-                rows={3} 
+                rows={2} 
                 value={(item.turmas || []).join('\n')} 
                 onChange={e => handleItemChange(index, 'turmas', e.target.value)} 
-                placeholder="Ex: Segunda e Quinta: 17h às 19h\nTerça: 10h às 12h"
+                placeholder="Ex: Segunda e Quinta: 17h às 19h"
               />
             </div>
 
