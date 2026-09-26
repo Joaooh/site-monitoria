@@ -10,6 +10,9 @@ import { statsData as initialStats } from "../../data/stats.js";
 import { equipeData as initialEquipe } from "../../data/equipe.js";
 import { mesesParaGerar as initialMeses, dadosCalendario as initialDados } from "../../data/calendario.js";
 import { oficinasAtivasData as initialOficinasAtivas } from "../../data/oficinas-ativas.js";
+import { oficinasAtivasTaguatingaData as initialAtivasTaguatinga } from "../../data/oficinas-ativas-taguatinga.js";
+import { oficinasPassadasData as initialPassadas } from "../../data/oficinas-passadas.js";
+import { oficinasPassadasTaguatingaData as initialPassadasTaguatinga } from "../../data/oficinas-passadas-taguatinga.js";
 import "./editor.css";
 
 export default function EditorApp() {
@@ -19,6 +22,9 @@ export default function EditorApp() {
   const [statsData, setStatsData] = useState(initialStats);
   const [equipeData, setEquipeData] = useState(initialEquipe);
   const [oficinasAtivasData, setOficinasAtivasData] = useState(initialOficinasAtivas);
+  const [ativasTaguatingaData, setAtivasTaguatingaData] = useState(initialAtivasTaguatinga);
+  const [passadasData, setPassadasData] = useState(initialPassadas);
+  const [passadasTaguatingaData, setPassadasTaguatingaData] = useState(initialPassadasTaguatinga);
   const [calendarioData, setCalendarioData] = useState({
     mesesParaGerar: initialMeses,
     dadosCalendario: initialDados
@@ -67,8 +73,19 @@ export default function EditorApp() {
     }
   };
   
-  const currentData = selected === "faq" ? faqData : selected === "stats" ? statsData : selected === "equipe" ? equipeData : selected === "oficinas-ativas" ? oficinasAtivasData : calendarioData;
-  const setCurrentData = selected === "faq" ? setFaqData : selected === "stats" ? setStatsData : selected === "equipe" ? setEquipeData : selected === "oficinas-ativas" ? setOficinasAtivasData : setCalendarioData;
+  const dataMap = {
+    "faq": { data: faqData, setter: setFaqData },
+    "stats": { data: statsData, setter: setStatsData },
+    "equipe": { data: equipeData, setter: setEquipeData },
+    "oficinas-ativas": { data: oficinasAtivasData, setter: setOficinasAtivasData },
+    "oficinas-ativas-taguatinga": { data: ativasTaguatingaData, setter: setAtivasTaguatingaData },
+    "oficinas-passadas": { data: passadasData, setter: setPassadasData },
+    "oficinas-passadas-taguatinga": { data: passadasTaguatingaData, setter: setPassadasTaguatingaData },
+    "calendario": { data: calendarioData, setter: setCalendarioData },
+  };
+
+  const currentData = dataMap[selected]?.data || faqData;
+  const setCurrentData = dataMap[selected]?.setter || setFaqData;
   
   const formatCode = (obj, padSpaces = 0) => {
     let str = JSON.stringify(obj, null, 2);
@@ -163,7 +180,7 @@ export default function EditorApp() {
     return fileStr + finalArrayStr;
   };
 
-  const generateOficinasAtivasCode = () => {
+  const generateOficinasCode = (dataArray, exportName, customComment) => {
     let imports = new Set();
     let mappings = {};
 
@@ -180,7 +197,7 @@ export default function EditorApp() {
       return "";
     };
 
-    const cleanData = oficinasAtivasData.map(item => {
+    const cleanData = dataArray.map(item => {
       let filename = extractFilename(item.imagem);
       let varName = item.importName;
       
@@ -213,21 +230,15 @@ export default function EditorApp() {
       fileStr += `import ${mappings[filename]} from "@assets/mago/oficinas/${filename}";\n`;
     });
     
-    fileStr += `\n/*
- * COMO CADASTRAR UMA OFICINA:
- * Preencha o bloco no array abaixo. 'linkInscricao' é o caminho da URL que abrirá
- * a página detalhada da oficina (ex: "/oficinas/oficina-de-web").
- * Importe a imagem correspondente lá no topo de assets/mago/oficinas.
- */\n`;
+    fileStr += customComment ? `\n${customComment}\n` : "\n";
 
-    let finalArrayStr = "export const oficinasAtivasData = ";
+    let finalArrayStr = `export const ${exportName} = `;
     let strBody = formatCode(cleanData);
     
     // Colapsar turmas para uma única linha (padrão do Prettier para arrays simples)
     strBody = strBody.replace(/turmas:\s*\[\s*([\s\S]*?)\s*\]/g, (match, inner) => {
       let items = inner.split('\n').map(s => s.trim()).filter(Boolean);
       if (items.length > 0) {
-        // Remover trailing comma do último item para array de linha única
         items[items.length - 1] = items[items.length - 1].replace(/,$/, '');
       }
       return `turmas: [${items.join(' ')}]`;
@@ -235,7 +246,6 @@ export default function EditorApp() {
 
     // Quebrar descrições longas para a linha de baixo (padrão do printWidth do Prettier)
     strBody = strBody.replace(/descricao:\s*(".*?")(,|\n)/g, (match, strValue, ending) => {
-      // Se a string for maior que ~60 caracteres, o Prettier costuma jogá-la para a próxima linha
       if (strValue.length > 50) {
         return `descricao:\n      ${strValue}${ending}`;
       }
@@ -243,7 +253,6 @@ export default function EditorApp() {
     });
 
     finalArrayStr += strBody + ";\n";
-
     finalArrayStr = finalArrayStr.replace(/"__VAR_([a-zA-Z0-9_]+)__"/g, '$1');
     
     return fileStr + finalArrayStr;
@@ -283,44 +292,41 @@ export default function EditorApp() {
     return code;
   };
 
-  const handleCopyCode = () => {
-    let code = "";
-    if (selected === "faq") {
-      code = `export const faqs = ${formatCode(faqData)};\n`;
-    } else if (selected === "stats") {
-      code = `export const statsData = ${formatCode(statsData)};\n`;
-    } else if (selected === "oficinas-ativas") {
-      code = generateOficinasAtivasCode();
-    } else if (selected === "equipe") {
-      code = generateEquipeCode();
-    } else if (selected === "calendario") {
-      code = generateCalendarioCode();
+  const getCodeAndFilename = () => {
+    switch (selected) {
+      case "faq": return { code: `export const faqs = ${formatCode(faqData)};\n`, filename: "faq.js" };
+      case "stats": return { code: `export const statsData = ${formatCode(statsData)};\n`, filename: "stats.js" };
+      case "equipe": return { code: generateEquipeCode(), filename: "equipe.js" };
+      case "calendario": return { code: generateCalendarioCode(), filename: "calendario.js" };
+      case "oficinas-ativas": return { 
+        code: generateOficinasCode(oficinasAtivasData, "oficinasAtivasData", "/*\n * COMO CADASTRAR UMA OFICINA:\n * Preencha o bloco no array abaixo. 'linkInscricao' é o caminho da URL que abrirá\n * a página detalhada da oficina (ex: \"/oficinas/oficina-de-web\").\n * Importe a imagem correspondente lá no topo de assets/mago/oficinas.\n */"), 
+        filename: "oficinas-ativas.js" 
+      };
+      case "oficinas-ativas-taguatinga": return { 
+        code: generateOficinasCode(ativasTaguatingaData, "oficinasAtivasTaguatingaData", "/*\n * OFICINAS ATIVAS - TAGUATINGA\n */"), 
+        filename: "oficinas-ativas-taguatinga.js" 
+      };
+      case "oficinas-passadas": return { 
+        code: generateOficinasCode(passadasData, "oficinasPassadasData", "/*\n * COMO CADASTRAR UMA OFICINA PASSADA:\n * Quando uma oficina ativa termina seu ciclo, ela deve vir pra cá.\n * Preferencialmente, adicione as oficinas passadas em ordem decrescente de data.\n * Basta preencher o array abaixo com os dados básicos, sendo que 'linkInscricao' na verdade será\n * o finalzinho do link que redireciona pra página de detalhes (ex: \"/oficinas/oficina-sql\").\n */"), 
+        filename: "oficinas-passadas.js" 
+      };
+      case "oficinas-passadas-taguatinga": return { 
+        code: generateOficinasCode(passadasTaguatingaData, "oficinasPassadasTaguatingaData", "/*\n * OFICINAS PASSADAS - TAGUATINGA\n */"), 
+        filename: "oficinas-passadas-taguatinga.js" 
+      };
+      default: return { code: "", filename: "" };
     }
-    
+  };
+
+  const handleCopyCode = () => {
+    const { code } = getCodeAndFilename();
     navigator.clipboard.writeText(code)
       .then(() => alert("Código copiado com sucesso!"))
       .catch(() => alert("Erro ao copiar código."));
   };
 
   const handleDownload = () => {
-    let code = "";
-    let filename = "";
-    if (selected === "faq") {
-      code = `export const faqs = ${formatCode(faqData)};\n`;
-      filename = "faq.js";
-    } else if (selected === "stats") {
-      code = `export const statsData = ${formatCode(statsData)};\n`;
-      filename = "stats.js";
-    } else if (selected === "oficinas-ativas") {
-      code = generateOficinasAtivasCode();
-      filename = "oficinas-ativas.js";
-    } else if (selected === "equipe") {
-      code = generateEquipeCode();
-      filename = "equipe.js";
-    } else if (selected === "calendario") {
-      code = generateCalendarioCode();
-      filename = "calendario.js";
-    }
+    const { code, filename } = getCodeAndFilename();
     const blob = new Blob([code], { type: "text/javascript" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -339,7 +345,10 @@ export default function EditorApp() {
           <select id="file-selector" value={selected} onChange={e => { setSelected(e.target.value); setFocusedIndex(null); }}>
             <option value="faq">FAQ (faq.js)</option>
             <option value="stats">Estatísticas (stats.js)</option>
-            <option value="oficinas-ativas">Oficinas Ativas (oficinas-ativas.js)</option>
+            <option value="oficinas-ativas">Oficinas Ativas (Asa Norte)</option>
+            <option value="oficinas-ativas-taguatinga">Oficinas Ativas (Taguatinga)</option>
+            <option value="oficinas-passadas">Oficinas Passadas (Asa Norte)</option>
+            <option value="oficinas-passadas-taguatinga">Oficinas Passadas (Taguatinga)</option>
             <option value="equipe">Equipe (equipe.js)</option>
             <option value="calendario">Calendário (calendario.js)</option>
           </select>
@@ -349,6 +358,9 @@ export default function EditorApp() {
           {selected === "faq" && <FaqForm data={faqData} onChange={setFaqData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
           {selected === "stats" && <StatsForm data={statsData} onChange={setStatsData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
           {selected === "oficinas-ativas" && <OficinasAtivasForm data={oficinasAtivasData} onChange={setOficinasAtivasData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
+          {selected === "oficinas-ativas-taguatinga" && <OficinasAtivasForm data={ativasTaguatingaData} onChange={setAtivasTaguatingaData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
+          {selected === "oficinas-passadas" && <OficinasAtivasForm data={passadasData} onChange={setPassadasData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
+          {selected === "oficinas-passadas-taguatinga" && <OficinasAtivasForm data={passadasTaguatingaData} onChange={setPassadasTaguatingaData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
           {selected === "equipe" && <EquipeForm data={equipeData} onChange={setEquipeData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
           {selected === "calendario" && <CalendarioForm data={calendarioData} onChange={setCalendarioData} setFocusedIndex={setFocusedIndex} focusedIndex={focusedIndex} />}
         </div>

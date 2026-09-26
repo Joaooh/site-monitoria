@@ -284,7 +284,7 @@
 .toast-container {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 80px;
   background: #333;
   color: white;
   padding: 10px 20px;
@@ -349,7 +349,7 @@
   transform: translateY(-5px);
   background: var(--purple-neon, #d2a8ff);
   color: #000;
-  box-shadow: 0 8px 25px rgba(210, 168, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(210, 168, 255, 0.2);
 }
 
 .fab-scroll:active {
@@ -432,6 +432,6 @@
 
   .fab-scroll {
     bottom: 80px;
-    right: 20px;
+    right: 80px;
   }
 }

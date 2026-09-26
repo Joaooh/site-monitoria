@@ -555,7 +555,7 @@ export default function PreviewPanel({ type, data, focusedIndex = 0 }) {
         {type === 'stats' && <MockStats data={data} />}
         {type === 'equipe' && <MockEquipe data={data} focusedIndex={focusedIndex} />}
         {type === 'calendario' && <MockCalendario data={data} focusedIndex={focusedIndex} />}
-        {type === "oficinas-ativas" && <MockOficinasAtivas data={data} focusedIndex={focusedIndex} />}
+        {(type === "oficinas-ativas" || type === "oficinas-ativas-taguatinga" || type === "oficinas-passadas" || type === "oficinas-passadas-taguatinga") && <MockOficinasAtivas data={data} focusedIndex={focusedIndex} />}
       </div>
     </div>
   );
