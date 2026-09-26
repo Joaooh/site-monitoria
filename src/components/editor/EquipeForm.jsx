@@ -18,6 +18,7 @@ function extractFilename(foto) {
 
 export default function EquipeForm({ data, onChange, setFocusedIndex, focusedIndex }) {
   const [toast, setToast] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleItemChange = (index, field, value) => {
     const newData = [...data];
@@ -88,9 +89,22 @@ export default function EquipeForm({ data, onChange, setFocusedIndex, focusedInd
 
   return (
     <div className="form-wrapper">
-      <button onClick={handleAdd} className="btn-add" style={{ marginBottom: '1rem' }}>+ Adicionar Integrante</button>
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', alignItems: 'center' }}>
+        <button onClick={handleAdd} className="btn-add" style={{ margin: 0, flexShrink: 0 }}>+ Adicionar Integrante</button>
+        <input 
+          type="text" 
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Buscar membro por nome..."
+          style={{ flexGrow: 1, padding: '0.8rem', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)', background: 'rgba(255, 255, 255, 0.05)', color: 'white' }}
+        />
+      </div>
 
       {data.map((item, index) => {
+        if (searchTerm && (!item.nome || !item.nome.toLowerCase().includes(searchTerm.toLowerCase()))) {
+          return null;
+        }
+        
         const fotoString = typeof item.foto === 'string' ? item.foto : extractFilename(item.foto);
         
         return (

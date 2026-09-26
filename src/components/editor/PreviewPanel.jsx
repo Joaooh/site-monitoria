@@ -352,25 +352,25 @@ function MockFaq({ data }) {
   );
 }
 
+const iconMap = {
+  oficinas: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M6 10l4-3 3 2 5-4"/></svg>',
+  alunos: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  colaboradores: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17a4 4 0 0 1-8 0c0-2.21 1.79-3 4-3s4 .79 4 3z"/><path d="M21 17a4 4 0 0 1-8 0c0-2.21 1.79-3 4-3s4 .79 4 3z"/><path d="M12 7V3"/><path d="M8 11l-2-2"/><path d="M16 11l2-2"/><path d="M7 7l3 3"/><path d="M17 7l-3 3"/></svg>',
+  anos: '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="7" y="14" width="3" height="3" rx="0.5"/><rect x="14" y="14" width="3" height="3" rx="0.5"/></svg>',
+};
+
 function MockStats({ data }) {
   return (
-    <section className="stats-section" style={{ backgroundColor: 'var(--bg-dark, #0d0d12)', padding: '100px 2rem 50px 2rem' }}>
+    <section className="stats-section" style={{ backgroundColor: 'var(--bg-dark, #0d0d12)', padding: '0 2rem 50px 2rem' }}>
       <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div className="mock-stats-header-grid">
-          <div className="text-content">
-            <span className="tag" style={{ display: 'inline-block', padding: '6px 14px', background: 'rgba(210, 168, 255, 0.1)', color: 'var(--purple-neon, #d2a8ff)', borderRadius: '999px', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '1.5rem', border: '1px solid rgba(210, 168, 255, 0.2)' }}>Nosso Impacto</span>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', lineHeight: 1.3, fontWeight: 400, margin: 0, color: 'var(--text-secondary, #e5e7eb)' }}>
-              Mais do que código, construímos uma <strong style={{ color: 'var(--purple-neon, #d2a8ff)', fontWeight: 600 }}>comunidade</strong>.
-            </h2>
-          </div>
-        </div>
-        <div className="mock-stats-grid">
+        <div className="mock-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', paddingTop: '1rem' }}>
           {data.map((stat, index) => (
-            <div key={index} className="mock-stat-item">
-              <div className="number" style={{ fontSize: 'clamp(3rem, 5vw, 4rem)', fontWeight: 700, marginBottom: '0.5rem', letterSpacing: '-2px', lineHeight: 1, color: 'var(--text-main, #fff)', display: 'flex', alignItems: 'baseline' }}>
+            <div key={index} className="mock-stat-item" style={{ background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(210, 168, 255, 0.08)', borderRadius: '16px', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <div className="icon-container" style={{ width: '52px', height: '52px', background: 'rgba(210, 168, 255, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', color: 'var(--purple-neon, #d2a8ff)', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: iconMap[stat.id] || "" }} />
+              <div className="number" style={{ fontSize: 'clamp(2.8rem, 4.5vw, 3.8rem)', fontWeight: 700, marginBottom: '0.5rem', letterSpacing: '-2px', lineHeight: 1, color: 'var(--text-main, #fff)', display: 'flex', alignItems: 'baseline' }}>
                 {stat.numero}{stat.sufixo}
               </div>
-              <p style={{ color: 'var(--text-muted, #9ca3af)', fontSize: '1.1rem', margin: 0, fontWeight: 400 }}>{stat.legenda}</p>
+              <p style={{ color: 'var(--text-muted, #9ca3af)', fontSize: '1rem', margin: 0, fontWeight: 400, lineHeight: 1.4 }}>{stat.legenda}</p>
             </div>
           ))}
         </div>
