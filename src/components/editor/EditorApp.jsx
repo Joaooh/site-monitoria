@@ -227,7 +227,13 @@ export default function EditorApp() {
 
     let fileStr = "";
     imports.forEach(filename => {
-      fileStr += `import ${mappings[filename]} from "@assets/mago/oficinas/${filename}";\n`;
+      const isMagoRoot = ['mago-padrao', 'mago-working', 'mago-acidentando', 'mago-com-duvida', 'mago-floresta', 'mago-oficina', 'mago-relogio', 'mago-spell'].some(str => filename.includes(str));
+      
+      if (isMagoRoot) {
+        fileStr += `import ${mappings[filename]} from "@assets/mago/${filename}";\n`;
+      } else {
+        fileStr += `import ${mappings[filename]} from "@assets/mago/oficinas/${filename}";\n`;
+      }
     });
     
     fileStr += customComment ? `\n${customComment}\n` : "\n";

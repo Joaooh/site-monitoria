@@ -386,7 +386,11 @@ function MockEquipe({ data, focusedIndex }) {
 
   let imgSrc = "/src/assets/mago/mago-padrao.png";
   if (typeof item.foto === 'string' && item.foto.trim() !== "") {
-    imgSrc = `/src/assets/equipe/${item.foto.trim()}`;
+    if (item.foto.trim().includes('mago-padrao')) {
+      imgSrc = "/src/assets/mago/mago-padrao.png";
+    } else {
+      imgSrc = `/src/assets/equipe/${item.foto.trim()}`;
+    }
   } else if (item.foto && item.foto.src) {
     imgSrc = item.foto.src;
   }
@@ -489,6 +493,10 @@ function MockOficinasAtivas({ data, focusedIndex }) {
 
   const extractImageSrc = (imagem) => {
     if (typeof imagem === 'string' && imagem.trim() !== "") {
+      const isMagoRoot = ['mago-padrao', 'mago-working', 'mago-acidentando', 'mago-com-duvida', 'mago-floresta', 'mago-oficina', 'mago-relogio', 'mago-spell'].some(str => imagem.includes(str));
+      if (isMagoRoot) {
+        return `/src/assets/mago/${imagem.trim()}`;
+      }
       return `/src/assets/mago/oficinas/${imagem.trim()}`;
     } else if (imagem && imagem.src) {
       return imagem.src;
