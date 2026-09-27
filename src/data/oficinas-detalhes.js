@@ -176,7 +176,7 @@ export const oficinasDetalhes = [
     slug: "oficina-web",
     titulo: "Oficina de Web",
     campus: "Campus Asa Norte",
-    horarios: "Segunda, Quarta e Sexta, das 11h às 13h ou 17h às 19h",
+    horarios: "Segunda, Quarta e Sexta, das 11h às 13h",
     imagem: imgWeb,
     alt: "Mago pensando em desenvolvimento web",
     botoes: [
@@ -190,22 +190,17 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>. O programa é oferecido em duas turmas, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada entre os dias <strong>28/09 e 09/10</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, nos horários da Manhã e Noite.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
+          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada entre os dias <strong>28/09 e 09/10</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>11h às 13h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
       },
       {
-        titulo: "Conteúdo da Turma Manhã (11h às 13h):",
+        titulo: "O que você vai aprender:",
         texto:
           "<strong>Fundamentos da Web:</strong> Como a Internet funciona, tipos de redes, protocolos e configuração do ambiente no VS Code.<br/><strong>Introdução ao HTML:</strong> Estrutura da página (header, body e footer), formulários, listas, formatação de textos, classes e IDs.<br/><strong>Estilização com CSS:</strong> Implementação do CSS, cores, backgrounds, controle de dimensões, Borders, Margins, Padding, Float e Overflow.<br/><strong>Layout e Interatividade:</strong> Posições, pseudo-classes, pseudo-elementos e o conceito e aplicação de Flexbox (justify-content, align-items, etc).<br/><strong>Publicação de Projetos:</strong> Criação de conta no Github, configuração de repositórios e publicação da aplicação usando o Github Pages.",
       },
       {
-        titulo: "Conteúdo da Turma Noite (17h às 19h):",
-        texto:
-          "<strong>Introdução ao desenvolvimento web:</strong> Entenda a relação entre HTML, CSS e outras tecnologias na internet.<br/><strong>HTML Semântico:</strong> Aprenda a estruturar o conteúdo de forma correta e acessível utilizando elementos fundamentais.<br/><strong>Classes e Seletores:</strong> Como selecionar e modificar diferentes elementos da página utilizando CSS de maneira inteligente.<br/><strong>Box Model e Flexbox:</strong> Compreenda como funcionam as dimensões, espaçamentos e a organizar elementos para criar layouts de maneira simples e eficiente.<br/><strong>Responsividade:</strong> Aprenda os conceitos básicos para criar páginas que se adaptem a diferentes tamanhos de tela (computadores, tablets e celulares).",
-      },
-      {
         titulo: "Projeto Final e Metodologia:",
         texto:
-          "Ambas as turmas adotam aprendizagem baseada em projetos. Ao longo dos encontros, vocês desenvolverão e evoluirão uma <strong>página web completa</strong>, aplicando diretamente os conceitos apresentados em aulas expositivas e resolução de problemas práticos.",
+          "A oficina adota aprendizagem baseada em projetos. Ao longo dos encontros, os participantes desenvolverão e evoluirão uma <strong>página web completa</strong>, aplicando diretamente os conceitos apresentados em aulas expositivas e resolução de problemas práticos.",
       },
       {
         titulo: "Para quem é esta oficina:",
@@ -220,11 +215,9 @@ export const oficinasDetalhes = [
       },
     ],
     monitores: [
-      getMonitor("lucas-paiva", true, "Turma Manhã"),
-      getMonitor("emily-mendes", false, "Turma Manhã"),
-      getMonitor("felipe-rios", false, "Turma Manhã"),
-      getMonitor("thalis-alexandre", true, "Turma Noite"),
-      getMonitor("pedro-quartin", false, "Turma Noite"),
+      getMonitor("lucas-paiva", true),
+      getMonitor("emily-mendes", false),
+      getMonitor("felipe-rios", false),
     ].filter(Boolean),
   },
 

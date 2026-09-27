@@ -28,8 +28,7 @@ export const oficinasAtivasData = [
     descricao:
       "Introdução prática ao desenvolvimento web com HTML e CSS para criação de páginas responsivas.",
     turmas: [
-      "Segunda, Quarta e Sexta: 11h às 13h",
-      "Segunda, Quarta e Sexta: 17h às 19h"
+      "Segunda, Quarta e Sexta: 11h às 13h"
     ],
     formato: "Presencial",
     imagem: imgWeb,
