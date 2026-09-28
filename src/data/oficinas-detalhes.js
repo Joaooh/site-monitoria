@@ -181,8 +181,8 @@ export const oficinasDetalhes = [
     alt: "Mago pensando em desenvolvimento web",
     botoes: [
       {
-        texto: "Inscreva-se agora!",
-        link: "https://forms.gle/LRxSQgVtfJXCgHFj9",
+        texto: "Inscrições em breve",
+        link: "#",
         tipo: "primary",
       },
     ],
@@ -190,7 +190,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada entre os dias <strong>28/09 e 09/10</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>11h às 13h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
+          "<div style='background: rgba(245, 124, 0, 0.1); border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95rem;'>⚠️ <strong>Aviso:</strong> Essa oficina foi <strong>adiada temporariamente</strong> por cerca de 2 semanas (previsão: 12/10). Esse tempo é apenas uma estimativa e novas datas serão divulgadas em breve. Fique de olho nos grupos do WhatsApp!</div>Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada presencialmente com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>11h às 13h</strong> (com datas oficiais de início a confirmar).<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
       },
       {
         titulo: "O que você vai aprender:",

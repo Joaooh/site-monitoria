@@ -27,6 +27,11 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
                 <span class={`badge-formato ${oficina.formato.toLowerCase()}`}>
                   {oficina.formato}
                 </span>
+                {oficina.tagSecundaria && (
+                  <span class="badge-formato" style={`background: ${oficina.corTag || '#f57c00'}; color: #fff;`}>
+                    {oficina.tagSecundaria}
+                  </span>
+                )}
               </div>
             </div>
 
