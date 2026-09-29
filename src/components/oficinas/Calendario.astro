@@ -137,6 +137,9 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
               } else if (oficina.formato === "Online") {
                 estiloFormato =
                   "background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; font-weight: bold;";
+              } else if (oficina.formato === "Híbrido") {
+                estiloFormato =
+                  "background-color: #e3f2fd; color: #1883ff; border: 1px solid #bbdefb ; font-weight: bold;";
               }
 
               const badgeFormato = oficina.formato

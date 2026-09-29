@@ -17,7 +17,7 @@ export const oficinasAtivasData = [
     descricao:
       "Aprenda na prática a construir aplicações modernas de IA e integrar ferramentas externas aos modelos de linguagem.",
     turmas: ["Terça e Quinta: 17h às 19h"],
-    formato: "Presencial",
+    formato: "Híbrido",
     imagem: imgDados,
     alt: "Mago jogando dados",
     linkInscricao: "/oficinas/oficina-de-ia",

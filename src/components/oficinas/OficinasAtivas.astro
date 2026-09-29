@@ -28,7 +28,10 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
                   {oficina.formato}
                 </span>
                 {oficina.tagSecundaria && (
-                  <span class="badge-formato" style={`background: ${oficina.corTag || '#f57c00'}; color: #fff;`}>
+                  <span
+                    class="badge-formato"
+                    style={`background: ${oficina.corTag || "#f57c00"}; color: #fff;`}
+                  >
                     {oficina.tagSecundaria}
                   </span>
                 )}
@@ -192,6 +195,11 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
 
   .badge-formato.online {
     background: #2e7d32;
+    color: #ffffff;
+  }
+
+  .badge-formato.híbrido {
+    background: #1883ff;
     color: #ffffff;
   }
 
