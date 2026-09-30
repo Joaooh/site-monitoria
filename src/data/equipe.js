@@ -341,7 +341,7 @@ export const equipeData = [
     ativo: true,
     ocultarNaEquipe: true,
     linkedin: "https://www.linkedin.com/in/felipe-rios-93a9b23b6/",
-    github: null,
+    github: "https://github.com/HaMoZi006",
   },
   {
     id: "matheus-couto",
