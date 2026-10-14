@@ -1,6 +1,6 @@
 import imgNuvem from "@assets/mago/oficinas/mago-nuvem.png";
 import img3D from "@assets/mago/oficinas/monitoria-blender.png";
-import imgJava from "@assets/mago/oficinas/mago-redes.png";
+import imgJava from "@assets/mago/oficinas/mago-java.png";
 import imgWeb from "@assets/mago/oficinas/mago-web.png";
 import imgLinux from "@assets/mago/oficinas/mago-linux.png";
 import imgDados from "@assets/mago/oficinas/mago-dados.png";
@@ -181,8 +181,8 @@ export const oficinasDetalhes = [
     alt: "Mago pensando em desenvolvimento web",
     botoes: [
       {
-        texto: "Inscreva-se agora!",
-        link: "https://forms.gle/LRxSQgVtfJXCgHFj9",
+        texto: "Inscrições em breve",
+        link: "#",
         tipo: "primary",
       },
     ],
@@ -190,7 +190,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada presencialmente com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>11h às 13h</strong> (com datas oficiais de início a confirmar).<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
+          "<div style='background: rgba(245, 124, 0, 0.1); border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95rem;'>⚠️ <strong>Aviso:</strong> Essa oficina foi <strong>adiada temporariamente</strong> por cerca de 2 semanas (previsão: 12/10). Esse tempo é apenas uma estimativa e novas datas serão divulgadas em breve. Fique de olho nos grupos do WhatsApp!</div>Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada presencialmente com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>11h às 13h</strong> (com datas oficiais de início a confirmar).<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
       },
       {
         titulo: "O que você vai aprender:",
@@ -640,7 +640,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "<div style='background: rgba(122, 26, 143, 0.08); border-left: 4px solid #7a1a8f; padding: 12px 16px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95rem;'>💡 <strong>Dica:</strong> Por envolver conceitos intermediários, esta oficina é <strong>recomendada para estudantes a partir do 3º semestre</strong>. No entanto, se você é calouro e adora desafios, também será super bem-vindo!</div>Esta monitoria foi desenvolvida para apresentar os principais conceitos e práticas envolvidos na construção de aplicações modernas baseadas em Inteligência Artificial. Ao longo do programa, os participantes irão sair do uso de modelos de linguagem por interfaces prontas e aprender como integrá-los, fornecer contexto, conectar ferramentas externas e construir sistemas capazes de executar tarefas de forma estruturada.<br/><br/>A monitoria será realizada ao longo de três semanas, com encontros às <strong>terças (online) e quintas-feiras (presencialmente), das 17h às 19h</strong>. O conteúdo será desenvolvido de forma prática e progressiva, com um único projeto evoluindo ao longo dos seis encontros.<br/><br/>Ao final da monitoria, os participantes deverão ser capazes de consumir modelos de linguagem por API, estruturar contextos, utilizar ferramentas externas, compreender a arquitetura de agentes, reconhecer o papel do MCP e dos SDKs e compreender os fundamentos de RAG.",
+          "<div style='background: rgba(122, 26, 143, 0.08); border-left: 4px solid #7a1a8f; padding: 12px 16px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95rem;'>💡 <strong>Dica:</strong> Por envolver conceitos intermediários, esta oficina é <strong>recomendada para estudantes a partir do 3º semestre</strong>. No entanto, se você é calouro e adora desafios, também será super bem-vindo!</div>Esta monitoria foi desenvolvida para apresentar os principais conceitos e práticas envolvidos na construção de aplicações modernas baseadas em Inteligência Artificial. Ao longo do programa, os participantes irão sair do uso de modelos de linguagem por interfaces prontas e aprender como integrá-los, fornecer contexto, conectar ferramentas externas e construir sistemas capazes de executar tarefas de forma estruturada.<br/><br/>A monitoria será realizada ao longo de <strong>três semanas, com encontros às terças e quintas-feiras, das 17h às 19h</strong>. O conteúdo será desenvolvido de forma prática e progressiva, com um único projeto evoluindo ao longo dos seis encontros.<br/><br/>Ao final da monitoria, os participantes deverão ser capazes de consumir modelos de linguagem por API, estruturar contextos, utilizar ferramentas externas, compreender a arquitetura de agentes, reconhecer o papel do MCP e dos SDKs e compreender os fundamentos de RAG.",
       },
       {
         titulo: "O que você vai aprender:",

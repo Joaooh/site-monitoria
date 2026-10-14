@@ -1,6 +1,7 @@
 import imgRedes from "@assets/mago/oficinas/mago-redes.png";
 import imgLinux from "@assets/mago/oficinas/mago-linux.png";
 import imgNuvem from "@assets/mago/oficinas/mago-nuvem.png";
+import imgJava from "@assets/mago/oficinas/mago-java.png";
 import imgFundamentos from "@assets/mago/oficinas/mago-fundamentos.png";
 import imgDados from "@assets/mago/oficinas/mago-dados.png";
 import imgWeb from "@assets/mago/oficinas/mago-web.png";
@@ -43,8 +44,8 @@ export const oficinasAtivasData = [
       "Segunda, Quarta e Sexta: 17h às 19h",
     ],
     formato: "Presencial",
-    imagem: imgRedes,
-    alt: "Mago flutuando na matrix",
+    imagem: imgJava,
+    alt: "Mago no café",
     linkInscricao: "/oficinas/oficina-de-java",
   },
   {
