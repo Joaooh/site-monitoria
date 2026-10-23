@@ -47,6 +47,7 @@ import imgThalis from "@assets/equipe/thalis-alexandre.jpeg";
 import imgLucasDelvico from "@assets/equipe/lucas-delvico.jpeg";
 import imgKauanVinicius from "@assets/equipe/kauan-vinicius.jpeg";
 import imgEmilyMendes from "@assets/equipe/emily-mendes.jpeg";
+import imgVictorFernandes from "@assets/equipe/victor-fernandes.jpeg";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
@@ -456,6 +457,16 @@ export const equipeData = [
     ativo: true,
     linkedin: "https://www.linkedin.com/in/emily-mendes-silva/",
     github: "https://github.com/Emilyms-tech",
+  },
+  {
+    id: "victor-fernandes",
+    nome: "Victor Fernandes",
+    descricao:
+      "Desenvolvedor de software Full Stack, com foco em Back-end, dados, Python e Java.",
+    foto: imgVictorFernandes,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/victor-fernandes21/",
+    github: "https://github.com/VictorFerna",
   },
 
   // ==========================================
