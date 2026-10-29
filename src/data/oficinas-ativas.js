@@ -5,6 +5,7 @@ import imgJava from "@assets/mago/oficinas/mago-java.png";
 import imgFundamentos from "@assets/mago/oficinas/mago-fundamentos.png";
 import imgDados from "@assets/mago/oficinas/mago-dados.png";
 import imgWeb from "@assets/mago/oficinas/mago-web.png";
+import img3D from "@assets/mago/oficinas/monitoria-blender.png";
 /*
  * COMO CADASTRAR UMA OFICINA:
  * Preencha o bloco no array abaixo. 'linkInscricao' é o caminho da URL que abrirá
@@ -12,6 +13,17 @@ import imgWeb from "@assets/mago/oficinas/mago-web.png";
  * Importe a imagem correspondente lá no topo de assets/mago/oficinas.
  */
 export const oficinasAtivasData = [
+  {
+    id: "oficina-blender",
+    titulo: "Oficina de Modelagem 3D",
+    descricao:
+      "Desenvolva modelos tridimensionais no Blender, passando pela modelagem, topologia, UV Unwrapping, texturização e renderização.",
+    turmas: ["Segunda, Quarta e Sexta: 17h às 19h"],
+    formato: "Presencial",
+    imagem: img3D,
+    alt: "Oficina de Modelagem 3D no Blender",
+    linkInscricao: "/oficinas/modelagem-3d",
+  },
   {
     id: "oficina-de-ia",
     titulo: "Oficina de Inteligência Artificial",

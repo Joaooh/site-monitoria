@@ -296,4 +296,48 @@ export const playlistsData = [
       },
     ],
   },
+  // --- OFICINA DE MODELAGEM 3D (BLENDER) ---
+  {
+    slug: "modelagem-3d",
+    titulo: "Oficina de Modelagem 3D",
+    classroomUrl: "",
+    videos: [
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+    ],
+  },
 ];

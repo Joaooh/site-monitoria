@@ -80,45 +80,50 @@ export const oficinasDetalhes = [
       getMonitor("luiz-nicolau"),
     ].filter(Boolean),
   },
+  // --- OFICINA DE MODELAGEM 3D (BLENDER) ---
   {
-    slug: "criacao-de-personagens-3d",
-    titulo: "Criação de Personagens 3D",
+    slug: "modelagem-3d",
+    titulo: "Oficina de Modelagem 3D",
     campus: "Campus Asa Norte",
-    horarios: "Segunda, Quarta e Sexta, das 11h às 13h",
+    horarios: "Segunda, Quarta e Sexta, das 17h às 19h",
     imagem: img3D,
-    alt: "Oficina de Criação de Personagens 3D no Blender",
-    botoes: [],
+    alt: "Oficina de Modelagem 3D no Blender",
+    botoes: [
+      {
+        texto: "Inscreva-se agora!",
+        link: "https://forms.gle/aALw7PEiWf9RwRvA9",
+        tipo: "primary",
+      },
+      {
+        texto: "Playlist Modelagem 3D",
+        link: "/playlist/modelagem-3d",
+        tipo: "secondary",
+      },
+    ],
     sobre: [
       {
         titulo: "",
         texto:
-          "Durante esta oficina, serão explorados fundamentos essenciais para modelagem de personagem, texturização, rigging e controle do personagem utilizando a ferramenta Blender.<br/><br/>Esta oficina faz parte de uma trilha ofertada pela monitoria de TI da Asa Norte que tem como objetivo apresentar a ferramenta Blender e ensinar como modelar personagens do início ao fim para utilização em jogos e animações.<br/><br/>A oficina será realizada entre os dias <strong>13/04 e 08/05</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>. As aulas serão ministradas <strong>presencialmente</strong>.",
+          "Esta oficina tem como objetivo capacitar você a desenvolver <strong>modelos tridimensionais utilizando o Blender</strong>, desde a modelagem inicial até a finalização de imagens renderizadas. Ao longo dos encontros, exploraremos técnicas de modelagem, topologia, UV Unwrapping, texturização, iluminação e renderização, estimulando a criatividade, a autonomia e a aplicação prática dos conhecimentos adquiridos.<br/><br/>A metodologia conta com aulas <strong>expositivas e práticas</strong>, complementadas por sessões de exercícios para fixação dos conceitos.<br/><br/>A oficina será realizada entre os dias <strong>04/11 e 20/11</strong>, com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>17h às 19h</strong>. As aulas serão ministradas <strong>presencialmente</strong> e, posteriormente, o monitor responsável irá regravar o conteúdo do zero em casa para disponibilizar no YouTube e na nossa página de <strong>Playlists</strong>.",
       },
       {
         titulo: "O que você vai aprender:",
         texto:
-          "<strong>Fundamentos do Blender:</strong> Como utilizar a interface e aplicar os princípios de modelagem e texturização para desenvolver personagens low poly.<br/><strong>Modelagem 3D:</strong> Desde objetos primitivos até a construção de modelos complexos com topologia correta e malha limpa.<br/><strong>Texturização:</strong> Aprenderemos a aplicar texturas a um modelo 3D e pintar as texturas dos próprios personagens.<br/><strong>Rigging:</strong> Aprenderemos a criar o esqueleto base do personagem.<br/><strong>Controle e Animação:</strong> Como dar vida ao personagem com animações básicas.",
-      },
-      {
-        titulo: "Projetos e Liberdade Criativa:",
-        texto:
-          "Em toda a oficina, vocês terão toda a liberdade criativa para criar qualquer personagem de sua escolha, desde que siga a ideia do projeto e os conceitos apresentados nas aulas.",
+          "<strong>Como utilizar a ferramenta Blender:</strong> Navegação na interface, atalhos essenciais, manipulação de objetos no espaço 3D e organização do fluxo de trabalho.<br/><strong>Modelagem:</strong> Criação e estruturação de objetos tridimensionais a partir de formas primitivas até modelos detalhados.<br/><strong>Topologia 3D:</strong> Boas práticas para construção e organização de malhas limpas e eficientes.<br/><strong>UV Unwrap:</strong> Abertura e mapeamento de malhas tridimensionais para aplicação correta de texturas 2D.<br/><strong>Texturização:</strong> Criação e aplicação de materiais, cores e texturas para dar identidade visual aos modelos.<br/><strong>Iluminação e Renderização:</strong> Configuração de luzes, câmeras e motores de render para gerar imagens finalizadas de alta qualidade.",
       },
       {
         titulo: "Para quem é esta oficina:",
         texto:
           "<ul style='margin-left: 20px; margin-bottom: 20px; list-style-type: disc;'>" +
-          "<li>Quaisquer alunos que desejam transformar seus personagens em realidade no Blender;</li>" +
-          "<li>Alunos que buscam criar personagens 3D do zero;</li>" +
-          "<li>Interessados em entender na prática como funciona a criação de personagens para jogos e animações.</li>" +
+          "<li>Estudantes que desejam aprender modelagem 3D do zero utilizando o Blender;</li>" +
+          "<li>Interessados em compreender todo o fluxo de produção 3D, da malha à imagem renderizada;</li>" +
+          "<li>Pessoas criativas que buscam autonomia para desenvolver seus próprios modelos para jogos, animações ou projetos visuais.</li>" +
           "</ul>" +
           "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
     monitores: [
-      getMonitor("gabriel-soares", true),
-      getMonitor("sciel-buitrago"),
-      getMonitor("leonardo-cespedes"),
+      getMonitor("lucas-villas", true),
     ].filter(Boolean),
   },
 
@@ -181,8 +186,8 @@ export const oficinasDetalhes = [
     alt: "Mago pensando em desenvolvimento web",
     botoes: [
       {
-        texto: "Inscrições em breve",
-        link: "#",
+        texto: "Inscreva-se Agora!",
+        link: "https://forms.gle/LRxSQgVtfJXCgHFj9",
         tipo: "primary",
       },
     ],
@@ -190,7 +195,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "<div style='background: rgba(245, 124, 0, 0.1); border-left: 4px solid #f57c00; padding: 12px 16px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95rem;'>⚠️ <strong>Aviso:</strong> Essa oficina foi <strong>adiada temporariamente</strong> por cerca de 2 semanas (previsão: 12/10). Esse tempo é apenas uma estimativa e novas datas serão divulgadas em breve. Fique de olho nos grupos do WhatsApp!</div>Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada presencialmente com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>11h às 13h</strong> (com datas oficiais de início a confirmar).<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
+          "Esta oficina foi desenvolvida para oferecer uma introdução prática ao <strong>desenvolvimento web com HTML e CSS</strong>, ideal para estudantes que desejam aprender a construir páginas para a internet e compreender os fundamentos do desenvolvimento Front-end.<br/><br/>Ao longo do programa, os participantes aprenderão desde a estrutura básica de uma página até a criação de layouts, organização de conteúdo e estilização de elementos.<br/><br/>A oficina será realizada presencialmente com encontros às <strong>segundas, quartas e sextas-feiras</strong>, das <strong>11h às 13h</strong>.<br/><br/>Ao final da oficina, os participantes que cumprirem os requisitos receberão <strong>certificado de conclusão</strong>. A avaliação será baseada na frequência e no desempenho das atividades práticas propostas durante o período.",
       },
       {
         titulo: "O que você vai aprender:",

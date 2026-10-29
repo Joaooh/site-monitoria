@@ -104,18 +104,6 @@ export const oficinasPassadasData = [
     linkInscricao: "/oficinas/oficina-de-hardware",
   },
   {
-    id: "oficina-blender",
-    titulo: "Oficina de Criação de Personagens 3D",
-    descricao:
-      "Aprenda a modelar, texturizar e renderizar seus próprios personagens e cenários 3D no Blender.",
-    turmas: ["Segunda, Quarta e Sexta: 11h às 13h"],
-    formato: "Presencial",
-    linkInscricao: "/oficinas/criacao-de-personagens-3d",
-    imagem: img3D,
-    alt: "Mago ao lado ",
-  },
-
-  {
     id: "oficina-dados",
     titulo: "Ciência de Dados - Ferramentas e Frameworks",
     descricao:
