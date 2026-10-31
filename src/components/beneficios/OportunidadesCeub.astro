@@ -1,0 +1,692 @@
+---
+import { Image } from "astro:assets";
+import BeneficioIcon from "./BeneficioIcon.astro";
+import { oportunidadesCeub } from "@data/beneficios.js";
+---
+
+<section
+  class="oportunidades-section"
+  id="no-ceub"
+  aria-labelledby="no-ceub-title"
+>
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Dentro do CEUB</span>
+      <h2 id="no-ceub-title" aria-label="Oportunidades acadêmicas">
+        Oportunidades acadêmicas
+      </h2>
+      <p class="section-subtitle">
+        Programas e estruturas da instituição para ampliar sua formação muito
+        além da sala de aula.
+      </p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="oportunidades-grid">
+      {
+        oportunidadesCeub.map((item) => (
+          <article
+            class="oportunidade-card"
+            id={item.id}
+            data-expandable-card
+          >
+            <div class="media">
+              {item.imagem ? (
+                <Image
+                  src={item.imagem}
+                  alt={item.titulo}
+                  class="media-img"
+                  quality={70}
+                  format="webp"
+                  widths={[400, 800]}
+                  sizes="(max-width: 768px) 100vw, 560px"
+                />
+              ) : (
+                <div class="media-placeholder" aria-hidden="true">
+                  <span class="placeholder-ring" />
+                  <span class="placeholder-icon">
+                    <BeneficioIcon
+                      name={item.icone}
+                      size={42}
+                      uid={`watermark-${item.id}`}
+                    />
+                  </span>
+                </div>
+              )}
+              <span class="secao-badge">{item.secao}</span>
+            </div>
+
+            <div class="card-body">
+              <div
+                class="card-summary"
+                data-expand-trigger
+                role="button"
+                tabindex="0"
+                aria-expanded="false"
+                aria-label={`${item.titulo}: ${item.subtitulo}`}
+              >
+                <div class="card-heading">
+                  <span class="icon-chip" aria-hidden="true">
+                    <BeneficioIcon
+                      name={item.icone}
+                      size={20}
+                      uid={`tile-${item.id}`}
+                    />
+                  </span>
+                  <div class="heading-text">
+                    <span class="mobile-secao-badge">{item.secao}</span>
+                    <h3 aria-label={item.titulo}>{item.titulo}</h3>
+                    <p class="card-subtitle">{item.subtitulo}</p>
+                  </div>
+                </div>
+
+                <div class="expand-indicator" aria-hidden="true">
+                  <span class="indicator-text">
+                    <span class="more-text">Saiba mais</span>
+                    <span class="less-text">Recolher</span>
+                  </span>
+                  <svg
+                    class="chevron-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="card-details">
+                <div class="card-details-inner">
+                  <p class="descricao">{item.descricao}</p>
+
+                  <ul class="destaques" aria-label="Destaques">
+                    {item.destaques.map((d) => (
+                      <li>
+                        <BeneficioIcon name="check" size={14} />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-cta"
+                      aria-label={`${item.cta}: ${item.titulo} (abre em nova aba)`}
+                    >
+                      {item.cta}
+                      <BeneficioIcon name="arrow" size={16} />
+                      <span class="sr-only">(abre em nova aba)</span>
+                    </a>
+                  ) : (
+                    <span class="card-cta is-static">
+                      Disponível para todos os alunos
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .oportunidades-section {
+    padding: 90px 2rem 100px 2rem;
+    background: #fdfdfd;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(122, 26, 143, 0.1);
+    color: var(--purple-hero);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(122, 26, 143, 0.2);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: #0d041a;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .section-subtitle {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 580px;
+    margin-bottom: 1.25rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--purple-primary);
+    border-radius: 2px;
+  }
+
+  .oportunidades-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .oportunidade-card {
+    background: #ffffff;
+    border: 1px solid #ece4f7;
+    border-radius: 20px;
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(102, 44, 146, 0.06);
+    transition:
+      transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+    scroll-margin-top: 96px;
+  }
+
+  .oportunidade-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(122, 26, 143, 0.3);
+    box-shadow: 0 16px 36px rgba(59, 0, 77, 0.14);
+  }
+
+  .media {
+    position: relative;
+    height: 196px;
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    background: linear-gradient(135deg, #2a0f45 0%, #662c92 60%, #8640be 100%);
+    flex-shrink: 0;
+  }
+
+  .media-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .oportunidade-card:hover .media-img {
+    transform: scale(1.04);
+  }
+
+  .media-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background:
+      radial-gradient(
+        circle at 78% 22%,
+        rgba(210, 168, 255, 0.32) 0%,
+        rgba(210, 168, 255, 0) 48%
+      ),
+      radial-gradient(
+        circle at 18% 88%,
+        rgba(232, 28, 97, 0.22) 0%,
+        rgba(232, 28, 97, 0) 42%
+      ),
+      linear-gradient(135deg, #2a0f45 0%, #662c92 58%, #8640be 100%);
+  }
+
+  .placeholder-ring {
+    position: absolute;
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    pointer-events: none;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .oportunidade-card:hover .placeholder-ring {
+    border-color: rgba(255, 255, 255, 0.38);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .placeholder-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 82px;
+    height: 82px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(13, 4, 21, 0.25);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .oportunidade-card:hover .placeholder-icon {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.48);
+    box-shadow: 0 10px 26px rgba(13, 4, 21, 0.38);
+  }
+
+  .secao-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    padding: 5px 11px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    background: rgba(13, 4, 21, 0.78);
+    color: #ffffff;
+  }
+
+  .card-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-summary {
+    outline: none;
+  }
+
+  .mobile-secao-badge,
+  .expand-indicator {
+    display: none;
+  }
+
+  .card-details,
+  .card-details-inner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .heading-text {
+    min-width: 0;
+  }
+
+  .icon-chip {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #f1e8fb;
+    color: var(--purple-primary);
+  }
+
+  .card-heading h3 {
+    color: #3b004d;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .card-subtitle {
+    color: var(--purple-hero);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+  }
+
+  .descricao {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .destaques {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(59, 0, 77, 0.08);
+  }
+
+  .destaques li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #f7f2fc;
+    color: #4a2a63;
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .destaques li :global(svg) {
+    color: var(--purple-hero);
+  }
+
+  .card-cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    background: var(--purple-primary);
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(102, 44, 146, 0.2);
+    transition:
+      background 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .card-cta:hover {
+    background: var(--purple-hero);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(122, 26, 143, 0.3);
+  }
+
+  .card-cta.is-static {
+    background: #f1e8fb;
+    color: var(--purple-primary);
+    box-shadow: none;
+    font-size: 0.92rem;
+  }
+
+  .card-cta.is-static:hover {
+    transform: none;
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 860px) {
+    .oportunidades-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .oportunidades-section {
+      padding: 75px 1.25rem 70px 1.25rem;
+    }
+
+    .oportunidades-grid {
+      gap: 1.15rem;
+    }
+
+    .oportunidade-card {
+      position: relative;
+      border-radius: 16px;
+      min-height: 120px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .oportunidade-card:hover {
+      transform: none;
+    }
+
+    .oportunidade-card.is-expanded {
+      border-color: rgba(122, 26, 143, 0.38);
+      box-shadow: 0 12px 28px rgba(59, 0, 77, 0.12);
+    }
+
+    .media {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      background: transparent;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(102, 44, 146, 0.09) 0%,
+        rgba(102, 44, 146, 0.02) 48%,
+        transparent 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .media-img {
+      opacity: 0.12;
+      object-position: right center;
+    }
+
+    .media-placeholder {
+      background: transparent;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 14px 16px;
+    }
+
+    .placeholder-ring {
+      width: 112px;
+      height: 112px;
+      top: 4px;
+      right: -20px;
+      border-color: rgba(102, 44, 146, 0.1);
+      background: radial-gradient(
+        circle,
+        rgba(102, 44, 146, 0.06) 0%,
+        transparent 70%
+      );
+    }
+
+    .placeholder-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 18px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      color: var(--purple-primary);
+      opacity: 0.1;
+    }
+
+    .secao-badge {
+      display: none;
+    }
+
+    .card-body {
+      position: relative;
+      z-index: 2;
+      padding: 0;
+    }
+
+    .card-summary {
+      position: relative;
+      padding: 1.2rem 1.25rem 2.3rem 1.25rem;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .card-summary:focus-visible {
+      outline: 2px solid var(--purple-hero);
+      outline-offset: -2px;
+      border-radius: 16px;
+    }
+
+    .card-heading {
+      margin-bottom: 0;
+      align-items: center;
+    }
+
+    .mobile-secao-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--purple-hero);
+      margin-bottom: 0.15rem;
+    }
+
+    .card-heading h3 {
+      font-size: 1.18rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.86rem;
+      color: #554266;
+      font-weight: 500;
+      padding-right: 98px;
+      margin-top: 0;
+    }
+
+    .expand-indicator {
+      position: absolute;
+      bottom: 1.05rem;
+      right: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--purple-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .less-text {
+      display: none;
+    }
+
+    .oportunidade-card.is-expanded .more-text {
+      display: none;
+    }
+
+    .oportunidade-card.is-expanded .less-text {
+      display: inline;
+    }
+
+    .chevron-icon {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .oportunidade-card.is-expanded .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .card-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+        opacity 0.25s ease;
+    }
+
+    .card-details-inner {
+      overflow: hidden;
+      padding: 0 1.25rem;
+    }
+
+    .oportunidade-card.is-expanded .card-details {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .oportunidade-card.is-expanded .card-details-inner {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+
+    .descricao {
+      padding-top: 0.95rem;
+      border-top: 1px solid rgba(102, 44, 146, 0.12);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    .destaques {
+      padding-top: 0;
+      border-top: none;
+      margin-bottom: 1.15rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .oportunidade-card,
+    .oportunidade-card:hover,
+    .placeholder-icon,
+    .placeholder-ring,
+    .media-img {
+      transition: none;
+      transform: none !important;
+    }
+  }
+</style>

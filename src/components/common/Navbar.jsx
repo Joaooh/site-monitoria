@@ -7,6 +7,7 @@ const navItems = [
   { name: "Playlists", path: "/playlists", badge: "Novo" },
   { name: "Pitaco", path: "/pitaco" },
   { name: "Equipe", path: "/equipe" },
+  { name: "CEUBenefícios", path: "/beneficios", badge: "Novo" },
   {
     name: "Linktree",
     path: "https://linktr.ee/monitoriaticeub",
@@ -340,7 +341,12 @@ export default function Navbar({ currentPath = "/" }) {
         .mobile-drawer .mobile-cta:hover {
           filter: brightness(1.15);
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1180px) {
+          .navbar-cta-placeholder {
+            display: none !important;
+          }
+        }
+        @media (max-width: 960px) {
           .navbar-links,
           .navbar-cta,
           .navbar-cta-placeholder {
@@ -454,7 +460,10 @@ export default function Navbar({ currentPath = "/" }) {
             </svg>
           </a>
           */}
-          <div className="navbar-cta-placeholder" style={{ width: "148.5px" }} />
+          <div
+            className="navbar-cta-placeholder"
+            style={{ width: "148.5px" }}
+          />
 
           <button
             className="navbar-hamburger"

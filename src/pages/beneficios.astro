@@ -1,0 +1,531 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/common/Footer.astro";
+import BeneficiosHero from "../components/beneficios/BeneficiosHero.astro";
+import OportunidadesCeub from "../components/beneficios/OportunidadesCeub.astro";
+import AssinaturasEstudante from "../components/beneficios/AssinaturasEstudante.astro";
+import CursosPlataformas from "../components/beneficios/CursosPlataformas.astro";
+import BeneficioIcon from "../components/beneficios/BeneficioIcon.astro";
+import {
+  oportunidadesCeub,
+  assinaturasEstudante,
+  ceubCarreiras,
+  plataformasEnsino,
+} from "../data/beneficios.js";
+
+const siteUrl =
+  Astro.site?.toString() || "https://site-monitoria-blue.vercel.app/";
+const pageUrl = new URL("/beneficios", siteUrl).href;
+
+const beneficiosSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "CEUBenefícios",
+        item: pageUrl,
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Guia de Oportunidades e Benefícios do Aluno CEUB",
+    description:
+      "Oportunidades acadêmicas do UniCEUB (Iniciação Científica, Intercâmbio, Bibliotecas Digitais, Meia-Entrada), CEUB Carreiras, plataformas de ensino (Cisco Networking Academy, AWS Educate e IBM SkillsBuild) e assinaturas estudantis (GitHub Pro, JetBrains, Azure, Google One, Figma, Adobe, Spotify, YouTube Premium e Dell).",
+    url: pageUrl,
+    numberOfItems:
+      oportunidadesCeub.length +
+      1 +
+      plataformasEnsino.length +
+      assinaturasEstudante.length,
+    itemListElement: [
+      ...oportunidadesCeub.map((item, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        name: item.titulo,
+        description: item.descricao,
+        ...(item.link ? { url: item.link } : {}),
+      })),
+      {
+        "@type": "ListItem",
+        position: oportunidadesCeub.length + 1,
+        name: ceubCarreiras.nome,
+        description: ceubCarreiras.descricao,
+        url: ceubCarreiras.link,
+      },
+      ...plataformasEnsino.map((item, idx) => ({
+        "@type": "ListItem",
+        position: oportunidadesCeub.length + 1 + idx + 1,
+        name: `${item.nome} (${item.empresa}) - ${item.destaque}`,
+        description: item.descricao,
+        url: item.link,
+      })),
+      ...assinaturasEstudante.map((item, idx) => ({
+        "@type": "ListItem",
+        position:
+          oportunidadesCeub.length + 1 + plataformasEnsino.length + idx + 1,
+        name: `${item.nome} (${item.empresa}) - ${item.destaque}`,
+        description: item.descricao,
+        url: item.link,
+      })),
+    ],
+  },
+];
+
+const resumo = [
+  {
+    valor: oportunidadesCeub.length,
+    label: "Oportunidades no CEUB",
+    icone: "flask",
+    href: "#no-ceub",
+  },
+  {
+    valor: assinaturasEstudante.length,
+    label: "Assinaturas e descontos",
+    icone: "sparkles",
+    href: "#assinaturas",
+  },
+  {
+    valor: "R$ 0",
+    label: "Para começar a aproveitar",
+    icone: "ticket",
+    href: "#como-garantir",
+  },
+];
+
+const passos = [
+  {
+    icone: "mail",
+    titulo: "Use seu e-mail institucional",
+    texto:
+      "A maioria das plataformas valida o vínculo estudantil pelo e-mail fornecido pelo CEUB. Cadastre-se com ele sempre que possível.",
+  },
+  {
+    icone: "book",
+    titulo: "Tenha o comprovante em mãos",
+    texto:
+      "Alguns serviços pedem uma declaração de matrícula ou foto da carteirinha. Mantenha uma cópia atualizada do semestre vigente.",
+  },
+  {
+    icone: "info",
+    titulo: "Confira as condições",
+    texto:
+      "Preços, prazos e regras de elegibilidade são definidos por cada parceiro e podem mudar. Consulte sempre o site oficial.",
+  },
+];
+---
+
+<Layout
+  title="CEUBenefícios | Monitoria de TI - CEUB"
+  description="Descubra todas as vantagens e benefícios de ser estudante do UniCEUB: iniciação científica (PIC), intercâmbio, bibliotecas digitais, Passe Livre, CEUB Carreiras, cursos da Cisco, AWS e IBM, e descontos em GitHub Pro, JetBrains, Azure, Figma, Adobe, Spotify e mais."
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(beneficiosSchema)}
+    is:inline
+  />
+
+  <main id="main-content" class="beneficios-page">
+    <BeneficiosHero />
+
+    <div class="theme-light-section">
+      <nav class="resumo-wrapper" aria-label="Resumo dos benefícios">
+        <ul class="resumo">
+          {
+            resumo.map((r) => (
+              <li>
+                <a
+                  href={r.href}
+                  class="resumo-item"
+                  aria-label={`${r.valor} ${r.label}`}
+                >
+                  <span class="resumo-icon" aria-hidden="true">
+                    <BeneficioIcon name={r.icone} size={22} />
+                  </span>
+                  <span class="resumo-text">
+                    <strong>{r.valor}</strong>
+                    <span>{r.label}</span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <OportunidadesCeub />
+    </div>
+
+    <CursosPlataformas />
+
+    <AssinaturasEstudante />
+
+    <div class="theme-light-section">
+      <section
+        class="como-garantir"
+        id="como-garantir"
+        aria-labelledby="como-garantir-title"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="tag">Passo a passo</span>
+            <h2
+              id="como-garantir-title"
+              aria-label="Como garantir seus benefícios"
+            >
+              Como garantir seus benefícios
+            </h2>
+            <div class="divider"></div>
+          </div>
+
+          <ol class="passos">
+            {
+              passos.map((p, i) => (
+                <li class="passo">
+                  <span class="passo-num" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span class="passo-icon" aria-hidden="true">
+                    <BeneficioIcon name={p.icone} size={24} />
+                  </span>
+                  <h3 aria-label={p.titulo}>{p.titulo}</h3>
+                  <p>{p.texto}</p>
+                </li>
+              ))
+            }
+          </ol>
+
+          <p class="aviso">
+            <BeneficioIcon name="info" size={18} />
+            <span>
+              As informações desta página têm caráter informativo. A Monitoria
+              de TI não possui vínculo comercial com as empresas citadas.
+            </span>
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="theme-light-section">
+    <Footer />
+  </div>
+</Layout>
+
+<script>
+  function initExpandableCards() {
+    const page = document.querySelector<HTMLElement>(".beneficios-page");
+    if (!page || page.dataset.expandBound === "true") return;
+    page.dataset.expandBound = "true";
+
+    const mobileQuery = window.matchMedia("(max-width: 640px)");
+
+    const toggleCard = (card: HTMLElement) => {
+      const expanded = card.classList.toggle("is-expanded");
+      const trigger = card.querySelector<HTMLElement>("[data-expand-trigger]");
+      if (trigger) {
+        trigger.setAttribute("aria-expanded", String(expanded));
+      }
+    };
+
+    page.addEventListener("click", (e) => {
+      if (!mobileQuery.matches) return;
+      const target = e.target as HTMLElement | null;
+      if (!target || target.closest("a")) return;
+
+      const card = target.closest<HTMLElement>("[data-expandable-card]");
+      if (!card) return;
+
+      toggleCard(card);
+    });
+
+    page.addEventListener("keydown", (e) => {
+      if (!mobileQuery.matches) return;
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const target = e.target as HTMLElement | null;
+      if (!target || target.closest("a")) return;
+
+      const trigger = target.closest<HTMLElement>("[data-expand-trigger]");
+      if (!trigger) return;
+      const card = trigger.closest<HTMLElement>("[data-expandable-card]");
+      if (!card) return;
+
+      e.preventDefault();
+      toggleCard(card);
+    });
+  }
+
+  document.addEventListener("astro:page-load", initExpandableCards);
+</script>
+
+<style>
+  .beneficios-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fdfdfd;
+  }
+
+  .theme-light-section {
+    background-color: #fdfdfd;
+    color: #1a1a24;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* --- Faixa de resumo (sobreposta ao hero) --- */
+  .resumo-wrapper {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: -40px auto 0 auto;
+    padding: 0 2rem;
+  }
+
+  .resumo {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(102, 44, 146, 0.12);
+    border: 1px solid #f0eaff;
+    overflow: hidden;
+  }
+
+  .resumo li + li {
+    border-left: 1px solid #f0eaff;
+  }
+
+  .resumo-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.4rem 1.75rem;
+    text-decoration: none;
+    height: 100%;
+    transition: background 0.25s ease;
+  }
+
+  .resumo-item:hover {
+    background: #faf6fe;
+  }
+
+  .resumo-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #662c92, #8640be);
+    color: #ffffff;
+    box-shadow: 0 6px 14px rgba(102, 44, 146, 0.3);
+  }
+
+  .resumo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .resumo-text strong {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0d041a;
+    letter-spacing: -0.5px;
+  }
+
+  .resumo-text span {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  /* --- Como garantir --- */
+  .como-garantir {
+    padding: 100px 2rem 100px 2rem;
+    scroll-margin-top: 40px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(122, 26, 143, 0.1);
+    color: var(--purple-hero);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(122, 26, 143, 0.2);
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: #0d041a;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--purple-primary);
+    border-radius: 2px;
+  }
+
+  .passos {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    counter-reset: passo;
+  }
+
+  .passo {
+    position: relative;
+    padding: 2rem 1.75rem;
+    border-radius: 18px;
+    background: #ddd1ff;
+    overflow: hidden;
+    transition:
+      transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+      box-shadow 0.3s ease;
+  }
+
+  .passo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(59, 0, 77, 0.15);
+  }
+
+  .passo-num {
+    position: absolute;
+    top: 0.75rem;
+    right: 1.25rem;
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(102, 44, 146, 0.14);
+    letter-spacing: -2px;
+  }
+
+  .passo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: #ffffff;
+    color: var(--purple-primary);
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 12px rgba(102, 44, 146, 0.12);
+  }
+
+  .passo h3 {
+    color: #3b004d;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .passo p {
+    color: #4a3a57;
+    font-size: 0.93rem;
+    line-height: 1.6;
+  }
+
+  .aviso {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.6rem;
+    max-width: 720px;
+    margin: 3rem auto 0 auto;
+    color: var(--text-light);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    text-align: left;
+  }
+
+  .aviso :global(svg) {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--purple-hero);
+  }
+
+  /* --- RESPONSIVIDADE --- */
+  @media (max-width: 900px) {
+    .passos {
+      grid-template-columns: 1fr;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .resumo-wrapper {
+      padding: 0 1.25rem;
+      margin-top: -20px;
+    }
+
+    .resumo {
+      grid-template-columns: 1fr;
+    }
+
+    .resumo li + li {
+      border-left: none;
+      border-top: 1px solid #f0eaff;
+    }
+
+    .resumo-item {
+      padding: 1rem 1.25rem;
+    }
+
+    .resumo-icon {
+      width: 42px;
+      height: 42px;
+    }
+
+    .resumo-text strong {
+      font-size: 1.35rem;
+    }
+
+    .como-garantir {
+      padding: 70px 1.25rem 80px 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .passo,
+    .passo:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

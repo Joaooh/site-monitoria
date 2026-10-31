@@ -1,0 +1,989 @@
+---
+import BeneficioIcon from "./BeneficioIcon.astro";
+import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
+---
+
+<section class="cursos-section" id="cursos" aria-labelledby="cursos-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Carreira e capacitação</span>
+      <h2 id="cursos-title" aria-label="Cursos e carreira">Cursos e carreira</h2>
+      <p class="section-subtitle">
+        Programas de estágio e plataformas de ensino para turbinar o
+        seu currículo com certificados reconhecidos pelo mercado.
+      </p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Destaque: CEUB Carreiras -->
+    <article
+      class="carreiras-card"
+      aria-labelledby="carreiras-title"
+      data-expandable-card
+    >
+      <div class="carreiras-content">
+        <div
+          class="carreiras-summary"
+          data-expand-trigger
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+          aria-label={`${ceubCarreiras.nome}: ${ceubCarreiras.tipo}`}
+        >
+          <span class="carreiras-kicker">
+            <BeneficioIcon name="briefcase" size={16} />
+            {ceubCarreiras.tipo}
+          </span>
+          <h3 id="carreiras-title" aria-label={ceubCarreiras.nome}>
+            {ceubCarreiras.nome}
+          </h3>
+          <p class="carreiras-mobile-sub">
+            Vagas exclusivas de estágio, emprego e apoio na carreira
+          </p>
+
+          <div class="expand-indicator carreiras-indicator" aria-hidden="true">
+            <span class="indicator-text">
+              <span class="more-text">Saiba mais</span>
+              <span class="less-text">Recolher</span>
+            </span>
+            <svg
+              class="chevron-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="carreiras-details">
+          <div class="carreiras-details-inner">
+            <p class="carreiras-desc">{ceubCarreiras.descricao}</p>
+
+            <ul class="carreiras-destaques" aria-label="Destaques">
+              {
+                ceubCarreiras.destaques.map((d) => (
+                  <li>
+                    <BeneficioIcon name="check" size={14} />
+                    {d}
+                  </li>
+                ))
+              }
+            </ul>
+
+            <a
+              href={ceubCarreiras.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="carreiras-cta"
+              aria-label={`Conhecer o ${ceubCarreiras.nome} (abre em nova aba)`}
+            >
+              {ceubCarreiras.cta}
+              <BeneficioIcon name="arrow" size={16} />
+              <span class="sr-only">(abre em nova aba)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="carreiras-visual" aria-hidden="true">
+        <span class="orbit orbit-1"></span>
+        <span class="orbit orbit-2"></span>
+        <span class="visual-icon">
+          <BeneficioIcon name="briefcase" size={56} />
+        </span>
+        <span class="float-chip chip-a">Estágio</span>
+        <span class="float-chip chip-b">Emprego</span>
+      </div>
+    </article>
+
+    <!-- Plataformas de ensino -->
+    <div class="plataformas-header">
+      <h3 class="plataformas-title" aria-label="Plataformas de ensino">
+        Plataformas de ensino
+      </h3>
+    </div>
+
+    <ul class="plataformas-grid">
+      {
+        plataformasEnsino.map((p) => (
+          <li>
+            <article
+              class="plataforma-card"
+              style={`--brand: ${p.cor};`}
+              data-expandable-card
+            >
+              <span class="plataforma-watermark" aria-hidden="true">
+                <BeneficioIcon
+                  name={p.icone}
+                  size={46}
+                  uid={`watermark-${p.id}`}
+                />
+              </span>
+
+              <div
+                class="plataforma-summary"
+                data-expand-trigger
+                role="button"
+                tabindex="0"
+                aria-expanded="false"
+                aria-label={`${p.nome} (${p.empresa})`}
+              >
+                <div class="plataforma-top">
+                  <span class="plataforma-icon" aria-hidden="true">
+                    <BeneficioIcon
+                      name={p.icone}
+                      size={30}
+                      uid={`tile-${p.id}`}
+                    />
+                  </span>
+                </div>
+
+                <div class="plataforma-heading-text">
+                  <span class="plataforma-empresa">{p.empresa}</span>
+                  <h4 aria-label={p.nome}>{p.nome}</h4>
+                  <p class="plataforma-mobile-sub">{p.destaque}</p>
+                </div>
+
+                <div class="expand-indicator" aria-hidden="true">
+                  <span class="indicator-text">
+                    <span class="more-text">Saiba mais</span>
+                    <span class="less-text">Recolher</span>
+                  </span>
+                  <svg
+                    class="chevron-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="plataforma-details">
+                <div class="plataforma-details-inner">
+                  <p class="plataforma-desc">{p.descricao}</p>
+
+                  <ul class="topicos" aria-label="Tópicos">
+                    {p.topicos.map((t) => (
+                      <li>{t}</li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="plataforma-footer"
+                    aria-label={`Acessar ${p.nome} da ${p.empresa} (abre em nova aba)`}
+                  >
+                    Acessar plataforma
+                    <BeneficioIcon name="arrow" size={16} />
+                    <span class="sr-only">(abre em nova aba)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .cursos-section {
+    background: linear-gradient(to bottom, #f6f1fc, #fdfdfd);
+    color: #1a1a24;
+    padding: 100px 2rem 90px 2rem;
+    scroll-margin-top: 40px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(122, 26, 143, 0.1);
+    color: var(--purple-hero);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(122, 26, 143, 0.2);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: #0d041a;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .section-subtitle {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-bottom: 1.25rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--purple-primary);
+    border-radius: 2px;
+  }
+
+  /* --- Destaque CEUB Carreiras --- */
+  .carreiras-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem;
+    border-radius: 24px;
+    background:
+      radial-gradient(
+        circle at 85% 20%,
+        rgba(210, 168, 255, 0.25) 0%,
+        transparent 45%
+      ),
+      linear-gradient(135deg, #2a0f45 0%, #662c92 60%, #8640be 100%);
+    color: #ffffff;
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    box-shadow: 0 20px 45px rgba(59, 0, 77, 0.25);
+    margin-bottom: 4rem;
+  }
+
+  .carreiras-summary,
+  .plataforma-summary {
+    outline: none;
+  }
+
+  .carreiras-mobile-sub,
+  .plataforma-mobile-sub,
+  .plataforma-watermark,
+  .expand-indicator {
+    display: none;
+  }
+
+  .carreiras-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 1.1rem;
+  }
+
+  .carreiras-content h3 {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 0.9rem;
+  }
+
+  .carreiras-desc {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.02rem;
+    line-height: 1.65;
+    max-width: 560px;
+    margin-bottom: 1.5rem;
+  }
+
+  .carreiras-destaques {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .carreiras-destaques li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #ebd4ff;
+  }
+
+  .carreiras-destaques :global(svg) {
+    color: var(--purple-neon);
+  }
+
+  .carreiras-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    background: #ffffff;
+    color: var(--purple-primary);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .carreiras-cta :global(svg) {
+    transition: transform 0.25s ease;
+  }
+
+  .carreiras-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+  }
+
+  .carreiras-cta:hover :global(svg) {
+    transform: translate(3px, -3px);
+  }
+
+  .carreiras-cta:focus-visible {
+    outline: 3px solid var(--purple-neon);
+    outline-offset: 3px;
+  }
+
+  /* Visual decorativo */
+  .carreiras-visual {
+    position: relative;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+  }
+
+  .orbit-1 {
+    width: 170px;
+    height: 170px;
+  }
+
+  .orbit-2 {
+    width: 240px;
+    height: 240px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .visual-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 110px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 40px rgba(210, 168, 255, 0.35);
+    color: #ffffff;
+  }
+
+  .float-chip {
+    position: absolute;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--purple-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    animation: floatChip 4s ease-in-out infinite;
+  }
+
+  .chip-a {
+    top: 22%;
+    left: 8%;
+  }
+
+  .chip-b {
+    bottom: 18%;
+    right: 6%;
+    animation-delay: -2s;
+  }
+
+  @keyframes floatChip {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /* --- Plataformas --- */
+  .plataformas-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #ece4f7;
+  }
+
+  .plataformas-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #0d041a;
+    letter-spacing: -0.5px;
+  }
+
+  .plataformas-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .plataforma-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.75rem;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #ece4f7;
+    box-shadow:
+      inset 0 3px 0 var(--brand),
+      0 4px 20px rgba(102, 44, 146, 0.06);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
+    transition:
+      transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .plataforma-card:hover {
+    transform: translateY(-6px);
+    border-color: color-mix(in srgb, var(--brand) 40%, #ece4f7);
+    box-shadow:
+      inset 0 3px 0 var(--brand),
+      0 16px 36px rgba(59, 0, 77, 0.12);
+  }
+
+  .plataforma-details,
+  .plataforma-details-inner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .plataforma-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  .plataforma-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--brand) 12%, #ffffff);
+    color: var(--brand);
+    transition: transform 0.3s ease;
+  }
+
+  .plataforma-card:hover .plataforma-icon {
+    transform: scale(1.06);
+  }
+
+  .plataforma-empresa {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .plataforma-card h4 {
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: #0d041a;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+
+  .plataforma-desc {
+    color: #4a3a57;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    margin-bottom: 1.1rem;
+  }
+
+  .topicos {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    align-content: flex-start;
+  }
+
+  .topicos li {
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: #f5f0fb;
+    color: #5a3d73;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .plataforma-footer {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0eaff;
+    color: var(--purple-hero);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  @media (min-width: 641px) {
+    .plataforma-footer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: 20px;
+    }
+  }
+
+  .plataforma-footer:focus-visible {
+    outline: 3px solid var(--purple-hero);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .plataforma-footer :global(svg) {
+    transition: transform 0.3s ease;
+  }
+
+  .plataforma-card:hover .plataforma-footer :global(svg) {
+    transform: translate(3px, -3px);
+  }
+
+  /* --- RESPONSIVIDADE --- */
+  @media (max-width: 960px) {
+    .carreiras-card {
+      grid-template-columns: 1fr;
+      padding: 2.5rem 2rem;
+    }
+
+    .carreiras-visual {
+      display: none;
+    }
+
+    .plataformas-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cursos-section {
+      padding: 70px 1.25rem 70px 1.25rem;
+    }
+
+    /* CEUB Carreiras - Mobile Expandível (Estilo Iniciativas) */
+    .carreiras-card {
+      padding: 0;
+      border-radius: 18px;
+      margin-bottom: 2.5rem;
+      min-height: 124px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 12px 30px rgba(59, 0, 77, 0.22);
+    }
+
+    .carreiras-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .carreiras-visual {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      transform: translateY(-50%);
+      width: 150px;
+      height: 150px;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orbit-1 {
+      width: 110px;
+      height: 110px;
+    }
+
+    .orbit-2 {
+      width: 150px;
+      height: 150px;
+    }
+
+    .visual-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      box-shadow: none;
+    }
+
+    .float-chip {
+      display: none;
+    }
+
+    .carreiras-summary {
+      position: relative;
+      padding: 1.25rem 1.25rem 2.3rem 1.25rem;
+      min-height: 124px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .carreiras-summary:focus-visible {
+      outline: 2px solid var(--purple-neon);
+      outline-offset: -2px;
+      border-radius: 18px;
+    }
+
+    .carreiras-kicker {
+      align-self: flex-start;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .carreiras-content h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .carreiras-mobile-sub {
+      display: block;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.4;
+      padding-right: 96px;
+      margin: 0;
+    }
+
+    .carreiras-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+        opacity 0.25s ease;
+    }
+
+    .carreiras-details-inner {
+      overflow: hidden;
+      padding: 0 1.25rem;
+    }
+
+    .carreiras-card.is-expanded .carreiras-details {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .carreiras-card.is-expanded .carreiras-details-inner {
+      padding: 0 1.25rem 1.35rem 1.25rem;
+    }
+
+    .carreiras-desc {
+      padding-top: 0.95rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.93rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .carreiras-destaques {
+      margin-bottom: 1.35rem;
+      gap: 0.5rem 1rem;
+    }
+
+    .carreiras-cta {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Plataformas de Ensino - Mobile Expandível (Estilo Iniciativas) */
+    .plataformas-grid {
+      grid-template-columns: 1fr;
+      gap: 1.15rem;
+    }
+
+    .plataforma-card {
+      padding: 0;
+      border-radius: 16px;
+      min-height: 118px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .plataforma-card:hover {
+      transform: none;
+    }
+
+    .plataforma-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        color-mix(in srgb, var(--brand) 9%, transparent) 0%,
+        color-mix(in srgb, var(--brand) 2%, transparent) 48%,
+        transparent 100%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .plataforma-card.is-expanded {
+      border-color: color-mix(in srgb, var(--brand) 45%, #ece4f7);
+      box-shadow:
+        inset 0 3px 0 var(--brand),
+        0 12px 28px rgba(59, 0, 77, 0.12);
+    }
+
+    .plataforma-watermark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 72px;
+      height: 72px;
+      color: var(--brand);
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .plataforma-summary {
+      position: relative;
+      z-index: 2;
+      padding: 1.2rem 1.25rem 2.25rem 1.25rem;
+      min-height: 118px;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      cursor: pointer;
+    }
+
+    .plataforma-summary:focus-visible {
+      outline: 2px solid var(--purple-hero);
+      outline-offset: -2px;
+      border-radius: 16px;
+    }
+
+    .plataforma-top {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .plataforma-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+    }
+
+    .plataforma-heading-text {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .plataforma-empresa {
+      font-size: 0.7rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .plataforma-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .plataforma-mobile-sub {
+      display: block;
+      font-size: 0.84rem;
+      color: #554266;
+      font-weight: 500;
+      line-height: 1.35;
+      padding-right: 92px;
+      margin: 0;
+    }
+
+    .expand-indicator {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--purple-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    .carreiras-indicator {
+      color: #ebd4ff;
+    }
+
+    .less-text {
+      display: none;
+    }
+
+    .carreiras-card.is-expanded .more-text,
+    .plataforma-card.is-expanded .more-text {
+      display: none;
+    }
+
+    .carreiras-card.is-expanded .less-text,
+    .plataforma-card.is-expanded .less-text {
+      display: inline;
+    }
+
+    .chevron-icon {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .carreiras-card.is-expanded .chevron-icon,
+    .plataforma-card.is-expanded .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .plataforma-details {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+        opacity 0.25s ease;
+    }
+
+    .plataforma-details-inner {
+      overflow: hidden;
+      padding: 0 1.25rem;
+    }
+
+    .plataforma-card.is-expanded .plataforma-details {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .plataforma-card.is-expanded .plataforma-details-inner {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+
+    .plataforma-desc {
+      padding-top: 0.95rem;
+      border-top: 1px solid rgba(102, 44, 146, 0.12);
+      font-size: 0.92rem;
+      margin-bottom: 0.95rem;
+    }
+
+    .topicos {
+      margin-bottom: 1.15rem;
+    }
+
+    .plataforma-footer {
+      width: 100%;
+      justify-content: center;
+      padding: 11px 16px;
+      border-radius: 10px;
+      border-top: none;
+      background: var(--purple-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(102, 44, 146, 0.22);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .float-chip {
+      animation: none;
+    }
+
+    .plataforma-card,
+    .plataforma-card:hover,
+    .carreiras-cta,
+    .carreiras-cta:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,237 @@
+---
+import { Image } from "astro:assets";
+import FiberBackground from "@components/effects/Fiber.jsx";
+import magoRelogio from "@assets/mago/mago-relogio.png";
+---
+
+<section class="beneficios-hero">
+  <div class="fiber-container mobile-gradient-bg">
+    <FiberBackground client:media="(min-width: 768px)" />
+    <div class="dark-overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="text-column">
+        <p class="pre-title">Vantagens de ser aluno</p>
+        <h1 class="title" aria-label="CEUBenefícios">
+          CEU<span class="title-accent">Benefícios</span>
+        </h1>
+        <p class="subtitle">
+          Pesquisa, intercâmbio, bibliotecas digitais e descontos em serviços
+          que você já usa.
+        </p>
+      </div>
+
+      <div class="image-column">
+        <div class="image-wrapper-glow">
+          <Image
+            src={magoRelogio}
+            alt="Mago da monitoria segurando um relógio de bolso"
+            class="mago-img"
+            loading="eager"
+            fetchpriority="high"
+            decoding="sync"
+            quality={90}
+            format="webp"
+            widths={[280, 560]}
+            sizes="(max-width: 992px) 210px, 280px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .beneficios-hero {
+    position: relative;
+    padding: 77px 2rem 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: var(--bg-dark, #0d041a);
+    min-height: min(35vh, 360px);
+    border-bottom: 4px solid var(--purple-hero);
+  }
+
+  .fiber-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .mobile-gradient-bg {
+    background: var(--bg-dark);
+  }
+
+  .mobile-gradient-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--purple-primary);
+    opacity: 0;
+    animation: pulseGradient 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulseGradient {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.8;
+    }
+  }
+
+  .dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 4, 26, 0.4);
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .text-column {
+    flex: 0 0 58%;
+    padding-bottom: 56px;
+    z-index: 2;
+  }
+
+  .pre-title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    margin: 0 0 0.25rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .title {
+    font-size: clamp(2.8rem, 6.5vw, 5.4rem);
+    font-weight: 800;
+    margin: 0 0 0.9rem 0;
+    color: #ffffff;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-left: -3px;
+  }
+
+  .title-accent {
+    color: var(--purple-neon);
+  }
+
+  .subtitle {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .image-column {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-wrapper-glow {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: -85px;
+  }
+
+  .image-wrapper-glow::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(
+      circle,
+      rgba(122, 26, 143, 0.42) 0%,
+      rgba(13, 4, 26, 0) 70%
+    );
+    z-index: -1;
+    border-radius: 50%;
+    bottom: 85px;
+  }
+
+  .mago-img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  }
+
+  /* --- RESPONSIVIDADE MOBILE --- */
+  @media (max-width: 992px) {
+    .beneficios-hero {
+      padding: 40px 0 0 0;
+      min-height: auto;
+    }
+
+    .container {
+      padding: 0 1.25rem;
+    }
+
+    .hero-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.75rem;
+      margin-top: 28px;
+    }
+
+    .text-column {
+      flex: 1;
+      padding-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title {
+      margin-left: 0;
+      letter-spacing: -1px;
+    }
+
+    .image-column {
+      flex: 1;
+      width: 100%;
+    }
+
+    .image-wrapper-glow {
+      margin-bottom: -80px;
+    }
+
+    .mago-img {
+      max-width: 210px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-gradient-bg::before {
+      animation: none;
+      opacity: 0.4;
+    }
+  }
+</style>
