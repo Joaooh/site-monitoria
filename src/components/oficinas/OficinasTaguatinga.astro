@@ -139,8 +139,6 @@ const placeholders = [1, 2, 3];
                     <h3>{oficina.titulo}</h3>
                     <p class="descricao">{oficina.descricao}</p>
 
-
-
                     <a href={oficina.linkInscricao} class="btn-inscrever">
                       Clique para saber mais
                     </a>
@@ -436,7 +434,7 @@ const placeholders = [1, 2, 3];
   }
 
   .info-item svg {
-    color: #7a1a8f;
+    color: var(--purple-hero);
     flex-shrink: 0;
     margin-top: 2px;
   }
@@ -459,7 +457,7 @@ const placeholders = [1, 2, 3];
   }
 
   .btn-inscrever:hover {
-    background: #7a1a8f;
+    background: var(--purple-hero);
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(122, 26, 143, 0.3);
   }

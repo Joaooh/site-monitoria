@@ -12,6 +12,22 @@ import img3D from "@assets/mago/oficinas/monitoria-blender.png";
  * a página detalhada da oficina (ex: "/oficinas/oficina-de-web").
  * Importe a imagem correspondente lá no topo de assets/mago/oficinas.
  */
+
+/**
+ * @typedef {Object} OficinaAtiva
+ * @property {string} id
+ * @property {string} titulo
+ * @property {string} descricao
+ * @property {string[]} turmas
+ * @property {string} formato
+ * @property {import("astro").ImageMetadata} imagem
+ * @property {string} alt
+ * @property {string} linkInscricao
+ * @property {string} [tagSecundaria]
+ * @property {string} [corTag]
+ */
+
+/** @type {OficinaAtiva[]} */
 export const oficinasAtivasData = [
   {
     id: "oficina-blender",

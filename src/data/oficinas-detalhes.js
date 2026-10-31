@@ -122,9 +122,7 @@ export const oficinasDetalhes = [
           "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
-    monitores: [
-      getMonitor("lucas-villas", true),
-    ].filter(Boolean),
+    monitores: [getMonitor("lucas-villas", true)].filter(Boolean),
   },
 
   // --- OFICINA DE JAVA ---
@@ -645,7 +643,7 @@ export const oficinasDetalhes = [
       {
         titulo: "",
         texto:
-          "<div style='background: rgba(122, 26, 143, 0.08); border-left: 4px solid #7a1a8f; padding: 12px 16px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95rem;'>💡 <strong>Dica:</strong> Por envolver conceitos intermediários, esta oficina é <strong>recomendada para estudantes a partir do 3º semestre</strong>. No entanto, se você é calouro e adora desafios, também será super bem-vindo!</div>Esta monitoria foi desenvolvida para apresentar os principais conceitos e práticas envolvidos na construção de aplicações modernas baseadas em Inteligência Artificial. Ao longo do programa, os participantes irão sair do uso de modelos de linguagem por interfaces prontas e aprender como integrá-los, fornecer contexto, conectar ferramentas externas e construir sistemas capazes de executar tarefas de forma estruturada.<br/><br/>A monitoria será realizada ao longo de <strong>três semanas, com encontros às terças e quintas-feiras, das 17h às 19h</strong>. O conteúdo será desenvolvido de forma prática e progressiva, com um único projeto evoluindo ao longo dos seis encontros.<br/><br/>Ao final da monitoria, os participantes deverão ser capazes de consumir modelos de linguagem por API, estruturar contextos, utilizar ferramentas externas, compreender a arquitetura de agentes, reconhecer o papel do MCP e dos SDKs e compreender os fundamentos de RAG.",
+          "<div style='background: rgba(122, 26, 143, 0.08); border-left: 4px solid var(--purple-hero); padding: 12px 16px; border-radius: 4px; margin-bottom: 24px; font-size: 0.95rem;'>💡 <strong>Dica:</strong> Por envolver conceitos intermediários, esta oficina é <strong>recomendada para estudantes a partir do 3º semestre</strong>. No entanto, se você é calouro e adora desafios, também será super bem-vindo!</div>Esta monitoria foi desenvolvida para apresentar os principais conceitos e práticas envolvidos na construção de aplicações modernas baseadas em Inteligência Artificial. Ao longo do programa, os participantes irão sair do uso de modelos de linguagem por interfaces prontas e aprender como integrá-los, fornecer contexto, conectar ferramentas externas e construir sistemas capazes de executar tarefas de forma estruturada.<br/><br/>A monitoria será realizada ao longo de <strong>três semanas, com encontros às terças e quintas-feiras, das 17h às 19h</strong>. O conteúdo será desenvolvido de forma prática e progressiva, com um único projeto evoluindo ao longo dos seis encontros.<br/><br/>Ao final da monitoria, os participantes deverão ser capazes de consumir modelos de linguagem por API, estruturar contextos, utilizar ferramentas externas, compreender a arquitetura de agentes, reconhecer o papel do MCP e dos SDKs e compreender os fundamentos de RAG.",
       },
       {
         titulo: "O que você vai aprender:",

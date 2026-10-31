@@ -1,6 +1,21 @@
 ---
 import { Image } from "astro:assets";
 import { oficinasAtivasData } from "@data/oficinas-ativas.js";
+
+interface OficinaAtiva {
+  id: string;
+  titulo: string;
+  descricao: string;
+  turmas: string[];
+  formato: string;
+  imagem: ImageMetadata;
+  alt: string;
+  linkInscricao: string;
+  tagSecundaria?: string;
+  corTag?: string;
+}
+
+const oficinas = oficinasAtivasData as OficinaAtiva[];
 ---
 
 <section class="oficinas-ativas-section" id="oficinas-ativas">
@@ -13,7 +28,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
 
     <div class="cards-grid">
       {
-        oficinasAtivasData.map((oficina) => (
+        oficinas.map((oficina) => (
           <article class="card">
             <div class="card-image-wrapper">
               <Image
@@ -102,7 +117,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
     display: inline-block;
     padding: 6px 14px;
     background: rgba(122, 26, 143, 0.1);
-    color: #7a1a8f;
+    color: var(--purple-hero);
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -246,7 +261,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
   }
 
   .info-item svg {
-    color: #7a1a8f;
+    color: var(--purple-hero);
     flex-shrink: 0;
     margin-top: 2px;
   }
@@ -269,7 +284,7 @@ import { oficinasAtivasData } from "@data/oficinas-ativas.js";
   }
 
   .btn-inscrever:hover {
-    background: #7a1a8f;
+    background: var(--purple-hero);
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(122, 26, 143, 0.3);
   }

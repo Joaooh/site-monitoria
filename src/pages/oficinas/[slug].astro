@@ -94,7 +94,11 @@ const { oficina } = Astro.props;
 
                 if (btn.link === "#" || !btn.link) {
                   return (
-                    <button class="btn btn-secondary" style="opacity: 0.6; cursor: not-allowed;" disabled>
+                    <button
+                      class="btn btn-secondary"
+                      style="opacity: 0.6; cursor: not-allowed;"
+                      disabled
+                    >
                       Em breve
                     </button>
                   );
@@ -256,7 +260,7 @@ const { oficina } = Astro.props;
     align-self: flex-start;
     padding: 6px 14px;
     background: rgba(122, 26, 143, 0.1);
-    color: #7a1a8f;
+    color: var(--purple-hero);
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 700;
