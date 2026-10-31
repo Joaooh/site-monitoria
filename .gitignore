@@ -29,3 +29,7 @@ lerna-debug.log*
 
 # semantic-release
 .releaserc
+
+# ai
+.agents
+skills-lock.json
