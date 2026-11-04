@@ -1,57 +1,58 @@
 import imgPadrao from "@assets/mago/mago-padrao.png";
-import imgAngelo from "@assets/equipe/angelo.jpeg";
-import imgArthurArash from "@assets/equipe/arthur-arash.png";
-import imgEnzo from "@assets/equipe/enzo-rodrigues.jpeg";
-import imgFelipeBarcelos from "@assets/equipe/felipe-barcelos.png";
-import imgFelipeRodrigues from "@assets/equipe/felipe-rodrigues.png";
-import imgFilipeCampos from "@assets/equipe/filipe-campos.jpg";
-import imgGabrielBecker from "@assets/equipe/gabriel-becker.jpg";
-import imgGabrielCaramez from "@assets/equipe/gabriel-caramez.jpg";
-import imgGabrielSoares from "@assets/equipe/gabriel-soares.png";
-import imgGuilhermeFernandes from "@assets/equipe/guilherme-fernandes.jpeg";
-import imgIsaacLovisi from "@assets/equipe/isaac-lovisi.jpeg";
-import imgIsabellaOliveira from "@assets/equipe/isabella-oliveira.jpeg";
-import imgJessForster from "@assets/equipe/jess-forster.jpg";
-import imgJoaoGabriel from "@assets/equipe/joao-gabriel.png";
-import imgKaynan from "@assets/equipe/kaynan.jpeg";
-import imgLeonardoCespedes from "@assets/equipe/leonardo-cespedes.jpg";
-import imgLucasBorges from "@assets/equipe/lucas-borges.jpg";
-import imgLucasMoura from "@assets/equipe/lucas-moura.jpg";
-import imgLucasPaiva from "@assets/equipe/lucas-paiva.jpg";
-import imgLucasVillas from "@assets/equipe/lucas-villas.jpg";
-import imgLuizNicolau from "@assets/equipe/luiz-nicolau.jpeg";
-import imgOtavioOliveira from "@assets/equipe/otavio-oliveira.jpeg";
-import imgPedroCalderon from "@assets/equipe/pedro-calderon.jpg";
-import imgPedroQuartin from "@assets/equipe/pedro-quartin.jpg";
-import imgScielBuitrago from "@assets/equipe/sciel-buitrago.jpeg";
-import imgThaisRegina from "@assets/equipe/thais-regina.jpg";
-import imgSavioNery from "@assets/equipe/savio-nery.jpg";
-import imgBrunoDluka from "@assets/equipe/bruno-dluka.jpg";
-import imgCaioGodoy from "@assets/equipe/caio-godoy.jpg";
-import imgDanielGodoi from "@assets/equipe/daniel-godoi.jpg";
-import imgPietraPaz from "@assets/equipe/pietra-paz.jpg";
-import imgLeticiaBorsaro from "@assets/equipe/leticia-borsaro.jpg";
-import imgMarcoMarques from "@assets/equipe/marco-marques.jpg";
-import imgJoaoSoupa from "@assets/equipe/joao-soupa.jpg";
-import imgFelipeRios from "@assets/equipe/felipe-rios.jpg";
-import imgRicardoBonna from "@assets/equipe/ricardo-bonna.jpg";
-import imgMatheusCouto from "@assets/equipe/matheus-couto.jpeg";
-import imgIvinVaz from "@assets/equipe/ivin-vaz.jpg";
-import imgPolverari from "@assets/equipe/polverari.jpg";
-import imgGabrielCotts from "@assets/equipe/gabriel-cotts.jpeg";
-import imgErickCardoso from "@assets/equipe/erick-cardoso.jpeg";
-import imgRyanAugusto from "@assets/equipe/ryan-augusto.jpeg";
-import imgMatheusMorais from "@assets/equipe/matheus-morais.jpeg";
-import imgEduardoAlves from "@assets/equipe/eduardo-alves.jpeg";
-import imgThalis from "@assets/equipe/thalis-alexandre.jpeg";
-import imgLucasDelvico from "@assets/equipe/lucas-delvico.jpeg";
-import imgKauanVinicius from "@assets/equipe/kauan-vinicius.jpeg";
-import imgEmilyMendes from "@assets/equipe/emily-mendes.jpeg";
-import imgVictorFernandes from "@assets/equipe/victor-fernandes.jpeg";
+import imgAngelo from "@assets/equipe/angelo.webp";
+import imgArthurArash from "@assets/equipe/arthur-arash.webp";
+import imgEnzo from "@assets/equipe/enzo-rodrigues.webp";
+import imgFelipeBarcelos from "@assets/equipe/felipe-barcelos.webp";
+import imgFelipeRodrigues from "@assets/equipe/felipe-rodrigues.webp";
+import imgFilipeCampos from "@assets/equipe/filipe-campos.webp";
+import imgGabrielBecker from "@assets/equipe/gabriel-becker.webp";
+import imgGabrielCaramez from "@assets/equipe/gabriel-caramez.webp";
+import imgGabrielSoares from "@assets/equipe/gabriel-soares.webp";
+import imgGuilhermeFernandes from "@assets/equipe/guilherme-fernandes.webp";
+import imgIsaacLovisi from "@assets/equipe/isaac-lovisi.webp";
+import imgIsabellaOliveira from "@assets/equipe/isabella-oliveira.webp";
+import imgJessForster from "@assets/equipe/jess-forster.webp";
+import imgJoaoGabriel from "@assets/equipe/joao-gabriel.webp";
+import imgKaynan from "@assets/equipe/kaynan.webp";
+import imgLeonardoCespedes from "@assets/equipe/leonardo-cespedes.webp";
+import imgLucasBorges from "@assets/equipe/lucas-borges.webp";
+import imgLucasMoura from "@assets/equipe/lucas-moura.webp";
+import imgLucasPaiva from "@assets/equipe/lucas-paiva.webp";
+import imgLucasVillas from "@assets/equipe/lucas-villas.webp";
+import imgLuizNicolau from "@assets/equipe/luiz-nicolau.webp";
+import imgOtavioOliveira from "@assets/equipe/otavio-oliveira.webp";
+import imgPedroCalderon from "@assets/equipe/pedro-calderon.webp";
+import imgPedroQuartin from "@assets/equipe/pedro-quartin.webp";
+import imgScielBuitrago from "@assets/equipe/sciel-buitrago.webp";
+import imgThaisRegina from "@assets/equipe/thais-regina.webp";
+import imgSavioNery from "@assets/equipe/savio-nery.webp";
+import imgBrunoDluka from "@assets/equipe/bruno-dluka.webp";
+import imgCaioGodoy from "@assets/equipe/caio-godoy.webp";
+import imgDanielGodoi from "@assets/equipe/daniel-godoi.webp";
+import imgPietraPaz from "@assets/equipe/pietra-paz.webp";
+import imgLeticiaBorsaro from "@assets/equipe/leticia-borsaro.webp";
+import imgMarcoMarques from "@assets/equipe/marco-marques.webp";
+import imgJoaoSoupa from "@assets/equipe/joao-soupa.webp";
+import imgFelipeRios from "@assets/equipe/felipe-rios.webp";
+import imgRicardoBonna from "@assets/equipe/ricardo-bonna.webp";
+import imgMatheusCouto from "@assets/equipe/matheus-couto.webp";
+import imgIvinVaz from "@assets/equipe/ivin-vaz.webp";
+import imgPolverari from "@assets/equipe/polverari.webp";
+import imgGabrielCotts from "@assets/equipe/gabriel-cotts.webp";
+import imgErickCardoso from "@assets/equipe/erick-cardoso.webp";
+import imgRyanAugusto from "@assets/equipe/ryan-augusto.webp";
+import imgMatheusMorais from "@assets/equipe/matheus-morais.webp";
+import imgEduardoAlves from "@assets/equipe/eduardo-alves.webp";
+import imgThalis from "@assets/equipe/thalis-alexandre.webp";
+import imgLucasDelvico from "@assets/equipe/lucas-delvico.webp";
+import imgKauanVinicius from "@assets/equipe/kauan-vinicius.webp";
+import imgEmilyMendes from "@assets/equipe/emily-mendes.webp";
+import imgVictorFernandes from "@assets/equipe/victor-fernandes.webp";
+import imgLuizFellipe from "@assets/equipe/luiz-fellipe.webp";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
- * 1. Importe a foto do monitor lá no topo usando (import imgNome from "@assets/equipe/foto.jpg").
+ * 1. Importe a foto do monitor lá no topo usando (import imgNome from "@assets/equipe/foto.webp").
  * 2. Crie um novo bloco no array abaixo contendo: id, nome, descricao, foto, ativo, linkedin e github.
  * 3. Se 'ativo: true', ele aparece como monitor atual. Se 'ativo: false', vai pra aba de Ex-Membros.
  * 4. Coloque null em linkedin/github se o membro não tiver ou não quiser exibir o link.
@@ -467,6 +468,17 @@ export const equipeData = [
     ativo: true,
     linkedin: "https://www.linkedin.com/in/victor-fernandes21/",
     github: "https://github.com/VictorFerna",
+  },
+  {
+    id: "luiz-fellipe",
+    nome: "Luiz Fellipe Zago",
+    descricao:
+      "Desenvolvedor Back-End | Python | Java | Entusiasta em Desenvolvimento Gráfico",
+    foto: imgLuizFellipe,
+    ativo: true,
+    linkedin:
+      "https://www.linkedin.com/in/luiz-fellipe-pereira-zago-belem-8221043b4/",
+    github: "https://github.com/luizfellipepzb",
   },
 
   // ==========================================

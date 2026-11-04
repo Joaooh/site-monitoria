@@ -122,7 +122,10 @@ export const oficinasDetalhes = [
           "Preencha o formulário de inscrição para garantir sua participação. <strong>As vagas são limitadas.</strong>",
       },
     ],
-    monitores: [getMonitor("lucas-villas", true)].filter(Boolean),
+    monitores: [
+      getMonitor("lucas-villas", true),
+      getMonitor("luiz-fellipe"),
+    ].filter(Boolean),
   },
 
   // --- OFICINA DE JAVA ---
