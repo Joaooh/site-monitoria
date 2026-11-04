@@ -113,14 +113,29 @@ const videosEnriquecidos = await Promise.all(
     };
   }),
 );
+const tituloCurto = playlist.titulo.includes(" - ")
+  ? playlist.titulo.split(" - ")[0]
+  : playlist.titulo;
+const rawTitle = `Aulas: ${playlist.titulo} | Monitoria CEUB`;
+const pageTitle =
+  rawTitle.length > 70
+    ? `Aulas: ${tituloCurto} | Monitoria de TI - CEUB`
+    : rawTitle;
 ---
 
-<Layout title={`Aulas - ${playlist.titulo} | Monitoria de TI - CEUB`}>
+<Layout
+  title={pageTitle}
+  description={`Assista às aulas gravadas de ${playlist.titulo} ministradas pela Monitoria de TI do CEUB.`}
+>
   <div class="playlist-page">
     <header class="playlist-header-top">
       <div class="header-content">
         <div class="header-logo-section">
-          <a href="/" class="logo-link">
+          <a
+            href="/"
+            class="logo-link"
+            aria-label="Voltar para a página inicial"
+          >
             <Image
               src={logoCeubLight}
               alt="Logo do CEUB"

@@ -11,8 +11,10 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
 
       <div class="titulos-cabecalho">
         <div class="wrapper-titulo-central">
-          <h1>CALENDÁRIO DE OFICINAS</h1>
-          <h2>Ciência da Computação & Ciência de Dados • 2026.2</h2>
+          <h2 class="calendario-titulo">CALENDÁRIO DE OFICINAS</h2>
+          <p class="calendario-subtitulo">
+            Ciência da Computação & Ciência de Dados • 2026.2
+          </p>
         </div>
       </div>
 
@@ -224,8 +226,8 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     const logos = cabecalho.querySelectorAll(".logo-cabecalho");
     const titulos = cabecalho.querySelector(".titulos-cabecalho");
     const wrapperCentral = cabecalho.querySelector(".wrapper-titulo-central");
-    const h1 = cabecalho.querySelector("h1");
-    const h2 = cabecalho.querySelector("h2");
+    const h1 = cabecalho.querySelector(".calendario-titulo");
+    const h2 = cabecalho.querySelector(".calendario-subtitulo");
     const botaoExportar = document.querySelector(".btn-exportar");
     const posicaoScroll = window.scrollY;
     const estiloOriginalCabecalho = cabecalho.getAttribute("style") || "";
@@ -520,15 +522,16 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     text-align: center;
   }
 
-  .titulos-cabecalho h1 {
+  .titulos-cabecalho .calendario-titulo {
     font-size: 2rem;
+    font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
     letter-spacing: 1px;
     text-align: center;
     width: 100%;
   }
-  .titulos-cabecalho h2 {
+  .titulos-cabecalho .calendario-subtitulo {
     font-size: 1rem;
     color: var(--purple-primary) !important;
     font-weight: 600;
@@ -536,6 +539,7 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     text-transform: uppercase;
     text-align: center;
     width: 100%;
+    margin: 0;
   }
   .logo-cabecalho {
     width: 80px;
@@ -590,7 +594,7 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
     .linha-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-    .titulos-cabecalho h1 {
+    .titulos-cabecalho .calendario-titulo {
       font-size: 1.6rem;
     }
   }
@@ -631,10 +635,10 @@ import { dadosCalendario, mesesParaGerar } from "@data/calendario.js";
       margin-top: 0;
       display: block;
     }
-    .titulos-cabecalho h1 {
+    .titulos-cabecalho .calendario-titulo {
       font-size: 1.4rem;
     }
-    .titulos-cabecalho h2 {
+    .titulos-cabecalho .calendario-subtitulo {
       font-size: 0.85rem;
     }
 

@@ -36,6 +36,8 @@ import { oportunidadesCeub } from "@data/beneficios.js";
                   src={item.imagem}
                   alt={item.titulo}
                   class="media-img"
+                  loading="lazy"
+                  decoding="async"
                   quality={70}
                   format="webp"
                   widths={[400, 800]}
@@ -210,6 +212,7 @@ import { oportunidadesCeub } from "@data/beneficios.js";
     border-radius: 20px;
     overflow: hidden;
     overflow: clip;
+    contain: layout paint;
     isolation: isolate;
     display: flex;
     flex-direction: column;
@@ -221,17 +224,12 @@ import { oportunidadesCeub } from "@data/beneficios.js";
     scroll-margin-top: 96px;
   }
 
-  .oportunidade-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(122, 26, 143, 0.3);
-    box-shadow: 0 16px 36px rgba(59, 0, 77, 0.14);
-  }
-
   .media {
     position: relative;
     height: 196px;
     overflow: hidden;
     overflow: clip;
+    contain: layout paint;
     isolation: isolate;
     background: linear-gradient(135deg, #2a0f45 0%, #662c92 60%, #8640be 100%);
     flex-shrink: 0;
@@ -243,10 +241,6 @@ import { oportunidadesCeub } from "@data/beneficios.js";
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
-  }
-
-  .oportunidade-card:hover .media-img {
-    transform: scale(1.04);
   }
 
   .media-placeholder {
@@ -287,11 +281,6 @@ import { oportunidadesCeub } from "@data/beneficios.js";
       background-color 0.3s ease;
   }
 
-  .oportunidade-card:hover .placeholder-ring {
-    border-color: rgba(255, 255, 255, 0.38);
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-
   .placeholder-icon {
     position: relative;
     z-index: 1;
@@ -311,10 +300,27 @@ import { oportunidadesCeub } from "@data/beneficios.js";
       box-shadow 0.3s ease;
   }
 
-  .oportunidade-card:hover .placeholder-icon {
-    background: rgba(255, 255, 255, 0.22);
-    border-color: rgba(255, 255, 255, 0.48);
-    box-shadow: 0 10px 26px rgba(13, 4, 21, 0.38);
+  @media (hover: hover) and (pointer: fine) {
+    .oportunidade-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(122, 26, 143, 0.3);
+      box-shadow: 0 16px 36px rgba(59, 0, 77, 0.14);
+    }
+
+    .oportunidade-card:hover .media-img {
+      transform: scale(1.04);
+    }
+
+    .oportunidade-card:hover .placeholder-ring {
+      border-color: rgba(255, 255, 255, 0.38);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .oportunidade-card:hover .placeholder-icon {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.48);
+      box-shadow: 0 10px 26px rgba(13, 4, 21, 0.38);
+    }
   }
 
   .secao-badge {
@@ -446,12 +452,6 @@ import { oportunidadesCeub } from "@data/beneficios.js";
       box-shadow 0.3s ease;
   }
 
-  .card-cta:hover {
-    background: var(--purple-hero);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(122, 26, 143, 0.3);
-  }
-
   .card-cta.is-static {
     background: #f1e8fb;
     color: var(--purple-primary);
@@ -459,8 +459,18 @@ import { oportunidadesCeub } from "@data/beneficios.js";
     font-size: 0.92rem;
   }
 
-  .card-cta.is-static:hover {
-    transform: none;
+  @media (hover: hover) and (pointer: fine) {
+    .card-cta:hover {
+      background: var(--purple-hero);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(122, 26, 143, 0.3);
+    }
+
+    .card-cta.is-static:hover {
+      background: #f1e8fb;
+      box-shadow: none;
+      transform: none;
+    }
   }
 
   /* --- RESPONSIVIDADE MOBILE --- */

@@ -16,7 +16,10 @@ const getImagemParaPlaylist = (slug: string) => {
 };
 ---
 
-<Layout title="Playlists | Monitoria de TI - CEUB">
+<Layout
+  title="Playlists | Monitoria de TI - CEUB"
+  description="Assista às aulas gravadas das oficinas da Monitoria de TI do CEUB: Ciência de Dados, Machine Learning, SQL, Python, Modelagem 3D e mais."
+>
   <main class="playlists-page">
     <section class="playlists-hero">
       <div class="fiber-container mobile-gradient-bg">
@@ -102,7 +105,7 @@ const getImagemParaPlaylist = (slug: string) => {
                             </div>
                             <div class="video-info">
                               <span class="ep-number">Aula {index + 1}</span>
-                              <h4>Disponível em breve</h4>
+                              <h3>Disponível em breve</h3>
                             </div>
                           </div>
                         );
@@ -147,7 +150,7 @@ const getImagemParaPlaylist = (slug: string) => {
                           </div>
                           <div class="video-info">
                             <span class="ep-number">Aula {index + 1}</span>
-                            <h4>{vid.title}</h4>
+                            <h3>{vid.title}</h3>
                           </div>
                         </a>
                       );
@@ -585,7 +588,7 @@ const getImagemParaPlaylist = (slug: string) => {
     letter-spacing: 0.5px;
   }
 
-  .video-info h4 {
+  .video-info h3 {
     font-size: 1.05rem;
     color: #1a1a24;
     margin-top: 6px;
@@ -597,7 +600,7 @@ const getImagemParaPlaylist = (slug: string) => {
     overflow: hidden;
   }
 
-  .empty-card .video-info h4 {
+  .empty-card .video-info h3 {
     color: #444;
   }
 

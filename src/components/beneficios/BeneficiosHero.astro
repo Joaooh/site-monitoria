@@ -31,7 +31,7 @@ import magoRelogio from "@assets/mago/mago-relogio.png";
             class="mago-img"
             loading="eager"
             fetchpriority="high"
-            decoding="sync"
+            decoding="async"
             quality={90}
             format="webp"
             widths={[280, 560]}
@@ -51,6 +51,8 @@ import magoRelogio from "@assets/mago/mago-relogio.png";
     justify-content: center;
     align-items: flex-end;
     overflow: hidden;
+    overflow: clip;
+    contain: layout paint;
     background-color: var(--bg-dark, #0d041a);
     min-height: min(35vh, 360px);
     border-bottom: 4px solid var(--purple-hero);
@@ -66,21 +68,24 @@ import magoRelogio from "@assets/mago/mago-relogio.png";
     background: var(--bg-dark);
   }
 
-  .mobile-gradient-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--purple-primary);
-    opacity: 0;
-    animation: pulseGradient 8s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulseGradient {
-    0% {
+  @media (max-width: 767px) {
+    .mobile-gradient-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--purple-primary);
       opacity: 0;
+      will-change: opacity;
+      animation: pulseGradient 8s ease-in-out infinite alternate;
     }
-    100% {
-      opacity: 0.8;
+
+    @keyframes pulseGradient {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0.8;
+      }
     }
   }
 

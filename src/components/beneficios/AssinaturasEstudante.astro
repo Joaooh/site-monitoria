@@ -169,42 +169,46 @@ const labelCategoria = (id: string) =>
 
 <script>
   function initFiltrosBeneficios() {
-    const section = document.querySelector("#assinaturas");
-    if (!section) return;
+    const section = document.querySelector<HTMLElement>("#assinaturas");
+    if (!section || section.dataset.filtrosBound === "true") return;
+    section.dataset.filtrosBound = "true";
 
+    const filtrosContainer = section.querySelector<HTMLElement>(".filtros");
     const botoes = section.querySelectorAll<HTMLButtonElement>(".filtro");
     const itens = section.querySelectorAll<HTMLElement>(".assinatura-item");
     const status = section.querySelector<HTMLElement>("[data-filtro-status]");
 
-    botoes.forEach((botao) => {
-      botao.addEventListener("click", () => {
-        const filtro = botao.dataset.filtro;
-        let visiveis = 0;
+    filtrosContainer?.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement | null;
+      const botao = target?.closest<HTMLButtonElement>(".filtro");
+      if (!botao || botao.getAttribute("aria-pressed") === "true") return;
 
-        botoes.forEach((b) =>
-          b.setAttribute("aria-pressed", String(b === botao)),
-        );
+      const filtro = botao.dataset.filtro;
+      let visiveis = 0;
 
-        const paraAnimar: HTMLElement[] = [];
-        itens.forEach((item) => {
-          const mostrar =
-            filtro === "todos" || item.dataset.categoria === filtro;
-          item.classList.remove("is-entering");
-          item.hidden = !mostrar;
-          if (mostrar) {
-            visiveis++;
-            paraAnimar.push(item);
-          }
-        });
+      botoes.forEach((b) =>
+        b.setAttribute("aria-pressed", String(b === botao)),
+      );
 
-        requestAnimationFrame(() => {
-          paraAnimar.forEach((item) => item.classList.add("is-entering"));
-        });
-
-        if (status) {
-          status.textContent = `${visiveis} benefício${visiveis === 1 ? "" : "s"} exibido${visiveis === 1 ? "" : "s"}.`;
+      const paraAnimar: HTMLElement[] = [];
+      itens.forEach((item) => {
+        const mostrar =
+          filtro === "todos" || item.dataset.categoria === filtro;
+        item.classList.remove("is-entering");
+        item.hidden = !mostrar;
+        if (mostrar) {
+          visiveis++;
+          paraAnimar.push(item);
         }
       });
+
+      requestAnimationFrame(() => {
+        paraAnimar.forEach((item) => item.classList.add("is-entering"));
+      });
+
+      if (status) {
+        status.textContent = `${visiveis} benefício${visiveis === 1 ? "" : "s"} exibido${visiveis === 1 ? "" : "s"}.`;
+      }
     });
   }
 
@@ -217,7 +221,10 @@ const labelCategoria = (id: string) =>
     padding: 100px 2rem 110px 2rem;
     position: relative;
     overflow: hidden;
+    overflow: clip;
     scroll-margin-top: 40px;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
   }
 
   .assinaturas-section::before {
@@ -309,10 +316,12 @@ const labelCategoria = (id: string) =>
       border-color 0.25s ease;
   }
 
-  .filtro:hover {
-    color: var(--text-main);
-    border-color: rgba(210, 168, 255, 0.45);
-    background: rgba(210, 168, 255, 0.08);
+  @media (hover: hover) and (pointer: fine) {
+    .filtro:hover {
+      color: var(--text-main);
+      border-color: rgba(210, 168, 255, 0.45);
+      background: rgba(210, 168, 255, 0.08);
+    }
   }
 
   .filtro[aria-pressed="true"] {
@@ -379,6 +388,7 @@ const labelCategoria = (id: string) =>
     color: inherit;
     overflow: hidden;
     overflow: clip;
+    contain: layout paint;
     isolation: isolate;
     transition:
       transform 0.3s ease,
@@ -413,16 +423,34 @@ const labelCategoria = (id: string) =>
     transition: opacity 0.35s ease;
   }
 
-  .assinatura-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(210, 168, 255, 0.5);
-    box-shadow:
-      0 15px 30px rgba(0, 0, 0, 0.4),
-      0 0 25px rgba(102, 44, 146, 0.3);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .assinatura-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(210, 168, 255, 0.5);
+      box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(102, 44, 146, 0.3);
+    }
 
-  .assinatura-card:hover::after {
-    opacity: 0.28;
+    .assinatura-card:hover::after {
+      opacity: 0.28;
+    }
+
+    .assinatura-card:hover .brand-tile {
+      transform: scale(1.06) translateZ(0);
+      border-color: color-mix(
+        in srgb,
+        var(--brand) 70%,
+        rgba(210, 168, 255, 0.45)
+      );
+      box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.5),
+        0 0 22px color-mix(in srgb, var(--brand) 40%, transparent);
+    }
+
+    .assinatura-card:hover .card-footer :global(svg) {
+      transform: translate(3px, -3px);
+    }
   }
 
   .card-summary {
@@ -473,18 +501,6 @@ const labelCategoria = (id: string) =>
       transform 0.3s ease,
       border-color 0.3s ease,
       box-shadow 0.3s ease;
-  }
-
-  .assinatura-card:hover .brand-tile {
-    transform: scale(1.06) translateZ(0);
-    border-color: color-mix(
-      in srgb,
-      var(--brand) 70%,
-      rgba(210, 168, 255, 0.45)
-    );
-    box-shadow:
-      0 8px 22px rgba(0, 0, 0, 0.5),
-      0 0 22px color-mix(in srgb, var(--brand) 40%, transparent);
   }
 
   .brand-logo {
@@ -587,10 +603,6 @@ const labelCategoria = (id: string) =>
     transition: transform 0.3s ease;
   }
 
-  .assinatura-card:hover .card-footer :global(svg) {
-    transform: translate(3px, -3px);
-  }
-
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 640px) {
     .assinaturas-section {
@@ -624,8 +636,7 @@ const labelCategoria = (id: string) =>
       min-height: 120px;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(42, 16, 68, 0.85);
     }
 
     .assinatura-card:hover {

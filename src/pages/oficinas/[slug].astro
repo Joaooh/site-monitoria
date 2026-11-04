@@ -15,9 +15,27 @@ export async function getStaticPaths() {
 }
 
 const { oficina } = Astro.props;
+
+const rawTexto = (oficina.sobre?.[0]?.texto ?? "")
+  .replace(/<[^>]*>/g, " ")
+  .replace(/\s+/g, " ")
+  .trim();
+
+const descricaoOficina = rawTexto
+  ? rawTexto.length > 155
+    ? `${rawTexto.slice(0, 152).trim()}...`
+    : rawTexto
+  : `${oficina.titulo} na Monitoria de TI do CEUB (${oficina.campus}). Confira horários, conteúdos e inscreva-se gratuitamente.`;
+const pageTitle =
+  oficina.titulo.length > 42
+    ? `${oficina.titulo} | Monitoria CEUB`
+    : `${oficina.titulo} | Monitoria de TI - CEUB`;
 ---
 
-<Layout title={`${oficina.titulo} | Monitoria de TI - CEUB`}>
+<Layout
+  title={pageTitle}
+  description={descricaoOficina}
+>
   <main class="oficina-page">
     <OficinaInternaHero
       preTexto="Oficina de"
@@ -58,7 +76,7 @@ const { oficina } = Astro.props;
         </div>
 
         <div class="header-info">
-          <h1>{oficina.titulo}</h1>
+          <h2 class="oficina-subheading">{oficina.titulo}</h2>
 
           <div class="meta-info">
             <span class="campus-tag">{oficina.campus}</span>
@@ -241,12 +259,14 @@ const { oficina } = Astro.props;
     flex-direction: column;
   }
 
-  .header-info h1 {
+  .header-info .oficina-subheading {
     font-size: clamp(1.8rem, 3vw, 2.2rem);
     color: #3b004d;
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    padding-bottom: 0;
+    border-bottom: none;
   }
 
   .meta-info {

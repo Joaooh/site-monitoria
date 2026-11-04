@@ -15,7 +15,7 @@ interface Props {
 
 const {
   title,
-  description = "Site oficial da Monitoria de TI do CEUB. Construindo conhecimento na prática através de oficinas e projetos para os cursos de Ciência da Computação, Engenharia de Software, Engenharia de Computação e Análise e Desenvolvimento de Sistemas (ADS).",
+  description = "Site oficial da Monitoria de TI do CEUB. Oficinas práticas, monitorias e projetos para os cursos de Ciência da Computação, Engenharia e ADS.",
   bodyClass = "",
   image = "/site-preview.jpg",
   hideNavbar = false,
@@ -48,11 +48,12 @@ const currentPath = Astro.url.pathname;
     <meta property="og:image" content={new URL(image, Astro.url).href} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url).href} />
+    <meta name="twitter:image:alt" content={title} />
 
     <!-- Canonical URL -->
     <link

@@ -127,7 +127,7 @@ const passos = [
 
 <Layout
   title="CEUBenefícios | Monitoria de TI - CEUB"
-  description="Descubra todas as vantagens e benefícios de ser estudante do UniCEUB: iniciação científica (PIC), intercâmbio, bibliotecas digitais, Passe Livre, CEUB Carreiras, cursos da Cisco, AWS e IBM, e descontos em GitHub Pro, JetBrains, Azure, Figma, Adobe, Spotify e mais."
+  description="Descubra os benefícios de ser aluno do CEUB: iniciação científica, intercâmbio, cursos Cisco, AWS e IBM, além de GitHub Pro, JetBrains, Azure e mais."
 >
   <script
     type="application/ld+json"
@@ -304,6 +304,8 @@ const passos = [
     box-shadow: 0 12px 40px rgba(102, 44, 146, 0.12);
     border: 1px solid #f0eaff;
     overflow: hidden;
+    overflow: clip;
+    contain: layout paint;
   }
 
   .resumo li + li {
@@ -320,8 +322,10 @@ const passos = [
     transition: background 0.25s ease;
   }
 
-  .resumo-item:hover {
-    background: #faf6fe;
+  @media (hover: hover) and (pointer: fine) {
+    .resumo-item:hover {
+      background: #faf6fe;
+    }
   }
 
   .resumo-icon {
@@ -360,6 +364,8 @@ const passos = [
   .como-garantir {
     padding: 100px 2rem 100px 2rem;
     scroll-margin-top: 40px;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 520px;
   }
 
   .section-header {
@@ -413,14 +419,18 @@ const passos = [
     border-radius: 18px;
     background: #ddd1ff;
     overflow: hidden;
+    overflow: clip;
+    contain: layout paint;
     transition:
       transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
       box-shadow 0.3s ease;
   }
 
-  .passo:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(59, 0, 77, 0.15);
+  @media (hover: hover) and (pointer: fine) {
+    .passo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(59, 0, 77, 0.15);
+    }
   }
 
   .passo-num {

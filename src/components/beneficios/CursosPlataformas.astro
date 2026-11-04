@@ -211,6 +211,8 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     color: #1a1a24;
     padding: 100px 2rem 90px 2rem;
     scroll-margin-top: 40px;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
   }
 
   .container {
@@ -282,6 +284,7 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     color: #ffffff;
     overflow: hidden;
     overflow: clip;
+    contain: layout paint;
     isolation: isolate;
     box-shadow: 0 20px 45px rgba(59, 0, 77, 0.25);
     margin-bottom: 4rem;
@@ -373,13 +376,15 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     transition: transform 0.25s ease;
   }
 
-  .carreiras-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .carreiras-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+    }
 
-  .carreiras-cta:hover :global(svg) {
-    transform: translate(3px, -3px);
+    .carreiras-cta:hover :global(svg) {
+      transform: translate(3px, -3px);
+    }
   }
 
   .carreiras-cta:focus-visible {
@@ -422,9 +427,8 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     width: 110px;
     height: 110px;
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.18);
     border: 1px solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
     box-shadow: 0 0 40px rgba(210, 168, 255, 0.35);
     color: #ffffff;
   }
@@ -438,6 +442,7 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     font-size: 0.8rem;
     font-weight: 700;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    will-change: transform;
     animation: floatChip 4s ease-in-out infinite;
   }
 
@@ -504,19 +509,12 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     color: inherit;
     overflow: hidden;
     overflow: clip;
+    contain: layout paint;
     isolation: isolate;
     transition:
       transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
       box-shadow 0.3s ease,
       border-color 0.3s ease;
-  }
-
-  .plataforma-card:hover {
-    transform: translateY(-6px);
-    border-color: color-mix(in srgb, var(--brand) 40%, #ece4f7);
-    box-shadow:
-      inset 0 3px 0 var(--brand),
-      0 16px 36px rgba(59, 0, 77, 0.12);
   }
 
   .plataforma-details,
@@ -542,11 +540,28 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     border-radius: 14px;
     background: color-mix(in srgb, var(--brand) 12%, #ffffff);
     color: var(--brand);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
     transition: transform 0.3s ease;
   }
 
-  .plataforma-card:hover .plataforma-icon {
-    transform: scale(1.06);
+  @media (hover: hover) and (pointer: fine) {
+    .plataforma-card:hover {
+      transform: translateY(-6px);
+      border-color: color-mix(in srgb, var(--brand) 40%, #ece4f7);
+      box-shadow:
+        inset 0 3px 0 var(--brand),
+        0 16px 36px rgba(59, 0, 77, 0.12);
+    }
+
+    .plataforma-card:hover .plataforma-icon {
+      transform: scale(1.06) translateZ(0);
+    }
+
+    .plataforma-card:hover .plataforma-footer :global(svg) {
+      transform: translate(3px, -3px);
+    }
   }
 
   .plataforma-empresa {
@@ -624,10 +639,6 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
 
   .plataforma-footer :global(svg) {
     transition: transform 0.3s ease;
-  }
-
-  .plataforma-card:hover .plataforma-footer :global(svg) {
-    transform: translate(3px, -3px);
   }
 
   /* --- RESPONSIVIDADE --- */
