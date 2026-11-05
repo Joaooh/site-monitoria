@@ -211,6 +211,22 @@ export const assinaturasEstudante = [
   },
 ];
 
+// Canal oficial de notícias do CEUB no WhatsApp
+export const comunidadeWhatsappCeub = {
+  id: "whatsapp-noticias-ceub",
+  nome: "Comunidade de Notícias do CEUB",
+  tipo: "Canal oficial no WhatsApp",
+  descricao:
+    "Fique por dentro do que rola de importante na instituição: comunicados, eventos, notícias e informações relevantes. Aqui vai ser tudo direto e prático sem encher seu celular de mensagens e sem textos fora de hora. Vem com a gente!",
+  destaques: [
+    "Comunicados e eventos",
+    "Notícias oficiais",
+    "Direto e sem spam",
+  ],
+  link: "https://whatsapp.com/channel/0029Vb7OoQWJf05cnPpMIj1r",
+  cta: "Entrar no canal do WhatsApp",
+};
+
 // Carreira: programa institucional de estágio/emprego (card em destaque)
 export const ceubCarreiras = {
   id: "ceub-carreiras",
@@ -218,7 +234,11 @@ export const ceubCarreiras = {
   tipo: "Programa de estágio e emprego",
   descricao:
     "Programa do CEUB que conecta estudantes a vagas de estágio e emprego em empresas parceiras, apoiando a entrada e o crescimento no mercado de trabalho.",
-  destaques: ["Vagas de estágio", "Oportunidades de emprego", "Empresas parceiras"],
+  destaques: [
+    "Vagas de estágio",
+    "Oportunidades de emprego",
+    "Empresas parceiras",
+  ],
   link: "https://www.uniceub.br/ceub-carreiras",
   cta: "Conhecer o CEUB Carreiras",
 };
@@ -257,5 +277,45 @@ export const plataformasEnsino = [
     icone: "ibm",
     cor: "#0f62fe",
     link: "https://skillsbuild.org/",
+  },
+  {
+    id: "microsoft-learn",
+    nome: "Microsoft Learn",
+    empresa: "Microsoft",
+    destaque: "Desconto nas provas oficiais de certificação",
+    descricao:
+      "Cursos gratuitos de Azure, IA e segurança, com descontos de 30% a 45% em exames oficiais de certificação para estudantes elegíveis.",
+    topicos: ["Azure", "Segurança", "IA", "Certificações"],
+    icone: "microsoft",
+    cor: "#05a6f0",
+    link: "https://learn.microsoft.com/pt-br/training/student-hub/credentials",
+  },
+  {
+    id: "databricks",
+    nome: "Databricks University Alliance + Free Edition",
+    empresa: "Databricks",
+    destaque: "Cursos gratuitos e desconto em certificações",
+    descricao:
+      "Cursos gratuitos de dados, IA e Apache Spark, acesso à plataforma Free Edition e 25% de desconto em certificações oficiais para estudantes elegíveis.",
+    topicos: [
+      "Dados",
+      "IA",
+      "Apache Spark",
+      "Free Edition",
+      "25% off em certificações",
+    ],
+    icone: "databricks",
+    cor: "#ff3621",
+    link: "https://www.databricks.com/resources/student-resources",
+    links: [
+      {
+        label: "University Alliance",
+        url: "https://www.databricks.com/resources/student-resources",
+      },
+      {
+        label: "Free Edition",
+        url: "https://www.databricks.com/learn/free-edition",
+      },
+    ],
   },
 ];

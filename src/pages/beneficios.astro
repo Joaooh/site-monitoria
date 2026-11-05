@@ -8,6 +8,7 @@ import CursosPlataformas from "../components/beneficios/CursosPlataformas.astro"
 import BeneficioIcon from "../components/beneficios/BeneficioIcon.astro";
 import {
   oportunidadesCeub,
+  comunidadeWhatsappCeub,
   assinaturasEstudante,
   ceubCarreiras,
   plataformasEnsino,
@@ -41,11 +42,11 @@ const beneficiosSchema = [
     "@type": "ItemList",
     name: "Guia de Oportunidades e Benefícios do Aluno CEUB",
     description:
-      "Oportunidades acadêmicas do UniCEUB (Iniciação Científica, Intercâmbio, Bibliotecas Digitais, Meia-Entrada), CEUB Carreiras, plataformas de ensino (Cisco Networking Academy, AWS Educate e IBM SkillsBuild) e assinaturas estudantis (GitHub Pro, JetBrains, Azure, Google One, Figma, Adobe, Spotify, YouTube Premium e Dell).",
+      "Oportunidades acadêmicas do UniCEUB (Iniciação Científica, Intercâmbio, Bibliotecas Digitais, Meia-Entrada e Comunidade de Notícias no WhatsApp), CEUB Carreiras, plataformas de ensino (Cisco Networking Academy, AWS Educate, IBM SkillsBuild, Microsoft Learn e Databricks) e assinaturas estudantis (GitHub Pro, JetBrains, Azure, Google One, Figma, Adobe, Spotify, YouTube Premium e Dell).",
     url: pageUrl,
     numberOfItems:
       oportunidadesCeub.length +
-      1 +
+      2 +
       plataformasEnsino.length +
       assinaturasEstudante.length,
     itemListElement: [
@@ -59,13 +60,20 @@ const beneficiosSchema = [
       {
         "@type": "ListItem",
         position: oportunidadesCeub.length + 1,
+        name: comunidadeWhatsappCeub.nome,
+        description: comunidadeWhatsappCeub.descricao,
+        url: comunidadeWhatsappCeub.link,
+      },
+      {
+        "@type": "ListItem",
+        position: oportunidadesCeub.length + 2,
         name: ceubCarreiras.nome,
         description: ceubCarreiras.descricao,
         url: ceubCarreiras.link,
       },
       ...plataformasEnsino.map((item, idx) => ({
         "@type": "ListItem",
-        position: oportunidadesCeub.length + 1 + idx + 1,
+        position: oportunidadesCeub.length + 2 + idx + 1,
         name: `${item.nome} (${item.empresa}) - ${item.destaque}`,
         description: item.descricao,
         url: item.link,
@@ -73,7 +81,7 @@ const beneficiosSchema = [
       ...assinaturasEstudante.map((item, idx) => ({
         "@type": "ListItem",
         position:
-          oportunidadesCeub.length + 1 + plataformasEnsino.length + idx + 1,
+          oportunidadesCeub.length + 2 + plataformasEnsino.length + idx + 1,
         name: `${item.nome} (${item.empresa}) - ${item.destaque}`,
         description: item.descricao,
         url: item.link,
@@ -84,7 +92,7 @@ const beneficiosSchema = [
 
 const resumo = [
   {
-    valor: oportunidadesCeub.length,
+    valor: oportunidadesCeub.length + 1,
     label: "Oportunidades no CEUB",
     icone: "flask",
     href: "#no-ceub",

@@ -184,17 +184,35 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
                     ))}
                   </ul>
 
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="plataforma-footer"
-                    aria-label={`Acessar ${p.nome} da ${p.empresa} (abre em nova aba)`}
-                  >
-                    Acessar plataforma
-                    <BeneficioIcon name="arrow" size={16} />
-                    <span class="sr-only">(abre em nova aba)</span>
-                  </a>
+                  {p.links && p.links.length > 0 ? (
+                    <div class="plataforma-links">
+                      {p.links.map((l) => (
+                        <a
+                          href={l.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="plataforma-link-btn"
+                          aria-label={`Acessar ${l.label} de ${p.nome} (abre em nova aba)`}
+                        >
+                          {l.label}
+                          <BeneficioIcon name="arrow" size={15} />
+                          <span class="sr-only">(abre em nova aba)</span>
+                        </a>
+                      ))}
+                    </div>
+                  ) : (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="plataforma-footer"
+                      aria-label={`Acessar ${p.nome} da ${p.empresa} (abre em nova aba)`}
+                    >
+                      Acessar plataforma
+                      <BeneficioIcon name="arrow" size={16} />
+                      <span class="sr-only">(abre em nova aba)</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </article>
@@ -296,7 +314,6 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
   }
 
   .carreiras-mobile-sub,
-  .plataforma-mobile-sub,
   .plataforma-watermark,
   .expand-indicator {
     display: none;
@@ -489,8 +506,16 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
   .plataformas-grid {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 1.5rem;
+  }
+
+  .plataformas-grid > li {
+    grid-column: span 2;
+  }
+
+  .plataformas-grid > li:nth-child(n + 4) {
+    grid-column: span 3;
   }
 
   .plataforma-card {
@@ -579,7 +604,16 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     font-weight: 700;
     color: #0d041a;
     line-height: 1.3;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .plataforma-mobile-sub {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--purple-hero);
+    line-height: 1.4;
+    margin-bottom: 0.65rem;
   }
 
   .plataforma-desc {
@@ -621,6 +655,59 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     text-decoration: none;
   }
 
+  .plataforma-links {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0eaff;
+    position: relative;
+    z-index: 2;
+  }
+
+  .plataforma-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 10px;
+    background: #f6f1fc;
+    border: 1px solid #e5d8f6;
+    color: var(--purple-hero);
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .plataforma-link-btn :global(svg) {
+    transition: transform 0.25s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .plataforma-link-btn:hover {
+      background: var(--purple-primary);
+      border-color: var(--purple-primary);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .plataforma-link-btn:hover :global(svg) {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .plataforma-link-btn:focus-visible {
+    outline: 3px solid var(--purple-hero);
+    outline-offset: 3px;
+  }
+
   @media (min-width: 641px) {
     .plataforma-footer::after {
       content: "";
@@ -654,6 +741,15 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
 
     .plataformas-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .plataformas-grid > li,
+    .plataformas-grid > li:nth-child(n + 4) {
+      grid-column: span 1;
+    }
+
+    .plataformas-grid > li:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
     }
   }
 
@@ -793,6 +889,12 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     .plataformas-grid {
       grid-template-columns: 1fr;
       gap: 1.15rem;
+    }
+
+    .plataformas-grid > li,
+    .plataformas-grid > li:nth-child(n + 4),
+    .plataformas-grid > li:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
     }
 
     .plataforma-card {
@@ -981,6 +1083,31 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
       background: var(--purple-primary);
       color: #ffffff;
       box-shadow: 0 4px 12px rgba(102, 44, 146, 0.22);
+    }
+
+    .plataforma-links {
+      border-top: none;
+      padding-top: 0;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .plataforma-link-btn {
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 10px;
+      background: var(--purple-primary);
+      border-color: var(--purple-primary);
+      color: #ffffff;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(102, 44, 146, 0.22);
+    }
+
+    .plataforma-link-btn + .plataforma-link-btn {
+      background: #f6f1fc;
+      border: 1px solid #d8c2f2;
+      color: var(--purple-hero);
+      box-shadow: none;
     }
   }
 

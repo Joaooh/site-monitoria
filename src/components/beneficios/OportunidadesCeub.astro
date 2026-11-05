@@ -1,7 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import BeneficioIcon from "./BeneficioIcon.astro";
-import { oportunidadesCeub } from "@data/beneficios.js";
+import {
+  oportunidadesCeub,
+  comunidadeWhatsappCeub,
+} from "@data/beneficios.js";
 ---
 
 <section
@@ -141,6 +144,97 @@ import { oportunidadesCeub } from "@data/beneficios.js";
         ))
       }
     </div>
+
+    <!-- Destaque: Comunidade de Notícias do CEUB no WhatsApp -->
+    <article
+      class="comunidade-card"
+      id={comunidadeWhatsappCeub.id}
+      aria-labelledby="comunidade-ceub-title"
+      data-expandable-card
+    >
+      <div class="comunidade-content">
+        <div
+          class="comunidade-summary"
+          data-expand-trigger
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+          aria-label={`${comunidadeWhatsappCeub.nome}: ${comunidadeWhatsappCeub.tipo}`}
+        >
+          <span class="comunidade-kicker">
+            <BeneficioIcon name="whatsapp" size={16} />
+            {comunidadeWhatsappCeub.tipo}
+          </span>
+          <h3 id="comunidade-ceub-title" aria-label={comunidadeWhatsappCeub.nome}>
+            {comunidadeWhatsappCeub.nome}
+          </h3>
+          <p class="comunidade-mobile-sub">
+            Comunicados, eventos e notícias oficiais direto no seu WhatsApp
+          </p>
+
+          <div class="expand-indicator comunidade-indicator" aria-hidden="true">
+            <span class="indicator-text">
+              <span class="more-text">Saiba mais</span>
+              <span class="less-text">Recolher</span>
+            </span>
+            <svg
+              class="chevron-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="comunidade-details">
+          <div class="comunidade-details-inner">
+            <p class="comunidade-desc">{comunidadeWhatsappCeub.descricao}</p>
+
+            <ul class="comunidade-destaques" aria-label="Destaques do canal">
+              {
+                comunidadeWhatsappCeub.destaques.map((d) => (
+                  <li>
+                    <BeneficioIcon name="check" size={14} />
+                    {d}
+                  </li>
+                ))
+              }
+            </ul>
+
+            <a
+              href={comunidadeWhatsappCeub.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="comunidade-cta"
+              aria-label={`${comunidadeWhatsappCeub.cta}: ${comunidadeWhatsappCeub.nome} (abre em nova aba)`}
+            >
+              <BeneficioIcon name="whatsapp" size={18} />
+              {comunidadeWhatsappCeub.cta}
+              <BeneficioIcon name="arrow" size={16} />
+              <span class="sr-only">(abre em nova aba)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="comunidade-visual" aria-hidden="true">
+        <span class="comunidade-orbit orbit-a"></span>
+        <span class="comunidade-orbit orbit-b"></span>
+        <span class="comunidade-visual-icon">
+          <BeneficioIcon name="whatsapp" size={54} />
+        </span>
+        <span class="comunidade-chip chip-1">Comunicados</span>
+        <span class="comunidade-chip chip-2">Eventos</span>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -473,10 +567,207 @@ import { oportunidadesCeub } from "@data/beneficios.js";
     }
   }
 
+  /* --- Destaque: Comunidade de Notícias no WhatsApp --- */
+  .comunidade-card {
+    position: relative;
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+    padding: 2.75rem 3rem;
+    border-radius: 24px;
+    background:
+      radial-gradient(
+        circle at 86% 22%,
+        rgba(37, 211, 102, 0.22) 0%,
+        transparent 46%
+      ),
+      linear-gradient(135deg, #1b0a2e 0%, #431866 55%, #134e3a 100%);
+    color: #ffffff;
+    overflow: hidden;
+    overflow: clip;
+    contain: layout paint;
+    isolation: isolate;
+    box-shadow: 0 18px 42px rgba(27, 10, 46, 0.22);
+  }
+
+  .comunidade-summary {
+    outline: none;
+  }
+
+  .comunidade-mobile-sub {
+    display: none;
+  }
+
+  .comunidade-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(37, 211, 102, 0.16);
+    border: 1px solid rgba(37, 211, 102, 0.38);
+    color: #7ef2a6;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 1rem;
+  }
+
+  .comunidade-content h3 {
+    font-size: clamp(1.65rem, 3.2vw, 2.2rem);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+    margin-bottom: 0.85rem;
+    color: #ffffff;
+  }
+
+  .comunidade-desc {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 600px;
+    margin-bottom: 1.4rem;
+  }
+
+  .comunidade-destaques {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.25rem;
+    margin-bottom: 1.85rem;
+  }
+
+  .comunidade-destaques li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #d9fbea;
+  }
+
+  .comunidade-destaques :global(svg) {
+    color: #4ade80;
+  }
+
+  .comunidade-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    background: #25d366;
+    color: #0b2414;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.3);
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .comunidade-cta :global(svg:last-of-type) {
+    transition: transform 0.25s ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .comunidade-cta:hover {
+      background: #34e275;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.42);
+    }
+
+    .comunidade-cta:hover :global(svg:last-of-type) {
+      transform: translate(3px, -3px);
+    }
+  }
+
+  .comunidade-cta:focus-visible {
+    outline: 3px solid #7ef2a6;
+    outline-offset: 3px;
+  }
+
+  .comunidade-visual {
+    position: relative;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .comunidade-orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(126, 242, 166, 0.28);
+  }
+
+  .orbit-a {
+    width: 165px;
+    height: 165px;
+  }
+
+  .orbit-b {
+    width: 230px;
+    height: 230px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .comunidade-visual-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 106px;
+    height: 106px;
+    border-radius: 28px;
+    background: rgba(37, 211, 102, 0.18);
+    border: 1px solid rgba(126, 242, 166, 0.38);
+    box-shadow: 0 0 40px rgba(37, 211, 102, 0.3);
+    color: #4ade80;
+  }
+
+  .comunidade-chip {
+    position: absolute;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #134e3a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  }
+
+  .chip-1 {
+    top: 20%;
+    left: 8%;
+  }
+
+  .chip-2 {
+    bottom: 18%;
+    right: 6%;
+  }
+
   /* --- RESPONSIVIDADE MOBILE --- */
   @media (max-width: 860px) {
     .oportunidades-grid {
       grid-template-columns: 1fr;
+    }
+
+    .comunidade-card {
+      grid-template-columns: 1fr;
+      padding: 2.25rem 2rem;
+    }
+
+    .comunidade-visual {
+      display: none;
     }
   }
 
@@ -686,6 +977,148 @@ import { oportunidadesCeub } from "@data/beneficios.js";
       padding-top: 0;
       border-top: none;
       margin-bottom: 1.15rem;
+    }
+
+    /* Comunidade WhatsApp - Mobile Expandível */
+    .comunidade-card {
+      margin-top: 1.5rem;
+      padding: 0;
+      border-radius: 18px;
+      min-height: 124px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .comunidade-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .comunidade-visual {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      transform: translateY(-50%);
+      width: 146px;
+      height: 146px;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orbit-a {
+      width: 108px;
+      height: 108px;
+    }
+
+    .orbit-b {
+      width: 146px;
+      height: 146px;
+    }
+
+    .comunidade-visual-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      box-shadow: none;
+    }
+
+    .comunidade-chip {
+      display: none;
+    }
+
+    .comunidade-summary {
+      position: relative;
+      padding: 1.25rem 1.25rem 2.3rem 1.25rem;
+      min-height: 124px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .comunidade-summary:focus-visible {
+      outline: 2px solid #7ef2a6;
+      outline-offset: -2px;
+      border-radius: 18px;
+    }
+
+    .comunidade-kicker {
+      align-self: flex-start;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .comunidade-content h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .comunidade-mobile-sub {
+      display: block;
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.4;
+      padding-right: 96px;
+      margin: 0;
+    }
+
+    .comunidade-indicator {
+      color: #7ef2a6;
+    }
+
+    .comunidade-card.is-expanded .more-text {
+      display: none;
+    }
+
+    .comunidade-card.is-expanded .less-text {
+      display: inline;
+    }
+
+    .comunidade-card.is-expanded .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    .comunidade-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+        opacity 0.25s ease;
+    }
+
+    .comunidade-details-inner {
+      overflow: hidden;
+      padding: 0 1.25rem;
+    }
+
+    .comunidade-card.is-expanded .comunidade-details {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .comunidade-card.is-expanded .comunidade-details-inner {
+      padding: 0 1.25rem 1.35rem 1.25rem;
+    }
+
+    .comunidade-desc {
+      padding-top: 0.95rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.92rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .comunidade-destaques {
+      margin-bottom: 1.35rem;
+      gap: 0.5rem 1rem;
+    }
+
+    .comunidade-cta {
+      width: 100%;
+      justify-content: center;
     }
   }
 
