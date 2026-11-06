@@ -303,16 +303,18 @@ export const playlistsData = [
     classroomUrl: "",
     videos: [
       {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
+        id_youtube: "PoBSyuJgp8U",
+        title: "Introdução ao Blender",
+        description:
+          "Aprendemos como utilizar a ferramenta Blender, explorando a navegação na interface, atalhos essenciais, manipulação de objetos no espaço 3D e organização inicial do fluxo de trabalho.",
+        tags: ["BLENDER", "3D", "INTERFACE", "MODELAGEM 3D"],
       },
       {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
+        id_youtube: "Au6rAH-xnqA",
+        title: "Modos de Objeto e Edição",
+        description:
+          "Exploramos na prática a criação e edição de objetos tridimensionais no Blender, partindo de formas primitivas até a estruturação de modelos e malhas 3D.",
+        tags: ["BLENDER", "MODELAGEM 3D", "OBJETO", "EDIÇÃO"],
       },
       {
         id_youtube: "",
