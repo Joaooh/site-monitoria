@@ -49,6 +49,7 @@ import imgKauanVinicius from "@assets/equipe/kauan-vinicius.webp";
 import imgEmilyMendes from "@assets/equipe/emily-mendes.webp";
 import imgVictorFernandes from "@assets/equipe/victor-fernandes.webp";
 import imgLuizFellipe from "@assets/equipe/luiz-fellipe.webp";
+import imgIsabelaAlvim from "@assets/equipe/isabela-alvim.webp";
 
 /*
  * COMO ADICIONAR UM NOVO MONITOR À EQUIPE:
@@ -479,6 +480,15 @@ export const equipeData = [
     linkedin:
       "https://www.linkedin.com/in/luiz-fellipe-pereira-zago-belem-8221043b4/",
     github: "https://github.com/luizfellipepzb",
+  },
+  {
+    id: "isabela-alvim",
+    nome: "Isabela Alvim",
+    descricao: "Entusiasta de Linux | Python | Java | Engenharia de Software",
+    foto: imgIsabelaAlvim,
+    ativo: true,
+    linkedin: "https://www.linkedin.com/in/isabela-alvim-9720753a4",
+    github: "https://github.com/isabelacfalvim-jpg",
   },
 
   // ==========================================
