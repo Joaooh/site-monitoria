@@ -178,6 +178,13 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
                 <div class="plataforma-details-inner">
                   <p class="plataforma-desc">{p.descricao}</p>
 
+                  {p.gratuidade && (
+                    <div class="plataforma-gratuidade">
+                      <span class="gratuidade-badge">Acesso gratuito</span>
+                      <p class="gratuidade-text">{p.gratuidade}</p>
+                    </div>
+                  )}
+
                   <ul class="topicos" aria-label="Tópicos">
                     {p.topicos.map((t) => (
                       <li>{t}</li>
@@ -506,16 +513,16 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
   .plataformas-grid {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
   }
 
   .plataformas-grid > li {
-    grid-column: span 2;
+    grid-column: auto;
   }
 
   .plataformas-grid > li:nth-child(n + 4) {
-    grid-column: span 3;
+    grid-column: auto;
   }
 
   .plataforma-card {
@@ -620,7 +627,32 @@ import { ceubCarreiras, plataformasEnsino } from "@data/beneficios.js";
     color: #4a3a57;
     font-size: 0.93rem;
     line-height: 1.6;
-    margin-bottom: 1.1rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .plataforma-gratuidade {
+    margin-bottom: 1rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 10px;
+    background: #fff5f5;
+    border: 1px solid #ffd4d4;
+  }
+
+  .gratuidade-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #c90000;
+    margin-bottom: 0.25rem;
+  }
+
+  .gratuidade-text {
+    font-size: 0.83rem;
+    line-height: 1.45;
+    color: #4a1f1f;
+    margin: 0;
   }
 
   .topicos {

@@ -318,4 +318,25 @@ export const plataformasEnsino = [
       },
     ],
   },
+  {
+    id: "redhat",
+    nome: "Red Hat Learning Subscription",
+    empresa: "Red Hat",
+    destaque: "12 meses e acesso via parceiros",
+    descricao:
+      "Cursos oficiais de Linux, Ansible, Kubernetes, OpenShift, automação e cloud computing, com laboratórios práticos, preparação para certificações e exames oficiais, conforme o plano.",
+    gratuidade:
+      "Estudantes podem ter acesso gratuito por meio de instituições parceiras do Red Hat Academy.",
+    topicos: [
+      "Linux",
+      "Ansible",
+      "Kubernetes",
+      "OpenShift",
+      "Cloud",
+      "Laboratórios práticos",
+    ],
+    icone: "redhat",
+    cor: "#ee0000",
+    link: "https://www.redhat.com/pt-br/services/training/learning-subscription",
+  },
 ];
