@@ -342,7 +342,6 @@ export const equipeData = [
     descricao: "Entusiasta em Computação em Nuvem e DevOps.",
     foto: imgFelipeRios,
     ativo: true,
-    ocultarNaEquipe: true,
     linkedin: "https://www.linkedin.com/in/felipe-rios-93a9b23b6/",
     github: "https://github.com/HaMoZi006",
   },
