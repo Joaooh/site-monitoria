@@ -2,14 +2,18 @@ import imgAcmwUnb from "@assets/mergedf/acmw-unb.webp";
 import imgAwsSbclCeub from "@assets/mergedf/aws-sbcl-ceub.webp";
 import imgAwsUcb from "@assets/mergedf/aws-ucb.webp";
 import imgAwsUnb from "@assets/mergedf/aws-unb.webp";
+import imgCalangohc from "@assets/mergedf/calangohc.webp";
 import imgCatech from "@assets/mergedf/catech.webp";
 import imgCjrUnb from "@assets/mergedf/cjr-unb.webp";
 import imgDce from "@assets/mergedf/dce.webp";
 import imgGoogleUcb from "@assets/mergedf/google-ucb.webp";
 import imgIbmzCeub from "@assets/mergedf/ibmz-ceub.webp";
 import imgIeeUnb from "@assets/mergedf/iee-unb.webp";
+import imgMeninasComp from "@assets/mergedf/meninas-comp.webp";
 import imgMncIfb from "@assets/mergedf/mnc-ifb.webp";
+import imgPci from "@assets/mergedf/pci.webp";
 import imgPmi from "@assets/mergedf/pmi.webp";
+import imgSinteseLabs from "@assets/mergedf/sintese-labs.webp";
 import imgUnbreakable from "@assets/mergedf/unbreakable.webp";
 
 /**
@@ -378,7 +382,7 @@ export const organizacoesMergeData = [
   // --- 5. RAMO ESTUDANTIL IEEE UNB ---
   {
     slug: "ieee-unb",
-    nome: "Ramo Estudantil IEEE UnB — Universidade de Brasília",
+    nome: "Ramo Estudantil IEEE UnB – Universidade de Brasília",
     sigla: "IEEE UnB",
     ies: "UnB",
     logo: imgIeeUnb,
@@ -425,7 +429,7 @@ export const organizacoesMergeData = [
   // --- 6. ACM-W UNB ---
   {
     slug: "acmw-unb",
-    nome: "ACM-W UnB (ACM Women in Computing - Capítulo Estudantil da Universidade de Brasília)",
+    nome: "ACM-W UnB (ACM Women in Computing – Capítulo Estudantil da Universidade de Brasília)",
     sigla: "ACM-W UnB",
     ies: "UnB",
     logo: imgAcmwUnb,
@@ -569,10 +573,10 @@ export const organizacoesMergeData = [
     ],
   },
 
-  // --- 9. AWS STUDENT BUILDER GROUP — UNB ---
+  // --- 9. AWS STUDENT BUILDER GROUP – UNB ---
   {
     slug: "aws-sbg-unb",
-    nome: "AWS Student Builder Group — UnB",
+    nome: "AWS Student Builder Group – UnB",
     sigla: "AWS SBG UnB",
     ies: "UnB",
     logo: imgAwsUnb,
@@ -670,7 +674,7 @@ export const organizacoesMergeData = [
   // --- 11. EMBAIXADORES ESTUDANTIL GOOGLE ---
   {
     slug: "embaixadores-google",
-    nome: "Embaixadores Estudantil Google — Universidade Católica de Brasília (UCB)",
+    nome: "Embaixadores Estudantil Google – Universidade Católica de Brasília (UCB)",
     sigla: "Embaixadores Google (UCB)",
     ies: "Católica",
     logo: imgGoogleUcb,
@@ -803,10 +807,10 @@ export const organizacoesMergeData = [
     ],
   },
 
-  // --- 14. CENTRO ACADÊMICO DE TECNOLOGIA DO CEUB - CATECH (ÚLTIMA POSIÇÃO) ---
+  // --- 14. CENTRO ACADÊMICO DE TECNOLOGIA DO CEUB – CATECH ---
   {
     slug: "catech-ceub",
-    nome: "Centro Acadêmico de Tecnologia do CEUB - CATECH",
+    nome: "Centro Acadêmico de Tecnologia do CEUB – CATECH",
     sigla: "CATECH",
     ies: "CEUB",
     logo: imgCatech,
@@ -850,9 +854,141 @@ export const organizacoesMergeData = [
       },
     ],
   },
+
+  // --- 15. PROJETOS CONSULTORIA INTEGRADA – PCI (AO FIM) ---
+  {
+    slug: "pci-ceub",
+    nome: "Projetos Consultoria Integrada – PCI",
+    sigla: "PCI",
+    ies: "CEUB",
+    logo: imgPci,
+    logoFit: "contain",
+    corDestaque: "#c8201d",
+    corFundoLogo: "#ffffff",
+    temPagina: false,
+    resumoCurto: "",
+    ondeEncontrar: [
+      {
+        tipo: "site",
+        label: "projetosintegrada.com.br",
+        url: "https://projetosintegrada.com.br/",
+      },
+      {
+        tipo: "instagram",
+        label: "@projetosintegrada",
+        url: "https://www.instagram.com/projetosintegrada/",
+      },
+    ],
+    puxePapo: [],
+    oQueFazem: "",
+    doQueSeOrgulham: "",
+    oQueBuscam: "",
+    oQueOferecem: "",
+    comoParticipar: "",
+    perguntasLivres: [],
+  },
+
+  // --- 16. MENINAS.COMP (AO FIM) ---
+  {
+    slug: "meninas-comp",
+    nome: "Meninas.comp",
+    sigla: "Meninas.comp",
+    ies: "UnB",
+    logo: imgMeninasComp,
+    logoFit: "contain",
+    corDestaque: "#ec4899",
+    corFundoLogo: "#ffffff",
+    temPagina: false,
+    resumoCurto: "",
+    ondeEncontrar: [
+      {
+        tipo: "site",
+        label: "meninas.cic.unb.br",
+        url: "https://www.meninas.cic.unb.br/",
+      },
+      {
+        tipo: "instagram",
+        label: "@meninas.comp",
+        url: "https://www.instagram.com/meninas.comp",
+      },
+    ],
+    puxePapo: [],
+    oQueFazem: "",
+    doQueSeOrgulham: "",
+    oQueBuscam: "",
+    oQueOferecem: "",
+    comoParticipar: "",
+    perguntasLivres: [],
+  },
+
+  // --- 17. SÍNTESE LABS (AO FIM) ---
+  {
+    slug: "sintese-labs",
+    nome: "Síntese Labs",
+    sigla: "Síntese Labs",
+    ies: "",
+    logo: imgSinteseLabs,
+    logoFit: "contain",
+    corDestaque: "#b45309",
+    corFundoLogo: "#f5f3ef",
+    temPagina: false,
+    resumoCurto: "",
+    ondeEncontrar: [
+      {
+        tipo: "site",
+        label: "sinteselabs.com",
+        url: "https://sinteselabs.com/",
+      },
+      {
+        tipo: "instagram",
+        label: "@sintese.labs",
+        url: "https://www.instagram.com/sintese.labs/",
+      },
+    ],
+    puxePapo: [],
+    oQueFazem: "",
+    doQueSeOrgulham: "",
+    oQueBuscam: "",
+    oQueOferecem: "",
+    comoParticipar: "",
+    perguntasLivres: [],
+  },
+
+  // --- 18. CALANGO HACKER CLUBE (AO FIM) ---
+  {
+    slug: "calango-club",
+    nome: "Calango Hacker Clube",
+    sigla: "Calango Hacker Clube",
+    ies: "",
+    logo: imgCalangohc,
+    logoFit: "contain",
+    corDestaque: "#16a34a",
+    corFundoLogo: "#ffffff",
+    temPagina: false,
+    resumoCurto: "",
+    ondeEncontrar: [
+      {
+        tipo: "site",
+        label: "calango.club",
+        url: "https://calango.club/",
+      },
+      {
+        tipo: "telegram",
+        label: "@calangohc",
+        url: "https://t.me/calangohc",
+      },
+    ],
+    puxePapo: [],
+    oQueFazem: "",
+    doQueSeOrgulham: "",
+    oQueBuscam: "",
+    oQueOferecem: "",
+    comoParticipar: "",
+    perguntasLivres: [],
+  },
 ];
 
 /** Lista única e ordenada das IES presentes. */
 export const iesMergeData = [
-  ...new Set(organizacoesMergeData.map((o) => o.ies)),
+  ...new Set(organizacoesMergeData.map((o) => o.ies).filter(Boolean)),
 ];

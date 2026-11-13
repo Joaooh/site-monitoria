@@ -13,6 +13,8 @@ const siteUrl =
   Astro.site?.toString() || "https://site-monitoria-blue.vercel.app/";
 const pageUrl = new URL("/merge-df", siteUrl).href;
 
+const normalizarTracos = (str = "") => str.replace(/\s+[—–-]\s+/g, " – ");
+
 const eventoSchema = {
   "@context": "https://schema.org",
   "@type": "Event",
@@ -25,11 +27,11 @@ const eventoSchema = {
   location: {
     "@type": "Place",
     name: "Auditório do CEUB",
-    address: "Centro Universitário de Brasília - CEUB, Brasília - DF",
+    address: "Centro Universitário de Brasília – CEUB, Brasília – DF",
   },
   organizer: {
     "@type": "Organization",
-    name: "Monitoria de TI - CEUB",
+    name: "Monitoria de TI – CEUB",
     url: siteUrl,
   },
   url: pageUrl,
@@ -37,7 +39,7 @@ const eventoSchema = {
 ---
 
 <Layout
-  title="MERGE-DF | Monitoria de TI - CEUB"
+  title="MERGE-DF | Monitoria de TI – CEUB"
   description="MERGE-DF: encontro de networking entre organizações estudantis de tecnologia das IES do DF. 13 de novembro, das 10h às 13h, no Auditório do CEUB. Conheça as organizações participantes."
 >
   <script
@@ -110,56 +112,121 @@ const eventoSchema = {
             {
               organizacoes.map((org) => (
                 <li class="guild-grid-item">
-                  <a
-                    href={`/merge-df/${org.slug}`}
-                    class="guild-card"
-                    style={`--org-cor: ${org.corDestaque ?? "#662c92"};`}
-                  >
-                    <div class="guild-banner" aria-hidden="true">
-                      <span class="guild-banner-pattern" />
-                    </div>
-                    {org.demonstrativo && (
-                      <span class="guild-exemplo">Exemplo</span>
-                    )}
-
-                    <div class="guild-emblem">
-                      <OrgAvatar
-                        nome={org.nome}
-                        sigla={org.sigla}
-                        logo={org.logo}
-                        logoFit={org.logoFit}
-                        cor={org.corDestaque}
-                        fundo={org.corFundoLogo}
-                        size={148}
-                      />
-                    </div>
-
-                    <div class="guild-body">
-                      <h3>{org.sigla}</h3>
-                      <p class="guild-nome">{org.nome}</p>
-
-                      <span class="guild-divider" aria-hidden="true">
-                        <span />
-                      </span>
-
-                      <p class="guild-resumo">{org.resumoCurto}</p>
-
-                      {org.puxePapo?.[0] && (
-                        <div class="guild-papo">
-                          <span class="guild-papo-label">
-                            <MergeIcon name="chat" size={13} />
-                            Puxe papo sobre
-                          </span>
-                          <span class="guild-papo-text">{org.puxePapo[0]}</span>
-                        </div>
+                  {org.temPagina !== false ? (
+                    <a
+                      href={`/merge-df/${org.slug}`}
+                      class="guild-card"
+                      style={`--org-cor: ${org.corDestaque ?? "#662c92"};`}
+                    >
+                      <div class="guild-banner" aria-hidden="true">
+                        <span class="guild-banner-pattern" />
+                      </div>
+                      {org.demonstrativo && (
+                        <span class="guild-exemplo">Exemplo</span>
                       )}
 
-                      <span class="guild-cta">
-                        Conhecer organização
-                        <MergeIcon name="arrow-right" size={16} />
-                      </span>
+                      <div class="guild-emblem">
+                        <OrgAvatar
+                          nome={org.nome}
+                          sigla={org.sigla}
+                          logo={org.logo}
+                          logoFit={org.logoFit}
+                          cor={org.corDestaque}
+                          fundo={org.corFundoLogo}
+                          size={148}
+                        />
+                      </div>
+
+                      <div class="guild-body">
+                        <h3>{normalizarTracos(org.sigla)}</h3>
+                        <p class="guild-nome">{normalizarTracos(org.nome)}</p>
+
+                        <span class="guild-divider" aria-hidden="true">
+                          <span />
+                        </span>
+
+                        <p class="guild-resumo">{org.resumoCurto}</p>
+
+                        {org.puxePapo?.[0] && (
+                          <div class="guild-papo">
+                            <span class="guild-papo-label">
+                              <MergeIcon name="chat" size={13} />
+                              Puxe papo sobre
+                            </span>
+                            <span class="guild-papo-text">
+                              {normalizarTracos(org.puxePapo[0])}
+                            </span>
+                          </div>
+                        )}
+
+                        <span class="guild-cta">
+                          Conhecer organização
+                          <MergeIcon name="arrow-right" size={16} />
+                        </span>
+                      </div>
+                    </a>
+                  ) : (
+                    <div
+                      class="guild-card guild-card--sem-pagina"
+                      style={`--org-cor: ${org.corDestaque ?? "#16a34a"};`}
+                    >
+                      <div class="guild-banner" aria-hidden="true">
+                        <span class="guild-banner-pattern" />
+                      </div>
+
+                      <div class="guild-emblem">
+                        <OrgAvatar
+                          nome={org.nome}
+                          sigla={org.sigla}
+                          logo={org.logo}
+                          logoFit={org.logoFit}
+                          cor={org.corDestaque}
+                          fundo={org.corFundoLogo}
+                          size={148}
+                        />
+                      </div>
+
+                      <div class="guild-body">
+                        <h3>{normalizarTracos(org.sigla)}</h3>
+                        <p class="guild-nome">{normalizarTracos(org.nome)}</p>
+
+                        <span class="guild-divider" aria-hidden="true">
+                          <span />
+                        </span>
+
+                        {org.resumoCurto && (
+                          <p class="guild-resumo">{org.resumoCurto}</p>
+                        )}
+
+                        <div class="guild-card-links">
+                          {org.ondeEncontrar?.map((item) => (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="guild-card-link-btn"
+                            >
+                              <MergeIcon
+                                name={
+                                  item.tipo === "site"
+                                    ? "globe"
+                                    : item.tipo === "telegram"
+                                      ? "send"
+                                      : item.tipo === "instagram"
+                                        ? "instagram"
+                                        : item.tipo === "linkedin"
+                                          ? "linkedin"
+                                          : "link"
+                                }
+                                size={15}
+                              />
+                              <span>{item.label}</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </a>
+                  )}
                 </li>
               ))
             }
@@ -713,6 +780,43 @@ const eventoSchema = {
     transition: gap 0.25s ease;
   }
 
+  .guild-card--sem-pagina {
+    cursor: default;
+  }
+
+  .guild-card-links {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+    padding-top: 1.5rem;
+  }
+
+  .guild-card-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: #f7f2ff;
+    color: var(--purple-primary);
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+  }
+
+  .guild-card-link-btn:hover {
+    background: var(--org-cor);
+    color: #ffffff;
+    border-color: var(--org-cor);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--org-cor) 35%, transparent);
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .guild-card:hover {
       transform: translateY(-6px);
@@ -938,6 +1042,85 @@ const eventoSchema = {
 
     .caderno {
       padding-top: 60px;
+    }
+
+    /* Cards compactos no mobile sem espaço em branco sobressalente */
+    .guild-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+      gap: 1.25rem;
+    }
+
+    .guild-card {
+      border-radius: 20px;
+    }
+
+    .guild-banner {
+      height: 96px;
+    }
+
+    .guild-emblem {
+      margin-top: -62px;
+      padding: 5px;
+      border-radius: 18px;
+    }
+
+    .guild-emblem :global(.org-avatar) {
+      --avatar-size: 118px !important;
+    }
+
+    .guild-body {
+      padding: 0.9rem 1.25rem 1.25rem;
+    }
+
+    .guild-card h3 {
+      font-size: 1.22rem;
+    }
+
+    .guild-nome {
+      font-size: 0.8rem;
+    }
+
+    .guild-divider {
+      width: 60%;
+      margin: 0.65rem 0;
+    }
+
+    .guild-resumo {
+      flex-grow: 0;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .guild-papo {
+      margin-top: 0.75rem;
+      padding: 0.65rem 0.8rem;
+      border-radius: 12px;
+    }
+
+    .guild-papo-label {
+      font-size: 0.68rem;
+    }
+
+    .guild-papo-text {
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    .guild-cta {
+      margin-top: 0.85rem;
+      font-size: 0.86rem;
+    }
+
+    .guild-card-links {
+      margin-top: 0.85rem;
+      padding-top: 0;
+      gap: 0.5rem;
+    }
+
+    .guild-card-link-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.84rem;
     }
 
     .convite-card {

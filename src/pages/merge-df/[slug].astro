@@ -6,12 +6,15 @@ import OrgAvatar from "../../components/merge-df/OrgAvatar.astro";
 import { organizacoesMergeData } from "../../data/merge-df.js";
 
 export async function getStaticPaths() {
-  return organizacoesMergeData.map((org, index) => ({
+  const comPagina = organizacoesMergeData.filter(
+    (org) => org.temPagina !== false
+  );
+  return comPagina.map((org, index) => ({
     params: { slug: org.slug },
     props: {
       org,
-      anterior: organizacoesMergeData[index - 1] ?? null,
-      proxima: organizacoesMergeData[index + 1] ?? null,
+      anterior: comPagina[index - 1] ?? null,
+      proxima: comPagina[index + 1] ?? null,
     },
   }));
 }
