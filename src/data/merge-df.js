@@ -77,7 +77,7 @@ export const eventoMergeData = {
       label: "Horário",
       valor: "10h às 13h (encerramento final)",
     },
-    { icone: "pin", label: "Local", valor: "Auditório do CEUB" },
+    { icone: "pin", label: "Local", valor: "Auditório do CEUB (Bloco 1)" },
     {
       icone: "users",
       label: "Público estimado",
