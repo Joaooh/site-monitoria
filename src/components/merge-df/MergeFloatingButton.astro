@@ -1,0 +1,163 @@
+---
+/**
+ * Botão flutuante global (estilo chatbot) no canto inferior direito,
+ * que leva diretamente para a página do evento /merge-df.
+ */
+---
+
+<a
+  href="/merge-df"
+  class="merge-fab"
+  aria-label="Acessar página do evento MERGE-DF"
+  title="MERGE-DF • Conectando o Ecossistema Universitário"
+>
+  <span class="merge-fab-tooltip" aria-hidden="true">MERGE-DF</span>
+  <span class="merge-fab-circle">
+    <img
+      src="/mago-cabeca.png"
+      alt=""
+      width="54"
+      height="54"
+      loading="eager"
+      decoding="async"
+    />
+  </span>
+</a>
+
+<style>
+  .merge-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9990;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .merge-fab-circle {
+    position: relative;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(
+      circle at 30% 25%,
+      #ff5c8f 0%,
+      var(--accent-pink, #e81c61) 65%,
+      var(--purple-primary, #662c92) 100%
+    );
+    box-shadow:
+      0 0 0 3px #ffffff,
+      0 8px 24px rgba(232, 28, 97, 0.55),
+      0 2px 8px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transition:
+      transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.3s ease;
+  }
+
+  .merge-fab-circle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(232, 28, 97, 0.65);
+    animation: mergeFabPulse 2.4s ease-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes mergeFabPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(232, 28, 97, 0.65);
+    }
+    70% {
+      box-shadow: 0 0 0 14px rgba(232, 28, 97, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(232, 28, 97, 0);
+    }
+  }
+
+  .merge-fab-circle img {
+    width: 84%;
+    height: 84%;
+    object-fit: contain;
+    margin-top: 8%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+  }
+
+  .merge-fab-tooltip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #0d041a;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border: 1px solid rgba(210, 168, 255, 0.35);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(8px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .merge-fab:hover .merge-fab-circle {
+      transform: translateY(-4px) scale(1.07);
+      box-shadow:
+        0 0 0 3px #ffffff,
+        0 12px 30px rgba(232, 28, 97, 0.75),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .merge-fab:hover .merge-fab-circle img {
+      transform: scale(1.06) rotate(-5deg);
+    }
+
+    .merge-fab:hover .merge-fab-tooltip,
+    .merge-fab:focus-visible .merge-fab-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .merge-fab {
+      right: 16px;
+      bottom: 16px;
+    }
+
+    .merge-fab-circle {
+      width: 56px;
+      height: 56px;
+    }
+
+    .merge-fab-tooltip {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .merge-fab-circle,
+    .merge-fab-circle img,
+    .merge-fab-tooltip {
+      transition: none;
+    }
+
+    .merge-fab-circle::before {
+      animation: none;
+    }
+  }
+</style>

@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { name: "Início", path: "/" },
+  // Evento temporário (MERGE-DF) — remover após o evento
+  { name: "MERGE-DF", path: "/merge-df", icon: "/mago-cabeca.png" },
   { name: "Oficinas", path: "/oficinas" },
   { name: "Playlists", path: "/playlists", badge: "Novo" },
   { name: "Pitaco", path: "/pitaco" },
@@ -187,6 +189,53 @@ export default function Navbar({ currentPath = "/" }) {
         @keyframes badgePulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.7; }
+        }
+        .nav-icon-circle {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 30% 25%, #ff5c8f 0%, var(--accent-pink) 65%);
+          box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 4px 14px rgba(232, 28, 97, 0.55);
+          overflow: hidden;
+          flex-shrink: 0;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nav-icon-circle img {
+          width: 86%;
+          height: 86%;
+          object-fit: contain;
+          margin-top: 10%;
+        }
+        .nav-icon-circle::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          animation: iconRing 2.2s ease-out infinite;
+        }
+        @keyframes iconRing {
+          0% { box-shadow: 0 0 0 0 rgba(232, 28, 97, 0.55); }
+          100% { box-shadow: 0 0 0 8px rgba(232, 28, 97, 0); }
+        }
+        .nav-link-icon {
+          gap: 0.5rem;
+          padding-left: 0.4rem;
+          font-weight: 700;
+          color: var(--text-main);
+        }
+        .nav-link-icon:hover .nav-icon-circle {
+          transform: scale(1.1) rotate(-6deg);
+          box-shadow: 0 0 0 2px #ffffff, 0 6px 18px rgba(232, 28, 97, 0.7);
+        }
+        .nav-link-icon .nav-underline {
+          left: 2.85rem;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .nav-icon-circle::after { animation: none; }
         }
         .nav-underline {
           position: absolute;
@@ -382,12 +431,17 @@ export default function Navbar({ currentPath = "/" }) {
                   <li key={item.name} className="nav-item">
                     <a
                       href={item.path}
-                      className="nav-link"
+                      className={`nav-link${item.icon ? " nav-link-icon" : ""}`}
                       data-active={isActive}
                       target={item.external ? "_blank" : undefined}
                       rel={item.external ? "noopener noreferrer" : undefined}
                       aria-current={isActive ? "page" : undefined}
                     >
+                      {item.icon && (
+                        <span className="nav-icon-circle" aria-hidden="true">
+                          <img src={item.icon} alt="" width="26" height="26" />
+                        </span>
+                      )}
                       {item.name}
                       {item.badge && (
                         <span
@@ -547,6 +601,11 @@ export default function Navbar({ currentPath = "/" }) {
                         gap: "0.5rem",
                       }}
                     >
+                      {item.icon && (
+                        <span className="nav-icon-circle" aria-hidden="true">
+                          <img src={item.icon} alt="" width="26" height="26" />
+                        </span>
+                      )}
                       {item.name}
                       {item.badge && (
                         <span

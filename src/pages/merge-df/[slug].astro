@@ -1,0 +1,555 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/common/Footer.astro";
+import MergeIcon from "../../components/merge-df/MergeIcon.astro";
+import OrgAvatar from "../../components/merge-df/OrgAvatar.astro";
+import { organizacoesMergeData } from "../../data/merge-df.js";
+
+export async function getStaticPaths() {
+  return organizacoesMergeData.map((org, index) => ({
+    params: { slug: org.slug },
+    props: {
+      org,
+      anterior: organizacoesMergeData[index - 1] ?? null,
+      proxima: organizacoesMergeData[index + 1] ?? null,
+    },
+  }));
+}
+
+const { org, anterior, proxima } = Astro.props;
+const cor = org.corDestaque ?? "#662c92";
+
+const iconePorTipo: Record<string, string> = {
+  instagram: "instagram",
+  linkedin: "linkedin",
+  site: "globe",
+  whatsapp: "chat",
+  outro: "link",
+};
+
+const blocos = [
+  { icone: "rocket", titulo: "O que fazemos", texto: org.oQueFazem },
+  { icone: "star", titulo: "Do que nos orgulhamos", texto: org.doQueSeOrgulham },
+  {
+    icone: "target",
+    titulo: "O que buscamos no MERGE-DF",
+    texto: org.oQueBuscam,
+    destaque: true,
+  },
+  {
+    icone: "gift",
+    titulo: "O que oferecemos a outras organizações",
+    texto: org.oQueOferecem,
+    destaque: true,
+  },
+].filter((b) => b.texto);
+---
+
+<Layout
+  title={`${org.sigla} | MERGE-DF`}
+  description={`${org.nome} no MERGE-DF: ${org.resumoCurto}`}
+>
+  <main id="main-content" class="ficha-page" style={`--org-cor: ${cor};`}>
+    <header class="ficha-hero">
+      <div class="ficha-hero-inner">
+        <a href="/merge-df#caderno" class="voltar">
+          <MergeIcon name="arrow-left" size={16} />
+          Todas as organizações
+        </a>
+
+        <OrgAvatar
+          nome={org.nome}
+          sigla={org.sigla}
+          logo={org.logo}
+          logoFit={org.logoFit}
+          cor={cor}
+          fundo={org.corFundoLogo}
+          size={136}
+          class="ficha-avatar"
+        />
+
+        <h1>{org.nome}</h1>
+
+        {
+          org.ondeEncontrar?.length > 0 && (
+            <ul class="links" aria-label="Onde nos encontrar">
+              {org.ondeEncontrar.map((link) => (
+                <li>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link-btn"
+                  >
+                    <MergeIcon name={iconePorTipo[link.tipo] ?? "link"} size={18} />
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+    </header>
+
+    <div class="ficha-body">
+      <div class="ficha-container">
+        {
+          org.demonstrativo && (
+            <p class="aviso-demo">
+              <MergeIcon name="alert" size={18} />
+              <span>
+                Página demonstrativa: os textos abaixo são apenas exemplos e
+                serão substituídos pelas informações reais das organizações.
+              </span>
+            </p>
+          )
+        }
+
+        {
+          org.puxePapo?.length > 0 && (
+            <section class="papo" aria-labelledby="papo-title">
+              <h2 id="papo-title">
+                <MergeIcon name="chat" size={20} />
+                Puxe papo com a gente sobre
+              </h2>
+              <ul class="papo-lista">
+                {org.puxePapo.map((assunto) => (
+                  <li>{assunto}</li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        <div class="blocos">
+          {
+            blocos.map((b) => (
+              <section class:list={["bloco", { "bloco-destaque": b.destaque }]}>
+                <h2>
+                  <span class="bloco-icon">
+                    <MergeIcon name={b.icone} size={18} />
+                  </span>
+                  {b.titulo}
+                </h2>
+                <div class="bloco-texto" set:html={b.texto} />
+              </section>
+            ))
+          }
+
+          {
+            org.comoParticipar && (
+              <section class="bloco">
+                <h2>
+                  <span class="bloco-icon">
+                    <MergeIcon name="door" size={18} />
+                  </span>
+                  Como participar
+                </h2>
+                <div class="bloco-texto" set:html={org.comoParticipar} />
+                {org.observacaoParticipacao && (
+                  <p class="observacao">
+                    <MergeIcon name="alert" size={16} />
+                    <span set:html={org.observacaoParticipacao} />
+                  </p>
+                )}
+              </section>
+            )
+          }
+
+          {
+            org.perguntasLivres?.slice(0, 3).map((q) => (
+              <section class="bloco">
+                <h2 class:list={[{ "sem-resposta": !q.resposta }]}>
+                  <span class="bloco-icon">
+                    <MergeIcon name="help" size={18} />
+                  </span>
+                  {q.pergunta}
+                </h2>
+                {q.resposta && <div class="bloco-texto" set:html={q.resposta} />}
+              </section>
+            ))
+          }
+        </div>
+
+        <nav class="nav-fichas" aria-label="Navegar entre organizações">
+          {
+            anterior ? (
+              <a href={`/merge-df/${anterior.slug}`} class="nav-ficha">
+                <MergeIcon name="arrow-left" size={18} />
+                <span>
+                  <small>Anterior</small>
+                  {anterior.sigla}
+                </span>
+              </a>
+            ) : (
+              <span />
+            )
+          }
+          {
+            proxima ? (
+              <a href={`/merge-df/${proxima.slug}`} class="nav-ficha nav-ficha-next">
+                <span>
+                  <small>Próxima</small>
+                  {proxima.sigla}
+                </span>
+                <MergeIcon name="arrow-right" size={18} />
+              </a>
+            ) : (
+              <a href="/merge-df#caderno" class="nav-ficha nav-ficha-next">
+                <span>
+                  <small>Voltar para</small>
+                  Organizações
+                </span>
+                <MergeIcon name="arrow-right" size={18} />
+              </a>
+            )
+          }
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <div class="footer-light">
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  .ficha-page {
+    min-height: 100vh;
+    background: #fdfdfd;
+    color: #1a1a24;
+  }
+
+  .footer-light {
+    background: #fdfdfd;
+    color: #1a1a24;
+  }
+
+  /* --- HERO --- */
+  .ficha-hero {
+    position: relative;
+    padding: 100px 1.25rem 3rem;
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        color-mix(in srgb, var(--org-cor) 55%, transparent),
+        transparent 70%
+      ),
+      var(--bg-dark);
+    color: #ffffff;
+    border-bottom: 4px solid var(--accent-pink);
+  }
+
+  .ficha-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .voltar {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 1.75rem;
+    transition: background 0.2s ease;
+  }
+
+  .voltar:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+  }
+
+  .ficha-hero :global(.org-avatar) {
+    box-shadow:
+      0 0 0 6px rgba(255, 255, 255, 0.95),
+      0 14px 34px rgba(0, 0, 0, 0.4);
+  }
+
+  .ficha-hero h1 {
+    margin-top: 1.5rem;
+    font-size: clamp(1.7rem, 5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+
+  .ficha-resumo {
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  .links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.1rem;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #0d041a;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .link-btn:hover {
+    transform: translateY(-2px);
+    background: var(--purple-neon);
+  }
+
+  /* --- CORPO --- */
+  .ficha-body {
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .ficha-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .aviso-demo {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    padding: 0.9rem 1.1rem;
+    border-radius: 14px;
+    background: #fff4d6;
+    border: 1px solid #f5d27a;
+    color: #5c3a00;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .aviso-demo :global(svg) {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .papo {
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #662c92, #8640be);
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(102, 44, 146, 0.28);
+    margin-bottom: 1.5rem;
+  }
+
+  .papo h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .papo-lista {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .papo-lista li {
+    padding: 0.55rem 1rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .blocos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .bloco {
+    padding: 1.4rem 1.5rem;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 16px rgba(59, 0, 77, 0.05);
+  }
+
+  .bloco-destaque {
+    background: #f7f2ff;
+    border-color: #e2d6f3;
+    border-left: 4px solid var(--accent-pink);
+  }
+
+  .bloco h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #3b004d;
+    margin-bottom: 0.7rem;
+  }
+
+  .bloco h2.sem-resposta {
+    margin-bottom: 0;
+  }
+
+  .bloco-icon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ddd1ff;
+    color: var(--purple-primary);
+  }
+
+  .bloco-texto {
+    color: #4a3a57;
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .bloco-texto :global(strong) {
+    color: #3b004d;
+  }
+
+  .bloco-texto :global(ul) {
+    margin: 0.6rem 0 0.6rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .bloco-texto :global(a) {
+    color: var(--purple-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .bloco-texto :global(a:hover) {
+    color: var(--accent-pink);
+  }
+
+  .observacao {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin-top: 0.9rem;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    background: #fff0f5;
+    border: 1px solid #ffc9da;
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .observacao :global(svg) {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: var(--accent-pink);
+  }
+
+  /* --- NAVEGAÇÃO ENTRE FICHAS --- */
+  .nav-fichas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .nav-ficha {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e2d6f3;
+    color: #3b004d;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .nav-ficha:hover {
+    border-color: var(--purple-primary);
+    transform: translateY(-2px);
+  }
+
+  .nav-ficha span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
+  .nav-ficha small {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  .nav-ficha-next {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  @media (max-width: 480px) {
+    .ficha-hero {
+      padding-top: 90px;
+    }
+
+    .bloco {
+      padding: 1.2rem;
+    }
+
+    .link-btn {
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+
+    .links {
+      width: 100%;
+    }
+
+    .links li {
+      flex: 1 1 140px;
+      display: flex;
+    }
+  }
+</style>

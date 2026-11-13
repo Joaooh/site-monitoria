@@ -1,0 +1,141 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+/**
+ * Brasão da organização (quadrado arredondado): usa a logo/mascote quando
+ * existir, senão exibe as iniciais da sigla sobre a cor de destaque.
+ */
+interface Props {
+  nome: string;
+  sigla: string;
+  logo?: string | ImageMetadata;
+  logoFit?: "contain" | "cover";
+  cor?: string;
+  fundo?: string;
+  size?: number;
+  class?: string;
+}
+
+const {
+  nome,
+  sigla,
+  logo,
+  logoFit = "contain",
+  cor = "#662c92",
+  fundo,
+  size = 96,
+  class: className = "",
+} = Astro.props;
+
+const isMascote = typeof logo === "string" && logo.includes("mago");
+const isCover = logoFit === "cover";
+
+const iniciais =
+  sigla
+    .split(/\s+/)
+    .filter((p) => p.length > 0 && p[0] === p[0].toUpperCase())
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 3) || sigla.slice(0, 2).toUpperCase();
+---
+
+<span
+  class:list={[
+    "org-avatar",
+    { "is-mascote": isMascote, "is-cover": isCover, "has-custom-bg": Boolean(fundo) },
+    className,
+  ]}
+  style={`--avatar-size: ${size}px; --avatar-cor: ${cor}; ${fundo ? `--avatar-bg: ${fundo};` : ""}`}
+>
+  {
+    logo ? (
+      typeof logo === "string" ? (
+        <img
+          src={logo}
+          alt={`Logo de ${nome}`}
+          class="avatar-img"
+          width={size}
+          height={size}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <Image
+          src={logo}
+          alt={`Logo de ${nome}`}
+          class="avatar-img"
+          width={size * 2}
+          quality={92}
+          loading="lazy"
+          decoding="async"
+        />
+      )
+    ) : (
+      <span class="org-iniciais" aria-hidden="true">
+        {iniciais}
+      </span>
+    )
+  }
+</span>
+
+<style>
+  .org-avatar {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: radial-gradient(
+      circle at 30% 25%,
+      color-mix(in srgb, var(--avatar-cor) 55%, white) 0%,
+      var(--avatar-cor) 75%
+    );
+    overflow: hidden;
+  }
+
+  .org-avatar.has-custom-bg {
+    background: var(--avatar-bg);
+  }
+
+  .org-avatar.is-cover {
+    background: none;
+  }
+
+  .org-avatar :global(img) {
+    width: 88%;
+    height: 88%;
+    max-width: 88%;
+    max-height: 88%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .org-avatar.is-mascote :global(img) {
+    width: 84%;
+    height: 84%;
+    max-width: 84%;
+    max-height: 84%;
+    margin-top: 8%;
+  }
+
+  .org-avatar.is-cover :global(img) {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    transform: scale(1.015);
+  }
+
+  .org-iniciais {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: calc(var(--avatar-size) * 0.32);
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+</style>
