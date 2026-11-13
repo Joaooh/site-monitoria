@@ -104,7 +104,7 @@ const getImagemParaPlaylist = (slug: string) => {
                               <div class="placeholder-thumb">Em Breve</div>
                             </div>
                             <div class="video-info">
-                              <span class="ep-number">Aula {index + 1}</span>
+                              <span class="ep-number">Aula {vid.numero || index + 1}</span>
                               <h3>Disponível em breve</h3>
                             </div>
                           </div>
@@ -149,7 +149,7 @@ const getImagemParaPlaylist = (slug: string) => {
                             </div>
                           </div>
                           <div class="video-info">
-                            <span class="ep-number">Aula {index + 1}</span>
+                            <span class="ep-number">Aula {vid.numero || index + 1}</span>
                             <h3>{vid.title}</h3>
                           </div>
                         </a>

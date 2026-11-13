@@ -1,7 +1,7 @@
 {
   "name": "site-monitoria",
   "type": "module",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -21,7 +21,7 @@
     "@types/react-dom": "^19.2.3",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^7.4.4",
+    "astro": "^7.4.11",
     "framer-motion": "^12.37.0",
     "gsap": "^3.14.2",
     "ogl": "^1.0.11",

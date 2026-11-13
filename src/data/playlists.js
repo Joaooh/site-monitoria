@@ -6,6 +6,60 @@
  * 4. Para uma aula "Em breve": Passe apenas 'id_youtube: ""'.
  */
 export const playlistsData = [
+  // --- OFICINA DE MODELAGEM 3D (BLENDER) ---
+  {
+    slug: "modelagem-3d",
+    titulo: "Oficina de Modelagem 3D",
+    classroomUrl: "",
+    videos: [
+      {
+        id_youtube: "PoBSyuJgp8U",
+        numero: "1",
+        title: "Introdução ao Blender",
+        description:
+          "Aprendemos como utilizar a ferramenta Blender, explorando a navegação na interface, atalhos essenciais, manipulação de objetos no espaço 3D e organização inicial do fluxo de trabalho.",
+        tags: ["BLENDER", "3D", "INTERFACE", "MODELAGEM 3D"],
+      },
+      {
+        id_youtube: "Au6rAH-xnqA",
+        numero: "1.1",
+        title: "Modos de Objeto e Edição",
+        description:
+          "Aula complementar explorando na prática a criação e edição de objetos tridimensionais no Blender, partindo de formas primitivas até a estruturação de modelos e malhas 3D.",
+        tags: ["BLENDER", "MODELAGEM 3D", "OBJETO", "EDIÇÃO"],
+      },
+      {
+        id_youtube: "e5kqPNrZz9I",
+        numero: "1.2",
+        title: "Modificadores",
+        description:
+          "Aula complementar sobre modificadores no Blender: exploramos funções prontas para modificar, transformar, deformar, duplicar e refinar geometrias de objetos 3D.",
+        tags: ["BLENDER", "MODIFICADORES", "MODELAGEM 3D", "FERRAMENTAS"],
+      },
+      {
+        id_youtube: "Av2xdNbaOMs",
+        numero: "2",
+        title: "Modelagem Prática - Escudo do Capitão América",
+        description:
+          "Aula prática de modelagem 3D no Blender onde desenvolvemos passo a passo o escudo do Capitão América, aplicando conceitos de formas primitivas, extrusão, simetria e detalhamento de malha.",
+        tags: ["BLENDER", "MODELAGEM 3D", "PRÁTICA", "ESCUDO"],
+      },
+      {
+        id_youtube: "",
+        numero: "3",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+      {
+        id_youtube: "",
+        numero: "4",
+        title: "Em Breve",
+        description: "Esta aula será disponibilizada em breve",
+        tags: [],
+      },
+    ],
+  },
   // --- FUNDAMENTOS DE CIÊNCIA DE DADOS - INTRODUÇÃO A PYTHON ---
   {
     slug: "fundamentos-ciencia-de-dados",
@@ -281,52 +335,6 @@ export const playlistsData = [
         description:
           "Aprendemos a criar tabelas no MySQL, definir tipos de dados e aplicar constraints como PK, FK, UNIQUE e AUTO_INCREMENT. Também praticamos comandos básicos de SQL e entendemos como organizar e exportar a estrutura do banco",
         tags: ["DML", "DDL", "DATA TYPES"],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
-      },
-    ],
-  },
-  // --- OFICINA DE MODELAGEM 3D (BLENDER) ---
-  {
-    slug: "modelagem-3d",
-    titulo: "Oficina de Modelagem 3D",
-    classroomUrl: "",
-    videos: [
-      {
-        id_youtube: "PoBSyuJgp8U",
-        title: "Introdução ao Blender",
-        description:
-          "Aprendemos como utilizar a ferramenta Blender, explorando a navegação na interface, atalhos essenciais, manipulação de objetos no espaço 3D e organização inicial do fluxo de trabalho.",
-        tags: ["BLENDER", "3D", "INTERFACE", "MODELAGEM 3D"],
-      },
-      {
-        id_youtube: "Au6rAH-xnqA",
-        title: "Modos de Objeto e Edição",
-        description:
-          "Exploramos na prática a criação e edição de objetos tridimensionais no Blender, partindo de formas primitivas até a estruturação de modelos e malhas 3D.",
-        tags: ["BLENDER", "MODELAGEM 3D", "OBJETO", "EDIÇÃO"],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
-      },
-      {
-        id_youtube: "",
-        title: "Em Breve",
-        description: "Esta aula será disponibilizada em breve",
-        tags: [],
       },
       {
         id_youtube: "",
